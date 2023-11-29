@@ -6,11 +6,14 @@ function xCalPer(start,end,ing)
   var y = ing - start + 1;
   var z = y / x * 100;
   var per = "";
-  if (100 == z) per = "100";
-  else if (90 <= z) per = "90";
-  else if (80 <= z) per = "80";
-  else if (70 <= z) per = "70";
-  else per = "60";
-  var rst = "<span class=\"per" + per + "\">●</span> " + y + "/" + x;
+  var star = "";
+
+  if (100 == z){ per = "10000"; star = "★★★"}
+  else if (90 < z){ per = "9199"; star = "★★☆" }
+  else if (80 < z){ per = "8190"; star = "★★☆" }
+  else if (70 < z){ per = "7180"; star = "★☆☆" }
+  else if (60 < z){ per = "6170"; star = "★☆☆" }
+  else {per = "0060"; star = "☆☆☆"}
+  var rst = "<span class=\"per" + per + "\">" + star + "</span>";
   document.write(rst);
 }
