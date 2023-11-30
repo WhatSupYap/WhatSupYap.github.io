@@ -64,8 +64,9 @@
   color: var(--link-color);
 }
 
-%link-underline {
-  border-bottom: 1px solid var(--link-underline-color);
+/* 링크 아래 나오는거 마음에 안들어서 주석처리 */
+%link-underline {  
+  /*border-bottom: 1px solid var(--link-underline-color);*/
 }
 
 %clickable-transition {

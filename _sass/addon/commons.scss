@@ -1541,7 +1541,7 @@ search {
   src: url('/assets/fonts/HakgyoansimGgooreogiR.ttf') format('truetype');
 }
 
-
+/* ▼ 아래로 커스텀 */
 .monologue
 {
   /*color: rgb(202, 75, 181);*/
@@ -1592,4 +1592,11 @@ search {
 .t-a-right
 {
   text-align: right;
+}
+
+.tooltip-link
+{
+  /*border-bottom: none !important;*/
+  vertical-align: super;
+  font-size: smaller;
 }
