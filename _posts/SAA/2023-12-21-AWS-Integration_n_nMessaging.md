@@ -18,9 +18,8 @@ image:
 <details>
 <summary>모르는 단어</summary>
 
-> inevitabley: [인'에비더블리] 필연적이다시피, 아니나 다를까
-
-> Queue: [큐] 대기열
+<blockquote class="prompt-tip"><p>inevitabley: [인'에비더블리] 필연적이다시피, 아니나 다를까</p></blockquote>
+<blockquote class="prompt-tip"><p>Queue: [큐] 대기열</p></blockquote>
 </details>
 
 - When we start deploying multiple applications, they will inevitabley need to communicate with one another
