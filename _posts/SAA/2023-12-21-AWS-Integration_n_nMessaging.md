@@ -25,7 +25,7 @@ image:
 
 - When we start deploying multiple applications, they will inevitabley need to communicate with one another
 - There are two patterns of application communication
-![image-001](./images/2023-12-21-1/001.PNG)
+![image-001](/assets/img/post/20231221/001.PNG)
 - Synchronous between applications can be problematic if there are sudden spikes of trafiic
 - What if you need to suddenly encode 1000 videos but usually it's 10?
 
