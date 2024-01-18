@@ -102,7 +102,7 @@
                     step1 += line.replaceAll("(", " 괄호 ").replaceAll(")", " ");
                     continue;
                 }
-
+ 
                 step1 += line + "\n\n";
             }
 
@@ -118,7 +118,7 @@
 
 
             document.querySelector("#tarAfter1").value = step1;
-
+            // 오류 문구
             if (iCntBogi != iCntHaesul) {
                 alert("보기와 해설의 숫자가 다릅니다.");
             }
