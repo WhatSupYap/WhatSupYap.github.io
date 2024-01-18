@@ -1,12 +1,185 @@
-왁!
+<html>
+
+<head>
+    <title>변환기</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>원본</th>
+            <th>|</th>
+            <th>문서</th>
+            <th>|</th>
+            <th>대본</th>
+        </tr>
+        <tr>
+            <td><textarea id="tarBefore" style="width:500px; height:500px;"></textarea></td>
+            <td>><br />><br />></td>
+            <td><textarea id="tarAfter1" style="width:500px; height:500px;"></textarea></td>
+            <td>><br />><br />></td>
+            <td><textarea id="tarAfter2" style="width:500px; height:500px;"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:right;"><button onclick="Change_1();">변환1</button></td>
+            <td colspan="2" style="text-align:right;"><button onclick="Change_2();">변환2</button></td>
+            <td style="text-align:right;"><span id="textLength"></span></td>
+        </tr>
+    </table>
+
+    <script>
+        function Change_1() {
+
+            // 텍스트 용도
+            var Cleanser1 = [
+                //["\n", "\n\n"],
+                ["\n\n\n\n\n", "\n"]
+                , ["\n\n\n\n", "\n"]
+                , ["\n\n\n", "\n"]
+                , ["\n\n", "\n"]
+                //, ["\n(정답)\n", "\n"]
+                //, ["\n(오답)\n", "\n"]
+            ];
+
+            var TextBefore = document.querySelector("#tarBefore").value;
+            for (var i = 0; i < Cleanser1.length; i++) { TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]); }
+
+            var arr1 = TextBefore.split("\n");
+            var AddNumberMode = false;
+            var step1 = "";
+            var no = 0;
+            var arrAnswer = [];
+
+            var iCntBogi = 0;
+            var iCntHaesul = 0;
+
+            for (var i2 = 0; i2 < arr1.length; i2++) {
+
+                var line = arr1[i2].trim();
+
+                // 공백은 건너뜀
+                if (line == "") continue;
+                // 정답, 오답은 삭제
+                if (line == "(정답)" || line == "(오답)") continue;
+
+                // ▼ 넘버링 관련 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+
+                if (line == "설명") AddNumberMode = false;
+                // ? ~ 설명 사이 넘버링
+                if (AddNumberMode) {
+                    no++; step1 += "보기 " + no.toString() + "번: " + line + "\n\n";
+                    arrAnswer.push(line);
+                    iCntBogi++;
+                    continue;
+                }
+                // 넘버링 모드 ON 다음 바퀴부터
+                if (right(line, 1) == "?") { AddNumberMode = true; no = 0; }
+
+                // ▲ 넘버링 관련 ▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
 
-<button id="btn123" onclick="AA()"></button>
-<script>
+                // 넘버링모드가 OFF인 상태에서 저장된 문제랑 같은 문장이 나오면 체크
+                if (0 < arrAnswer.length && !AddNumberMode) {
 
-    function AA()
-    {
-        alert("!");
-    }
+                    for (var i3 = 0; i3 < arrAnswer.length; i3++) {
 
-</script>
+                        if (0 <= line.indexOf(arrAnswer[i3])) {
+
+                            step1 += "보기 " + (i3 + 1).toString() + "번: " + arrAnswer[i3] + "\n\n";
+                            iCntHaesul++;
+                            var lastText = line.replaceAll(arrAnswer[i3], "");
+                            if (0 == lastText.indexOf(" - ")) {
+                                step1 += lastText.replaceAll(" - ", "") + "\n\n";
+                            }
+                            continue;
+                        }
+                    }
+                }
+
+                if (0 < line.indexOf("(") && 0 < line.indexOf(")")) {
+
+
+                    step1 += line.replaceAll("(", " 괄호 ").replaceAll(")", " ");
+                    continue;
+                }
+
+                step1 += line + "\n\n";
+            }
+
+            var Cleanser2 = [
+                ["올바른 옵션입니다:", "다음은 정답인 보기 입니다"]
+                , ["올바른 옵션을 선택합니다:", "다음은 정답인 보기 입니다"]
+                , ["잘못된 옵션입니다:", "다음은 틀린 보기 입니다"]
+            ];
+
+            for (var i2 = 0; i2 < Cleanser2.length; i2++) {
+                step1 = step1.replaceAll(Cleanser2[i2][0], Cleanser2[i2][1]);
+            }
+
+
+            document.querySelector("#tarAfter1").value = step1;
+
+            if (iCntBogi != iCntHaesul) {
+                alert("보기와 해설의 숫자가 다릅니다.");
+            }
+        }
+
+        function Change_2() {
+
+            // 텍스트 용도
+            var Cleanser1 = [
+                //["\n", "\n\n"],
+                ["AWS", "A.W.S."]
+                , [" S3", " Amazon S.Three"]
+                , ["S3 ", "S.Three "]
+                , ["EC2", "E.C.Two"]
+                , ["EFS", "E.F.S."]
+                , ["kinesis", "크닛시스"]
+                , ["RDS", "R.D.S."]
+                , ["스노우볼 에지", "스노우볼 엗지"]
+                , ["NAT", 'N.A.T.']
+            ];
+
+            var Cleanser2 = [
+                [": ", "\n"]
+                , [" - ", "\n"]
+                , ["\n\n\n\n\n", "\n"]
+                , ["\n\n\n\n", "\n"]
+                , ["\n\n\n", "\n"]
+                , ["\n\n", "\n"]
+                //, [" S3", " Amazon S.Three"]
+            ];
+
+            var TextBefore = document.querySelector("#tarAfter1").value;
+
+            for (var i = 0; i < Cleanser1.length; i++) {
+                TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]);
+            }
+
+            for (var i2 = 0; i2 < Cleanser2.length; i2++) {
+                TextBefore = TextBefore.replaceAll(Cleanser2[i2][0], Cleanser2[i2][1]);
+            }
+
+            document.querySelector("#tarAfter2").value = TextBefore;
+
+            var len = TextBefore.length;
+
+            if (2000 < TextBefore.length) {
+                textLength.style.color = "red";
+                tarAfter2.style.color = "red";
+            }
+            else {
+                textLength.style.color = "";
+                tarAfter2.style.color = "";
+            }
+            textLength.innerHTML = TextBefore.length + "자";
+        }
+
+        function left(s, c) { return s.substr(0, c); }//left("abcd",2)
+        function right(s, c) { return s.substr(-c); }//right("abcd",2)
+        function mid(s, c, l) { return s.substring(c, l); }//mid("abcd",1,2)
+        function copy(s, c, l) { return s.substr(c, l); }//copy("abcd",1,2)
+    </script>
+</body>
+
+</html>
