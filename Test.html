@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>변환기</title>
+    <title>변환기 V202401225</title>
 </head>
 
 <body>
@@ -37,9 +37,12 @@
                 , ["\n\n\n\n", "\n"]
                 , ["\n\n\n", "\n"]
                 , ["\n\n", "\n"]
+                , ["\t", ""]
+                , ["•", ""]
                 //, ["\n(정답)\n", "\n"]
                 //, ["\n(오답)\n", "\n"]
             ];
+            
 
             var TextBefore = document.querySelector("#tarBefore").value;
             for (var i = 0; i < Cleanser1.length; i++) { TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]); }
@@ -80,20 +83,25 @@
 
                 // 넘버링모드가 OFF인 상태에서 저장된 문제랑 같은 문장이 나오면 체크
                 if (0 < arrAnswer.length && !AddNumberMode) {
-
+                    var isOK = false;
                     for (var i3 = 0; i3 < arrAnswer.length; i3++) {
 
                         if (0 <= line.indexOf(arrAnswer[i3])) {
-
-                            step1 += "보기 " + (i3 + 1).toString() + "번: " + arrAnswer[i3] + "\n\n";
+                            var text1 = "보기 " + (i3 + 1).toString() + "번: ";
                             iCntHaesul++;
-                            var lastText = line.replaceAll(arrAnswer[i3], "");
-                            if (0 == lastText.indexOf(" - ")) {
-                                step1 += lastText.replaceAll(" - ", "") + "\n\n";
+                            if (line.indexOf(" - ") < 0) {
+                                text1 += arrAnswer[i3];
                             }
-                            continue;
+                            else {
+                                text1 += line.replaceAll(" - ", "\n보기의 해설\n");
+                            }
+                            step1 += text1 + "\n\n";
+                            isOK = true;
                         }
                     }
+
+                    
+                    if(isOK) continue;
                 }
 
                 if (0 < line.indexOf("(") && 0 < line.indexOf(")")) {
@@ -110,6 +118,7 @@
                 ["올바른 옵션입니다:", "다음은 정답인 보기 입니다"]
                 , ["올바른 옵션을 선택합니다:", "다음은 정답인 보기 입니다"]
                 , ["잘못된 옵션입니다:", "다음은 틀린 보기 입니다"]
+                , ["잘못된 옵션:", "다음은 틀린 보기 입니다"]
             ];
 
             for (var i2 = 0; i2 < Cleanser2.length; i2++) {
@@ -130,19 +139,24 @@
             var Cleanser1 = [
                 //["\n", "\n\n"],
                 ["AWS", "A.W.S."]
-                , [" S3", " Amazon S.Three"]
+                , ["S3TA", "S.Three.T.A."]
+                , [" S3", "  S.Three"]
                 , ["S3 ", "S.Three "]
                 , ["EC2", "E.C.Two"]
                 , ["EFS", "E.F.S."]
-                , ["kinesis", "크닛시스"]
+                , ["Kinesis", "크닛시스"]
                 , ["RDS", "R.D.S."]
-                , ["스노우볼 에지", "스노우볼 엗지"]
+                , ["스노우볼 에지", "Snowball Edge"]
                 , ["NAT", 'N.A.T.']
+                , ["IOPS", 'I.O.P.S.']
+                , ["GiB", "기가바이트"]
+                , ["io1", "i.o.one"]
             ];
 
             var Cleanser2 = [
                 [": ", "\n"]
-                , [" - ", "\n"]
+                , [" - ", "\n"]                
+                , [". ", ".\n"]
                 , ["\n\n\n\n\n", "\n"]
                 , ["\n\n\n\n", "\n"]
                 , ["\n\n\n", "\n"]
@@ -150,9 +164,19 @@
                 //, [" S3", " Amazon S.Three"]
             ];
 
+            var debuglist = [
+                ["kinesis"]
+                //, [" S3", " Amazon S.Three"]
+            ];
+
             var TextBefore = document.querySelector("#tarAfter1").value;
 
             for (var i = 0; i < Cleanser1.length; i++) {
+                if (Cleanser1[i][0] == "kinesis") {
+                    debugger;
+                }
+
+
                 TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]);
             }
 
