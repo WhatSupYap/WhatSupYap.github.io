@@ -18,16 +18,34 @@
             <td>><br />><br />></td>
             <td><textarea id="tarAfter1" style="width:500px; height:500px;"></textarea></td>
             <td>><br />><br />></td>
-            <td><textarea id="tarAfter2" style="width:500px; height:500px;"></textarea></td>
+            <td><textarea id="tarAfter2" style="width:500px; height:500px;" onchange="tarAfter2_Changed()"
+                    onkeyup="tarAfter2_Changed()"></textarea></td>
         </tr>
         <tr>
-            <td colspan="2" style="text-align:right;"><button onclick="Change_1();">변환1</button></td>
+            <td colspan="2" style="text-align:right;">
+                <input type="radio" id="rdoempty" name="change1_1" value="무옵션" checked /><label for="무옵션">무옵션</label>
+                <input type="radio" id="rdoudemy" name="change1_1" value="Udemy모의고사" /><label
+                    for="Udemy모의고사">Udemy모의고사</label>
+                <button onclick="Change_1();">변환1</button>
+            </td>
             <td colspan="2" style="text-align:right;"><button onclick="Change_2();">변환2</button></td>
             <td style="text-align:right;"><span id="textLength"></span></td>
         </tr>
     </table>
 
     <script>
+        function tarAfter2_Changed() {
+            if (2000 < tarAfter2.value.length) {
+                textLength.style.color = "red";
+                tarAfter2.style.color = "red";
+            }
+            else {
+                textLength.style.color = "";
+                tarAfter2.style.color = "";
+            }
+            textLength.innerHTML = tarAfter2.value.length + "자";
+        }
+
         function Change_1() {
 
             // 텍스트 용도
@@ -42,89 +60,131 @@
                 //, ["\n(정답)\n", "\n"]
                 //, ["\n(오답)\n", "\n"]
             ];
-            
 
-            var TextBefore = document.querySelector("#tarBefore").value;
-            for (var i = 0; i < Cleanser1.length; i++) { TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]); }
 
-            var arr1 = TextBefore.split("\n");
+            var DocBefore = document.querySelector("#tarBefore").value;
+            for (var i = 0; i < Cleanser1.length; i++) { DocBefore = DocBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]); }
+
+            var arr1 = DocBefore.split("\n");
+            DocBefore = "";
             var AddNumberMode = false;
             var step1 = "";
             var no = 0;
-            var arrAnswer = [];
+            var arrTemp = [];
 
             var iCntBogi = 0;
             var iCntHaesul = 0;
 
             for (var i2 = 0; i2 < arr1.length; i2++) {
-
                 var line = arr1[i2].trim();
 
-                // 공백은 건너뜀
-                if (line == "") continue;
-                // 정답, 오답은 삭제
-                if (line == "(정답)" || line == "(오답)") continue;
+                if (document.querySelector('#rdoudemy').checked) {
+                    // 공백은 건너뜀
+                    if (line == "") continue;
+                    // 정답, 오답은 삭제
+                    if (line == "(정답)" || line == "(오답)") continue;
 
-                // ▼ 넘버링 관련 ▼▼▼▼▼▼▼▼▼▼▼▼▼▼
-
-                if (line == "설명") AddNumberMode = false;
-                // ? ~ 설명 사이 넘버링
-                if (AddNumberMode) {
-                    no++; step1 += "보기 " + no.toString() + "번: " + line + "\n\n";
-                    arrAnswer.push(line);
-                    iCntBogi++;
-                    continue;
-                }
-                // 넘버링 모드 ON 다음 바퀴부터
-                if (right(line, 1) == "?") { AddNumberMode = true; no = 0; }
-
-                // ▲ 넘버링 관련 ▲▲▲▲▲▲▲▲▲▲▲▲▲▲
-
-
-                // 넘버링모드가 OFF인 상태에서 저장된 문제랑 같은 문장이 나오면 체크
-                if (0 < arrAnswer.length && !AddNumberMode) {
-                    var isOK = false;
-                    for (var i3 = 0; i3 < arrAnswer.length; i3++) {
-
-                        if (0 <= line.indexOf(arrAnswer[i3])) {
-                            var text1 = "보기 " + (i3 + 1).toString() + "번: ";
-                            iCntHaesul++;
-                            if (line.indexOf(" - ") < 0) {
-                                text1 += arrAnswer[i3];
-                            }
-                            else {
-                                text1 += line.replaceAll(" - ", "\n보기의 해설\n");
-                            }
-                            step1 += text1 + "\n\n";
-                            isOK = true;
-                        }
+                    if (line == "설명") AddNumberMode = false;
+                    // ? ~ 설명 사이 넘버링
+                    if (AddNumberMode) {
+                        no++; step1 += "보기 " + no.toString() + "번: " + line + "\n\n";
+                        arrTemp.push(line);
+                        iCntBogi++;
+                        continue;
                     }
+                    // 넘버링 모드 ON 다음 바퀴부터
+                    if (right(line, 1) == "?") { AddNumberMode = true; no = 0; }
 
-                    
-                    if(isOK) continue;
+                    // 넘버링모드가 OFF인 상태에서 저장된 문제랑 같은 문장이 나오면 체크
+                    if (0 < arrTemp.length && !AddNumberMode) {
+                        var isOK = false;
+                        for (var i3 = 0; i3 < arrTemp.length; i3++) {
+
+                            if (0 <= line.indexOf(arrTemp[i3])) {
+                                var text1 = "보기 " + (i3 + 1).toString() + "번: ";
+                                iCntHaesul++;
+                                if (line.indexOf(" - ") < 0) {
+                                    text1 += arrTemp[i3];
+                                }
+                                else {
+                                    text1 += line.replaceAll(" - ", "\n보기" + (i3 + 1).toString() + "번의 해설\n");
+                                }
+                                step1 += text1 + "\n\n";
+                                isOK = true;
+                            }
+                        }
+
+                        if (isOK) continue;
+                    }
                 }
-
-                if (0 < line.indexOf("(") && 0 < line.indexOf(")")) {
-
-
-                    step1 += line.replaceAll("(", " 괄호 ").replaceAll(")", " ");
-                    continue;
-                }
- 
                 step1 += line + "\n\n";
             }
 
+            // 단순 용어 변경
             var Cleanser2 = [
                 ["올바른 옵션입니다:", "다음은 정답인 보기 입니다"]
                 , ["올바른 옵션을 선택합니다:", "다음은 정답인 보기 입니다"]
                 , ["잘못된 옵션입니다:", "다음은 틀린 보기 입니다"]
                 , ["잘못된 옵션:", "다음은 틀린 보기 입니다"]
+                , ["스노우볼 에지", "Snowball Edge"]
+                , ["아마존", "Amazon"]
+                , ["키네시스","Kinesis"]
+                , ["Kinesis 데이터 스트림","Kinesis Data Stream"]
+                , ["트랜스크라이브", "Transcribe"]
+                , ["파이어호스", "Firehose"]
+                , ["애드혹 SQL", "Ad hoc SQL"]
+                , ["머신 러닝", "Machine Learning"]
+                , ["Amazon  ", "Amazon "]
+                , ["Amazon Kinesis 데이터 분석", "Amazon Kinesis Data Analytics"]
+                , ["아테나", "Athena"]
+                , ["서버리스", "Serverless"]
+                , ["퀵사이트", "Quicksight"]
             ];
 
-            for (var i2 = 0; i2 < Cleanser2.length; i2++) {
-                step1 = step1.replaceAll(Cleanser2[i2][0], Cleanser2[i2][1]);
-            }
+            for (var i = 0; i < Cleanser2.length; i++) step1 = step1.replaceAll(Cleanser2[i][0], Cleanser2[i][1]);
 
+            // 약어로 변경
+            var Cleanser3 = [
+                  ["Amazon Kinesis Data Stream", "KDS"]
+                , ["Amazon Transcribe", "Transcribe"]
+                , ["AWS Transcribe", "Transcribe"]
+                , ["Amazon Firehose", "Firehose"]
+                , ["Amazon Machine Learning", "ML"]
+                , ["Amazon Quicksight", "Quicksight"]
+                , ["Amazon Athena", "Athena"]
+                , ["Amazon S3", "S3"]
+                , ["AWS S3", "S3"]
+                , ["Amazon EC2", "EC2"]
+                , ["AWS EC2", "EC2"]
+                , ["Amazon Alexa", "Alexa"]
+            ];
+
+            //arr1 = step1.split("\n");
+            //step1 = "";
+            arrTemp = [];
+            for (var i = 0; i < Cleanser3.length; i++) {
+                var kword = Cleanser3[i][0];
+                arr1 = step1.split(kword);
+                if (arr1.length == 1) continue;
+                step1 = "";
+                for (var i2 = 0; i2 < arr1.length; i2++) {
+                    var t = "";
+                    if (step1 == ""){
+                        t = kword + " 이하 " + Cleanser3[i][1];
+                    }
+                    else if (i2 < arr1.length - 1)
+                    {
+                        t = Cleanser3[i][1];
+                    }
+                    step1 += arr1[i2] + t;
+                }
+                if (step1 == "")
+                {
+                    debugger;
+                }
+
+            }
+            
 
             document.querySelector("#tarAfter1").value = step1;
             // 오류 문구
@@ -142,61 +202,66 @@
                 , ["S3TA", "S.Three.T.A."]
                 , [" S3", "  S.Three"]
                 , ["S3 ", "S.Three "]
+                , ["\nS3\n", "\nS.Three\n"]
                 , ["EC2", "E.C.Two"]
                 , ["EFS", "E.F.S."]
                 , ["Kinesis", "크닛시스"]
-                , ["RDS", "R.D.S."]
-                , ["스노우볼 에지", "Snowball Edge"]
+                , ["RDS", "R.D.S."]                
                 , ["NAT", 'N.A.T.']
                 , ["IOPS", 'I.O.P.S.']
                 , ["GiB", "기가바이트"]
                 , ["io1", "i.o.one"]
+                , ["AMI", "A.M.I."]
+                , ["IAM", "I AM"]
+                , ["MFA", "M.F.A."]
+                , ["Auth0", "Auth Zero"]
+                , ["SAML", "샘엘"]
+                , ["(", " 괄호\n"]
+                , [")", "\n"]
+                , [") ", "\n"]
+                , ["~", "부터 "]
+                , ["Ad hoc", "애드혹"]
+                , ["ASR", "A.S.R."]
+                , ["Serverless", "서버리스"]
             ];
 
             var Cleanser2 = [
                 [": ", "\n"]
-                , [" - ", "\n"]                
+                , [" - ", "\n"]
                 , [". ", ".\n"]
-                , ["\n\n\n\n\n", "\n"]
-                , ["\n\n\n\n", "\n"]
-                , ["\n\n\n", "\n"]
-                , ["\n\n", "\n"]
-                //, [" S3", " Amazon S.Three"]
+                , ["  ", "\n"]
+                //, ["\n\n\n\n\n", "\n"]
+                //, ["\n\n\n\n", "\n"]
+                //, ["\n\n\n", "\n"]
+                //, ["\n\n", "\n"]
             ];
 
             var debuglist = [
-                ["kinesis"]
+                //["Amazon Kinesis 데이터 스트림"]
                 //, [" S3", " Amazon S.Three"]
             ];
 
             var TextBefore = document.querySelector("#tarAfter1").value;
 
-            for (var i = 0; i < Cleanser1.length; i++) {
-                if (Cleanser1[i][0] == "kinesis") {
-                    debugger;
-                }
-
-
-                TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]);
-            }
-
             for (var i2 = 0; i2 < Cleanser2.length; i2++) {
                 TextBefore = TextBefore.replaceAll(Cleanser2[i2][0], Cleanser2[i2][1]);
             }
+
+            for (var i = 0; i < Cleanser1.length; i++) {
+                if (debuglist.includes(Cleanser1[i][0]) ) {
+                    debugger;
+                }
+                TextBefore = TextBefore.replaceAll(Cleanser1[i][0], Cleanser1[i][1]);
+            }
+
+
+
 
             document.querySelector("#tarAfter2").value = TextBefore;
 
             var len = TextBefore.length;
 
-            if (2000 < TextBefore.length) {
-                textLength.style.color = "red";
-                tarAfter2.style.color = "red";
-            }
-            else {
-                textLength.style.color = "";
-                tarAfter2.style.color = "";
-            }
-            textLength.innerHTML = TextBefore.length + "자";
+            tarAfter2_Changed();
         }
 
         function left(s, c) { return s.substr(0, c); }//left("abcd",2)
