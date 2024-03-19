@@ -24,4 +24,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem 'jemoji'
 
+# 자주 쳐다볼것
 gem 'google-protobuf', '3.24.4'
