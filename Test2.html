@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .unloaded {
+            display: none !important
+        }
+
+        .visible {
+            visibility: visible !important
+        }
+
+        .hidden {
+            visibility: hidden !important
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="클릭" onclick="doTest1()" />
+
+    <input type="button" value="클릭" onclick="doTest2()" />
+
+    <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off"
+        placeholder="Search..." onkeyup="CheckChangedtxt()" onchange="CheckChangedtxt()">
+
+    <div class="row flex-grow-1">
+        <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            <div id="post-list" class="flex-grow-1 px-xl-1">
+                <article class="card-wrapper card"> <a href="/posts/%EC%9E%90%EA%B2%A9%EC%A6%9D-SAA/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-5">
+                            <div class="preview-img"><img alt="Preview Image" data-lqip="true"
+                                    src="https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg"></div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">SAA 공부 기록</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> 현재 듣고 있는 강습: AWS Certified SAA 시험합격! 진도표 0~60%: , 61~70%: , 71~80%: , 81~90%: ,
+                                        91~99%: 91~100%: 날짜 달성/목표 비고 ~2023-11-22 (수) 58/...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Nov 13,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                    <div class="pin ms-1"> <i class="fas fa-thumbtack fa-fw"></i> <span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/AWS-SQS/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-5">
+                            <div class="preview-img"><img alt="Preview Image" data-lqip="true"
+                                    src="https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg"></div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">SQS</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> Amazon SQS Simple Queue Service What’s a queue? [Producer] –Send messages:
+                                        N–&amp;gt; [SQS Queue] –Poll messages: M–&amp;gt; [Consumer] = N:1:M ## Amazon
+                                        SQS - Strandard Queue 모르는 단어 of·fer·ing:...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Dec 21,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/AWS-Integration_n_nMessaging/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-5">
+                            <div class="preview-img"><img alt="Preview Image" data-lqip="true"
+                                    src="https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg"></div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">AWS Integraion &amp; Messaging</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> AWS Intgration &amp;amp; Messaging (SQS, SNS &amp;amp; Kinesis) Section
+                                        Introduction 모르는 단어 inevitably - in-ev-it-ably: [인엡잍어블리] 필연적이다시피, 아니나 다를까 I am
+                                        inevitably Queue: [큐] 대기열 When we start deplo...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Dec 21,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/RDS/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Relational Database Service</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> RDS Orverview RDS stands for Relational Database Service It’s managed DB service
+                                        for DB user SQL as a query language. It allows you to create databases in the
+                                        cloud that are managed by AWS ...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Nov 29,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/ASG/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Auto Scaling Group</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> ASG(Auto Scaling Group)란? 실생활에서 웹사이트와 애플리케이션의 부하가 변경될 수 있습니다. 클라우드에서는 서버를 매우 빠르게
+                                        생성하고 제거할 수 있습니다 자동 스케일링 그룹(ASG)의 목표는 다음과 같습니다: 증가된 부하에 맞게 스케일아웃(EC2 인스턴스 추가) 감소된
+                                        부하...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Nov 29,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a
+                        href="/posts/%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C%EC%A0%95%EB%A6%AC/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-5">
+                            <div class="preview-img"><img alt="Preview Image" data-lqip="true"
+                                    src="https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg"></div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">연습문제정리</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> 문제풀이 섹션7 EC2 인스턴스 스토리지 문제 2 루트 볼륨 유형과 데이터 저장을 위한 기타 EBS 볼륨 유형, 두개의 EBS 볼륨으로 EC2
+                                        인스턴스를 실행했습니다. EC2 인스턴스는 한 달 후에 종료할 예정입니다. 각 EBS 볼륨에 기본적으로 나타날 행위 특성은 무엇일까요? 루트
+                                        볼륨 유형과 EBS 볼륨 유형이 모두 삭제됨 ...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Nov 24,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> 자격증 </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/welcome-to-jekyll/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Welcome to Jekyll!</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> You’ll find this post in your _posts directory. Go ahead and edit it and
+                                        re-build the site to see your changes. You can rebuild the site in many
+                                        different ways, but the most common way is to run je...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Nov 9,
+                                            2023</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> jekyll, update </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/customize-the-favicon/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Customize the Favicon</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> The favicons of Chirpy are placed in the directory assets/img/favicons/. You may
+                                        want to replace them with your own. The following sections will guide you to
+                                        create and replace the default favicons...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Aug 11,
+                                            2019</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> Blogging, Tutorial </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/getting-started/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Getting Started</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> Prerequisites Follow the instructions in the Jekyll Docs to complete the
+                                        installation of the basic environment. Git also needs to be installed.
+                                        Installation Creating a New Site There are two wa...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Aug 9,
+                                            2019</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> Blogging, Tutorial </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+                <article class="card-wrapper card"> <a href="/posts/write-a-new-post/"
+                        class="post-preview row g-0 flex-md-row-reverse">
+                        <div class="col-md-12">
+                            <div class="card-body d-flex flex-column">
+                                <h1 class="card-title my-2 mt-md-0">Writing a New Post</h1>
+                                <div class="card-text content mt-0 mb-3">
+                                    <p> This tutorial will guide you how to write a post in the Chirpy template, and
+                                        it’s worth reading even if you’ve used Jekyll before, as many features require
+                                        specific variables to be set. Naming and...</p>
+                                </div>
+                                <div class="post-meta flex-grow-1 d-flex align-items-end">
+                                    <div class="me-auto"> <i class="far fa-calendar fa-fw me-1"></i> <time>Aug 8,
+                                            2019</time> <i class="far fa-folder-open fa-fw me-1"></i> <span
+                                            class="categories"> Blogging, Tutorial </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a></article>
+            </div>
+            <nav aria-label="Page Navigation">
+                <ul class="pagination align-items-center mt-4 mb-0">
+                    <li class="page-item disabled"> <a class="page-link" href="#" aria-label="previous-page"> <i
+                                class="fas fa-angle-left"></i> </a></li>
+                    <li class="page-item active"> <a class="page-link" href="/">1</a></li>
+                    <li class="page-item "> <a class="page-link" href="/page2">2</a></li>
+                    <li class="page-index align-middle"> <span>1</span> <span class="text-muted">/ 2</span></li>
+                    <li class="page-item "> <a class="page-link" href="/page2" aria-label="next-page"> <i
+                                class="fas fa-angle-right"></i> </a></li>
+                </ul>
+            </nav>
+        </main>
+        <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 mb-5 text-muted">
+            <div class="access">
+                <section id="access-lastmod">
+                    <h2 class="panel-heading">Recently Updated</h2>
+                    <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+                        <li class="text-truncate lh-lg"> <a href="/posts/getting-started/">Getting Started</a></li>
+                        <li class="text-truncate lh-lg"> <a href="/posts/text-and-typography/">Text and Typography</a>
+                        </li>
+                        <li class="text-truncate lh-lg"> <a href="/posts/AWS-Integration_n_nMessaging/">AWS Integraion
+                                &amp; Messaging</a></li>
+                        <li class="text-truncate lh-lg"> <a href="/posts/AWS-SQS/">SQS</a></li>
+                        <li class="text-truncate lh-lg"> <a href="/posts/RDS/">Relational Database Service</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="panel-heading">Trending Tags</h2>
+                    <div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/aws/">AWS</a> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/saa/">SAA</a> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/solution-architect-associate/">Solution Architect Associate</a> <a
+                            class="post-tag btn btn-outline-primary"
+                            href="/tags/%EC%9E%90%EA%B8%B0%EA%B0%9C%EB%B0%9C/">자기개발</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/getting-started/">getting started</a>
+                        <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+                    </div>
+                </section>
+            </div>
+        </aside>
+    </div>
+    <div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+        <div class="col-11 content">
+            <div id="search-hints">
+                <section>
+                    <h2 class="panel-heading">Trending Tags</h2>
+                    <div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/aws/">AWS</a> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/saa/">SAA</a> <a class="post-tag btn btn-outline-primary"
+                            href="/tags/solution-architect-associate/">Solution Architect Associate</a> <a
+                            class="post-tag btn btn-outline-primary"
+                            href="/tags/%EC%9E%90%EA%B8%B0%EA%B0%9C%EB%B0%9C/">자기개발</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/favicon/">favicon</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/getting-started/">getting started</a>
+                        <a class="post-tag btn btn-outline-primary" href="/tags/typography/">typography</a> <a
+                            class="post-tag btn btn-outline-primary" href="/tags/writing/">writing</a>
+                    </div>
+                </section>
+            </div>
+            <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+        </div>
+    </div>
+
+    <script>
+        function CheckChangedtxt() {
+            const maincontent = document.querySelectorAll("[aria-label=\"Main Content\"]")[0].parentNode;
+            const searchresult = document.querySelector("#search-result-wrapper");
+
+            if (0 < document.getElementById("search-input").value.length) {
+                maincontent.classList.add("unloaded");
+                searchresult.classList.remove("unloaded");
+            }
+            else {
+                searchresult.classList.add("unloaded");
+                maincontent.classList.remove("unloaded");
+            }
+        }
+
+
+        function doTest1() {
+            Test1({
+                param1: '123',
+                param2: '345',
+                onload: function (a, b, c) {
+                    var xx = a;
+                    alert("onload received: " + a);
+                    // Alert message with context
+                }
+            });
+        }
+
+        function doTest2() {
+            var a;
+            var b;
+            var c;
+
+            a = 1000, b = 1, c = 2;
+
+            console.log("a:" + a);
+            console.log("b:" + b);
+            console.log("c:" + c);
+            console.log("x:" + "int" == typeof a && (b = c));
+        }
+
+        !function () {
+            var a;
+            var b;
+            var c;
+
+            a = 1000;
+            b = 1;
+            c = 2;
+
+            //a = b || c;
+
+            const i = {
+                a2: 0,
+                b2: 0,
+                c2: function () {
+                }
+            };
+
+            !function (t) {
+                t.function1 = function (t) {
+
+                    i.a2 = 1 || 2,
+                        i.b2 = 3 || 4,
+                        "int" == typeof a && (b = c)
+
+                    alert(i.a2);
+                }
+            }
+        }();
+
+
+        function Test1(param) {
+            alert("Test1 received: " + param.param1 + ", " + param.param2);
+            // Combined alert
+
+            // Check if onload is a function before calling it
+            if (typeof param.onload === 'function') {
+                param.onload(param.param1, param.param2, 3);
+                // Pass relevant arguments
+            }
+            else {
+                console.warn("onload is not a function");
+                // Handle non-function case
+            }
+        }
+
+        // 즉시 실행 함수
+        !function () {
+            console.log("Hello, world!");
+        }();
+
+        // 조건에 따른 함수 실행
+        const isLoggedIn = true;
+
+        !function () {
+            if (isLoggedIn) {
+                console.log("Welcome back!");
+            }
+        }();
+
+
+        // 즉시 실행 함수로 라이브러리의 스코프를 격리합니다. 
+        !function () {
+            "use strict"
+            // 템플릿 문자열을 처리하는 객체
+            var f =
+            {
+                // 주어진 객체의 속성을 사용하여 템플릿 문자열 내의 플레이스홀더를 대체합니다.
+                compile: function (r) {
+                    return i.template.replace
+                        (
+                            i.pattern,
+                            function (t, e) {
+                                var n = i.middleware(e, r[e], i.template);
+                                return void 0 !== n ? n : r[e] || t
+                            }
+                        )
+                },
+                // 사용자 정의 패턴, 템플릿, 미들웨어 함수를 설정할 수 있습니다.
+                setOptions: function (t) {
+                    i.pattern = t.pattern || i.pattern,
+                        i.template = t.template || i.template,
+                        "function" == typeof t.middleware && (i.middleware = t.middleware)
+                }
+            };
+            // 템플릿 처리에 사용되는 패턴, 템플릿 문자열, 그리고 미들웨어 함수를 정의합니다.
+            const i = {
+                pattern: /\{(.*?)\}/g,
+                template: "",
+                middleware: function () {
+                }
+            };
+            // 두 문자열이 일치하는지 확인하는 함수
+            var n = function (t, e) {
+                var n = e.length, r = t.length;
+                if (n < r) return !1;
+                if (r === n) return t === e;
+                t: for (var i = 0, o = 0; i < r; i++) {
+                    for (var u = t.charCodeAt(i); o < n;) {
+                        if (e.charCodeAt(o++) === u) continue t;
+                    }
+                    return !1
+                }
+                return !0
+            }
+            // 문자열 일치 여부를 판단하는 객체
+            var e = new function () {
+                this.matches = function (t, e) {
+                    return n(e.toLowerCase(), t.toLowerCase())
+                }
+            }
+            var r = new function () {
+                this.matches = function (e, t) {
+                    return !!e && (e = e.trim().toLowerCase(),
+                        (t = t.trim().toLowerCase()).split(" ").filter(function (t) {
+                            return 0 <= e.indexOf(t)
+                        }).length === t.split(" ").length)
+                }
+            }
+            // 데이터를 저장하고 검색하는 객체
+            var d = {
+                // 새로운 항목을 저장소에 추가합니다.
+                put: function (t) {
+                    if (l(t)) return a(t);
+                    if (function (t) {
+                        return Boolean(t) && "[object Array]" === Object.prototype.toString.call(t)
+                    }
+                        (t)) return function (n) {
+                            const r = [];
+                            s();
+                            for (let t = 0, e = n.length; t < e; t++) l(n[t]) && r.push(a(n[t]));
+                            return r
+                        }(t);
+                    return undefined
+                },
+                clear: s,
+                // 주어진 검색어에 맞는 항목을 찾아 반환합니다.
+                search: function (t) {
+                    return t ? function (e, n, r, i) {
+                        const o = [];
+                        for (let t = 0; t < e.length && o.length < i.limit; t++) {
+                            var u = function (t, e, n, r) {
+                                for (const i in t)
+                                    if (!function (n, r) {
+                                        for (let t = 0, e = r.length; t < e; t++) {
+                                            var i = r[t];
+                                            if (new RegExp(i).test(n)) return !0
+                                        }
+                                        return !1
+                                    }(t[i], r.exclude) && n.matches(t[i], e)) return t
+                            }(e[t], n, r, i)
+                            u && o.push(u)
+                        }
+                        return o
+                    }(u, t, c.searchStrategy, c).sort(c.sort) : []
+                },
+                // 설정 옵션을 처리하는 함수
+                setOptions: function (t) {
+                    c = t || {}, c.fuzzy = t.fuzzy || !1, c.limit = t.limit || 10, c.searchStrategy = t.fuzzy ? e : r, c.sort = t.sort || o, c.exclude = t.exclude || []
+                }
+            };
+            function o() { return 0 }
+            const u = [];
+            let c = {};
+            function s() { return u.length = 0, u }
+            function l(t) { return Boolean(t) && "[object Object]" === Object.prototype.toString.call(t) }
+            function a(t) { return u.push(t), u }
+            c.fuzzy = !1, c.limit = 10, c.searchStrategy = c.fuzzy ? e : r, c.sort = o, c.exclude = [];
+            var p = {                
+                load: function (t, e) {                    
+                    const n = window.XMLHttpRequest ? new window.XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+                    n.open("GET", t, !0),
+                        n.onreadystatechange = h(n, e),
+                        n.send()
+                }
+            };
+            function h(e, n) {
+                return function () {
+                    if (4 === e.readyState && 200 === e.status)
+                        try {
+                            n(null, JSON.parse(e.responseText))
+                        }
+                        catch (t) {
+                            n(t, null)
+                        }
+                }
+            }
+            var m = function y(t) {
+                if (!(e = t) || !("undefined" != typeof e.required && e.required instanceof Array)) throw new Error("-- OptionsValidator: required options missing");
+                var e;
+                if (!(this instanceof y)) return new y(t);
+                const r = t.required;
+                this.getRequiredOptions = function () {
+                    return r
+                },
+                    this.validate = function (e) {
+                        const n = [];
+                        return r.forEach(function (t) {
+                            "undefined" == typeof e[t] && n.push(t)
+                        }),
+                            n
+                    }
+            };
+            // 객체 병합 함수
+            var w = {
+                merge: function (t, e) {
+                    const n = {};
+                    for (const r in t) n[r] = t[r],
+                        "undefined" != typeof e[r] && (n[r] = e[r]);
+                    return n
+                },
+                // 주어진 인자가 유효한 JSON 객체인지 확인합니다.
+                isJSON: function (t) {
+                    try {
+                        return t instanceof Object && JSON.parse(JSON.stringify(t)) ? !0 : !1
+                    }
+                    catch (e) {
+                        return !1
+                    }
+                }
+            };
+
+
+            !function (t) {
+                // 검색 인터페이스의 설정을 저장하는 객체
+                let i = {
+                    searchInput: null,
+                    resultsContainer: null,
+                    json: [],
+                    success: Function.prototype,
+                    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>', templateMiddleware: Function.prototype,
+                    sortMiddleware: function () {
+                        return 0
+                    },
+                    // 검색 결과가 없을 때 표시할 텍스트 설정
+                    noResultsText: "No results found",
+                    limit: 10,
+                    fuzzy: !1,
+                    debounceTime: null, exclude: []
+                }, n;
+                // 디바운스 기능을 구현하는 함수
+                const e = function (t, e) {
+                    e ? (clearTimeout(n), n = setTimeout(t, e)) : t.call()
+                };
+                var r = ["searchInput", "resultsContainer", "json"];
+                // 필수 옵션의 유효성을 검사하는 객체
+                const o = m({ required: r });
+                // 검색 인터페이스를 초기화하는 함수
+                function u(t) {
+                    d.put(t),
+                        i.searchInput.addEventListener(
+                            "input",
+                            function (t) { -1 === [13, 16, 20, 37, 38, 39, 40, 91].indexOf(t.which) && (c(), e(function () { l(t.target.value) }, i.debounceTime)) }
+                        )
+                }
+                function c() {
+                    i.resultsContainer.innerHTML = ""
+                }
+                // 검색 결과를 화면에 표시하는 함수
+                function s(t) {
+                    i.resultsContainer.innerHTML += t
+                }
+                function l(t) {
+                    var e;
+                    (e = t) && 0 < e.length && (c(),
+                        function (e, n) {
+                            var r = e.length;
+                            if (0 === r) return s(i.noResultsText);
+                            for (let t = 0; t < r; t++)e[t].query = n, s(f.compile(e[t]))
+                        }(d.search(t), t))
+                }
+                // 에러 메시지를 생성하고 예외를 발생시키는 함수
+                function a(t) {
+                    throw new Error("SimpleJekyllSearch --- " + t)
+                }
+                // 검색 인터페이스를 설정하고 초기화하는 메인 함수
+                t.SimpleJekyllSearch = function (t) {
+                    debugger;
+                    var n;
+                    0 < o.validate(t).length && a("You must specify the following required options: " + r),
+                        i = w.merge(i, t),
+                        f.setOptions({
+                            template: i.searchResultTemplate,
+                            middleware: i.templateMiddleware
+                        }),
+                        d.setOptions({
+                            fuzzy: i.fuzzy,
+                            limit: i.limit,
+                            sort: i.sortMiddleware, exclude: i.exclude
+                        }),
+                        w.isJSON(i.json) ? u(i.json) : (n = i.json, p.load(n, function (t, e) {
+                            t && a("failed to get JSON (" + n + ")"), u(e)
+                        }));
+                    t = { search: l };
+                    return "function" == typeof i.success && i.success.call(t), t
+                }
+            }(window)
+        }();
+
+
+
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('search-results'),
+            json: 'https://whatsupyap.github.io/assets/js/data/search.json',
+            searchResultTemplate: '<article class="px-1 px-sm-2 px-lg-4 px-xl-0"><header><h2><a href="{url}">{title}</a></h2><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories}{tags}</div></header><p>{snippet}</p></article > ',
+            noResultsText: '<p class="mt-5"></p>',
+            templateMiddleware: function (prop, value, template) {
+                if (prop === 'categories') {
+                    if (value === '') {
+                        return `${value}`;
+                    }
+                    else {
+                        return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+                    }
+                }
+                if (prop === 'tags') {
+                    if (value === '') {
+                        return `${value}`;
+                    }
+                    else {
+                        return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`;
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
