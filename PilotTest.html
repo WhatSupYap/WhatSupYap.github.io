@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatSup's Pilot Test</title>
+    <script src="./assets/js/wsy/xCommon.js"></script>
     <style>
         table#mandalartable {
             /*border: 1px solid black;*/
@@ -19,6 +20,7 @@
             width: 80px;
             height: 80px;
             text-align: center;
+            cursor: default;
         }
 
         .bg_high {
@@ -94,6 +96,10 @@
         .bg_mage_light {
             background-color: rgb(105, 204, 240, 0.25);
         }
+
+        .small {
+            font-size: 13px;
+        }
     </style>
 </head>
 
@@ -133,196 +139,160 @@
 
 
     <table id="mandalartable">
-        <!-- Row 1 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="11:" class="bg_paladin_light"></td>
-            <!-- Column 2 -->
-            <td title="21:" class="bg_paladin_light"></td>
-            <!-- Column 3 -->
-            <td title="31:" class="bg_paladin_light"></td>
-            <!-- Column 4 -->
-            <td title="41:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 5 -->
-            <td title="51:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 6 -->
-            <td title="61:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 7 -->
-            <td title="71:" class="bg_deathknight_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="81:" class="bg_deathknight_light">&nbsp;</td>
-            <!-- Column 9 -->
-            <td title="91:" class="bg_deathknight_light">&nbsp;</td>
+        <tr idx="1">
+            <td idx="1" class="bg_paladin_light"></td>
+            <td idx="2" class="bg_paladin_light"></td>
+            <td idx="3" class="bg_paladin_light"></td>
+            <td idx="4" class="bg_priest_light">용서하기</td>
+            <td idx="5" class="bg_priest_light" link="https://www.youtube.com/watch?v=w1WaQrjcn6s">부처님<br>말씀 듣기</td>
+            <td idx="6" class="bg_priest_light">감사하기</td>
+            <td idx="7" class="bg_deathknight_light"></td>
+            <td idx="8" class="bg_deathknight_light"></td>
+            <td idx="9" class="bg_deathknight_light"></td>
         </tr>
-        <!-- Row 2 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="12:" class="bg_paladin_light"></td>
-            <!-- Column 2 -->
-            <td title="22:" class="bg_paladin">사람</td>
-            <!-- Column 3 -->
-            <td title="32:" class="bg_paladin_light"></td>
-            <!-- Column 4 -->
-            <td title="42:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 5 -->
-            <td title="52:" class="bg_priest">정신건강</td>
-            <!-- Column 6 -->
-            <td title="62:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 7 -->
-            <td title="72:" class="bg_deathknight_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="82:" class="bg_deathknight">커리어</td>
-            <!-- Column 9 -->
-            <td title="92:" class="bg_deathknight_light">&nbsp;</td>
+        <tr idx="2">
+            <td idx="1" class="bg_paladin_light"></td>
+            <td idx="2" class="bg_paladin">사람</td>
+            <td idx="3" class="bg_paladin_light"></td>
+            <td idx="4" class="bg_priest_light">한번에<br>하지말기</td>
+            <td idx="5" class="bg_priest">정신건강</td>
+            <td idx="6" class="bg_priest_light">할일 기록하고 움직이기</td>
+            <td idx="7" class="bg_deathknight_light">링크드인</td>
+            <td idx="8" class="bg_deathknight">커리어</td>
+            <td idx="9" class="bg_deathknight_light"></td>
         </tr>
-        <!-- Row 3 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="13:" class="bg_paladin_light"></td>
-            <!-- Column 2 -->
-            <td title="23:" class="bg_paladin_light"></td>
-            <!-- Column 3 -->
-            <td title="33:" class="bg_paladin_light"></td>
-            <!-- Column 4 -->
-            <td title="43:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 5 -->
-            <td title="53: 만다라트 계획표" class="bg_priest_light">만다라트<br>계획표</td>
-            <!-- Column 6 -->
-            <td title="63:" class="bg_priest_light">&nbsp;</td>
-            <!-- Column 7 -->
-            <td title="73:" class="bg_deathknight_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="83:" class="bg_deathknight_light"></td>
-            <!-- Column 9 -->
-            <td title="93:" class="bg_deathknight_light">&nbsp;</td>
+        <tr idx="3">
+            <td idx="1" class="bg_paladin_light"></td>
+            <td idx="2" class="bg_paladin_light"></td>
+            <td idx="3" class="bg_paladin_light">옥상벙</td>
+            <td idx="4" class="bg_priest_light"></td>
+            <td idx="5" class="bg_priest_light">만다라트<br>계획표</td>
+            <td idx="6" class="bg_priest_light"></td>
+            <td idx="7" class="bg_deathknight_light">일 미루지 않기</td>
+            <td idx="8" class="bg_deathknight_light">잡코리아</td>
+            <td idx="9" class="bg_deathknight_light">리멤버</td>
         </tr>
-        <!-- Row 4 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="14:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 2 -->
-            <td title="24:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 3 -->
-            <td title="34:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 4 -->
-            <td title="44:" class="bg_paladin">사람</td>
-            <!-- Column 5 -->
-            <td title="54:" class="bg_priest">정신건강</td>
-            <!-- Column 6 -->
-            <td title="64:" class="bg_deathknight">커리어</td>
-            <!-- Column 7 -->
-            <td title="74:" class="bg_rogue_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="84:" class="bg_rogue_light">&nbsp;</td>
-            <!-- Column 9 -->
-            <td title="94:" class="bg_rogue_light">&nbsp;</td>
+        <tr idx="4">
+            <td idx="1" class="bg_hunter_light"></td>
+            <td idx="2" class="bg_hunter_light"></td>
+            <td idx="3" class="bg_hunter_light"></td>
+            <td idx="4" class="bg_paladin">사람</td>
+            <td idx="5" class="bg_priest">정신건강</td>
+            <td idx="6" class="bg_deathknight">커리어</td>
+            <td idx="7" class="bg_rogue_light">냉.털</td>
+            <td idx="8" class="bg_rogue_light"></td>
+            <td idx="9" class="bg_rogue_light"></td>
         </tr>
-        <!-- Row 5 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="15:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 2 -->
-            <td title="25: 가족" class="bg_hunter">가족</td>
-            <!-- Column 3 -->
-            <td title="35: 주 1회 안부전화" class="bg_hunter_light">주 1회<br>안부전화</td>
-            <!-- Column 4 -->
-            <td title="45: 가족" class="bg_hunter">가족</td>
-            <!-- Column 5 -->
-            <td title="55: 지경살 2024" class="bg_high">지경살<br>2024</td>
-            <!-- Column 6 -->
-            <td title="65: 경제력" class="bg_rogue">경제력</td>
-            <!-- Column 7 -->
-            <td title="75: 경.독.모" class="bg_rogue_light">경.독.모</td>
-            <!-- Column 8 -->
-            <td title="85: 경제력" class="bg_rogue">경제력</td>
-            <!-- Column 9 -->
-            <td title="95:" class="bg_rogue_light">&nbsp;</td>
+        <tr idx="5">
+            <td idx="1" class="bg_hunter_light"></td>
+            <td idx="2" class="bg_hunter">가족</td>
+            <td idx="3" class="bg_hunter_light">주 1회<br>안부전화</td>
+            <td idx="4" class="bg_hunter">가족</td>
+            <td idx="5" class="bg_high">지경살<br>2024</td>
+            <td idx="6" class="bg_rogue">경제력</td>
+            <td idx="7" class="bg_rogue_light" page_yn="Y">경.독.모</td>
+            <td idx="8" class="bg_rogue">경제력</td>
+            <td idx="9" class="bg_rogue_light"></td>
         </tr>
-        <!-- Row 6 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="16:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 2 -->
-            <td title="26:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 3 -->
-            <td title="36:" class="bg_hunter_light">&nbsp;</td>
-            <!-- Column 4 -->
-            <td title="46:" class="bg_druid">취미</td>
-            <!-- Column 5 -->
-            <td title="56:" class="bg_warrior">육체관리</td>
-            <!-- Column 6 -->
-            <td title="66:" class="bg_mage">자기개발</td>
-            <!-- Column 7 -->
-            <td title="76:" class="bg_rogue_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="86:" class="bg_rogue_light">&nbsp;</td>
-            <!-- Column 9 -->
-            <td title="96:" class="bg_rogue_light">&nbsp;</td>
+        <tr idx="6">
+            <td idx="1" class="bg_hunter_light"></td>
+            <td idx="2" class="bg_hunter_light"></td>
+            <td idx="3" class="bg_hunter_light">가족여행</td>
+            <td idx="4" class="bg_druid">취미</td>
+            <td idx="5" class="bg_warrior">육체관리</td>
+            <td idx="6" class="bg_mage">자기개발</td>
+            <td idx="7" class="bg_rogue_light"></td>
+            <td idx="8" class="bg_rogue_light"></td>
+            <td idx="9" class="bg_rogue_light"></td>
         </tr>
-        <!-- Row 7 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="17: 안무창작 1회" class="bg_druid_light">안무창작<br>1회</td>
-            <!-- Column 2 -->
-            <td title="27: 안무따기 1회" class="bg_druid_light">안무따기<br>1회</td>
-            <!-- Column 3 -->
-            <td title="37: 토요일 연습" class="bg_druid_light">토요일<br>연습</td>
-            <!-- Column 4 -->
-            <td title="47: 점심 산책" class="bg_warrior_light">점심 산책</td>
-            <!-- Column 5 -->
-            <td title="57: 식전 샐러드" class="bg_warrior_light">식전<br>샐러드</td>
-            <!-- Column 6 -->
-            <td title="67: 식후 영양제" class="bg_warrior_light">식후<br>영양제</td>
-            <!-- Column 7 -->
-            <td title="77: 주중 2시간 아침 공부" class="bg_mage_light">주중 2시간<br>아침 공부</td>
-            <!-- Column 8 -->
-            <td title="87: 스터디 그룹" class="bg_mage_light">스터디<br>그룹</td>
-            <!-- Column 9 -->
-            <td title="97:" class="bg_mage_light">&nbsp;</td>
+        <tr idx="7">
+            <td idx="1" class="bg_druid_light">안무창작<br>1회</td>
+            <td idx="2" class="bg_druid_light">안무따기<br>1회</td>
+            <td idx="3" class="bg_druid_light">토요일<br>연습</td>
+            <td idx="4" class="bg_warrior_light">점심 산책</td>
+            <td idx="5" class="bg_warrior_light">식전<br>샐러드</td>
+            <td idx="6" class="bg_warrior_light">식후<br>영양제</td>
+            <td idx="7" class="bg_mage_light">스터디<br>그룹</td>
+            <td idx="8" class="bg_mage_light">주중 2시간<br>아침 공부</td>
+            <td idx="9" class="bg_mage_light" page_yn="Y">자격증</td>
         </tr>
-        <!-- Row 8 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="18:" class="bg_druid_light">&nbsp;</td>
-            <!-- Column 2 -->
-            <td title="28:" class="bg_druid">취미</td>
-            <!-- Column 3 -->
-            <td title="38:" class="bg_druid_light">&nbsp;</td>
-            <!-- Column 4 -->
-            <td title="48: 근력 운동" class="bg_warrior_light">근력 운동</td>
-            <!-- Column 5 -->
-            <td title="58: 육체" class="bg_warrior">육체관리</td>
-            <!-- Column 6 -->
-            <td title="68:" class="bg_warrior_light">밤 10시<br>취침</td>
-            <!-- Column 7 -->
-            <td title="78:" class="bg_mage_light">&nbsp;</td>
-            <!-- Column 8 -->
-            <td title="88:" class="bg_mage">자기개발</td>
-            <!-- Column 9 -->
-            <td title="98:" class="bg_mage_light">&nbsp;</td>
+        <tr idx="8">
+            <td idx="1" class="bg_druid_light">만화 소설</td>
+            <td idx="2" class="bg_druid">취미</td>
+            <td idx="3" class="bg_druid_light"></td>
+            <td idx="4" class="bg_warrior_light">근력 운동</td>
+            <td idx="5" class="bg_warrior">육체관리</td>
+            <td idx="6" class="bg_warrior_light">밤 10시<br>취침</td>
+            <td idx="7" class="bg_mage_light"></td>
+            <td idx="8" class="bg_mage">자기개발</td>
+            <td idx="9" class="bg_mage_light" page_yn="Y">내 사이트<br><span class="small">(프론트엔드)</span></td>
         </tr>
-        <!-- Row 9 -->
-        <tr>
-            <!-- Column 1 -->
-            <td title="19:" class="bg_druid_light">&nbsp;</td>
-            <!-- Column 2 -->
-            <td title="29:" class="bg_druid_light">&nbsp;</td>
-            <!-- Column 3 -->
-            <td title="39:" class="bg_druid_light">&nbsp;</td>
-            <!-- Column 4 -->
-            <td title="49: 자전거로 출퇴근" class="bg_warrior_light">자전거로<br>출퇴근</td>
-            <!-- Column 5 -->
-            <td title="59: 운동전후 스트레칭" class="bg_warrior_light">운동전후<br>스트레칭</td>
-            <!-- Column 6 -->
-            <td title="69: 일할때 바른자세" class="bg_warrior_light">일할때<br>바른자세</td>
-            <!-- Column 7 -->
-            <td title="79:" class="bg_mage_light">AWS SAA</td>
-            <!-- Column 8 -->
-            <td title="89:" class="bg_mage_light">&nbsp;</td>
-            <!-- Column 9 -->
-            <td title="99:" class="bg_mage_light">&nbsp;</td>
+        <tr idx="9">
+            <td idx="1" class="bg_druid_light"></td>
+            <td idx="2" class="bg_druid_light"></td>
+            <td idx="3" class="bg_druid_light"></td>
+            <td idx="4" class="bg_warrior_light">자전거로<br>출퇴근</td>
+            <td idx="5" class="bg_warrior_light">운동전후<br>스트레칭</td>
+            <td idx="6" class="bg_warrior_light">일할때<br>바른자세</td>
+            <td idx="7" class="bg_mage_light">영어공부</td>
+            <td idx="8" class="bg_mage_light"></td>
+            <td idx="9" class="bg_mage_light" page_yn="Y">궁금증<br>처리</td>
         </tr>
     </table>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const mandalar_tds = document.querySelectorAll("table#mandalartable td");
+
+        for (var i = 0; i < mandalar_tds.length; i++) {
+            const td = mandalar_tds[i];
+            const row_idx = td.parentElement.attributes["idx"].value;
+            const col_idx = td.attributes["idx"].value;
+            const cell_innerHtml = ClearTags(td.innerHTML);
+            td.setAttribute('title', row_idx + "," + col_idx + ": " + cell_innerHtml);
+
+            const page_yn = td.attributes["page_yn"]?.value;
+            const link = td.attributes["link"]?.value;
+            //debugger;
+            if (!xIsEmpty(cell_innerHtml) && (!xIsEmpty(page_yn) || !xIsEmpty(link))) {
+                var open_link = "";
+
+                debugger;
+                if (!xIsEmpty(link)) {
+                    open_link = link;
+                    td.setAttribute('onclick', "javascript:window.open('" + open_link + "','new')");
+                }
+                else if (!xIsEmpty(page_yn)) {
+                    open_link = row_idx + col_idx + ".html";
+                    td.setAttribute('onclick', "javascript:window.open('PilotTest/" + open_link + "','new')");
+                }
+
+                const css_ = window.getComputedStyle(td);
+                const bg_color = css_.getPropertyValue("background-color");
+                var bg_color_attr = bg_color.replaceAll("rgba(", "").replaceAll("rgb(", "").replaceAll(")", "").replaceAll(" ", "").split(",");
+                var attr1;
+                if (0 <= bg_color.indexOf("rgba(")) {
+                    attr1 = parseFloat(bg_color_attr[3]);
+                }
+                else {
+                    attr1 = 1.0;
+                }
+                attr1 = attr1 * 0.5;
+                mandalar_tds[i].setAttribute("onMouseOver", "style.background='" + "rgba(" + bg_color_attr[0] + ", " + bg_color_attr[1] + ", " + bg_color_attr[2] + ", " + attr1.toString() + ")';this.style.cursor='pointer'");
+                mandalar_tds[i].setAttribute("onMouseout", "style.background='" + bg_color + "'");
+            }
+        }
+    });
+
+    function ClearTags(p) {
+        //text.replace(/<p>/g, "");
+        //const black_list = [/<p>/g, /<span>/g, /<br>/g];
+        //for (var i = 0; i < black_list.length; i++) {        
+        //    p = p.replaceAll(black_list[i], "");
+        //}
+        p.replace(/<.+?>/g, "");
+        return p;
+    }
+</script>
 
 </html>
