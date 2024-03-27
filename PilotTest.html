@@ -1,206 +1,327 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatSup's Pilot Test</title>
     <style>
-        #mandalartable table tr td {
-            border: 1px solid #000;
+        table#mandalartable {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table#mandalartable th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+
+        .bg_high {
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+
+        .bg_middle {
+            background-color: rgb(8, 57, 163);
+            color: white;
+        }
+
+        .bg_warrior {
+            background-color: rgb(158, 107, 53);
+        }
+
+        .bg_paladin {
+            background-color: rgb(245, 140, 186);
+        }
+
+        .bg_priest {
+            background-color: rgb(200, 200, 200);
+        }
+
+        .bg_deathknight {
+            background-color: rgb(196, 31, 59);
+        }
+
+        .bg_hunter {
+            background-color: rgb(171, 212, 115);
+        }
+
+        .bg_rogue {
+            background-color: rgb(255, 245, 105);
+        }
+
+        .bg_druid {
+            background-color: rgb(255, 125, 10);
+        }
+
+        .bg_mage {
+            background-color: rgb(105, 204, 240);
+        }
+
+        .bg_warrior_light {
+            background-color: rgba(158, 107, 53, 0.25);
+        }
+
+        .bg_paladin_light {
+            background-color: rgb(245, 140, 186, 0.25);
+        }
+
+        .bg_priest_light {
+            background-color: rgb(200, 200, 200, 0.25);
+        }
+
+        .bg_deathknight_light {
+            background-color: rgb(196, 31, 59, 0.25);
+        }
+
+        .bg_hunter_light {
+            background-color: rgb(171, 212, 115, 0.25);
+        }
+
+        .bg_rogue_light {
+            background-color: rgb(255, 245, 105, 0.25);
+        }
+
+        .bg_druid_light {
+            background-color: rgb(255, 125, 10, 0.25);
+        }
+
+        .bg_mage_light {
+            background-color: rgb(105, 204, 240, 0.25);
         }
     </style>
 </head>
+
 <body>
+
+    <div style="display:none;">
+        <p><br></p>
+        <p><br></p>
+        <p><span style="color: rgb(199, 156, 110);" _foo="color: rgb(199, 156, 110); font-family: Tahoma;">전사 -
+                #C79C6E</span></p>
+        <p><span style="color: rgb(245, 140, 186);" _foo="color: rgb(245, 140, 186); font-family: Tahoma;">성기사 -
+                #F58CBA</span></p>
+        <p><span style="color: rgb(196, 31, 59);" _foo="color: rgb(196, 31, 59); font-family: Tahoma;">죽음의기사 -
+                #C41F3B</span></p>
+        <p><span style="color: rgb(0, 112, 222);" _foo="color: rgb(0, 112, 222); font-family: Tahoma;">주술사 -
+                #0070DE</span></p>
+        <p><span style="color: rgb(171, 212, 115);" _foo="color: rgb(171, 212, 115); font-family: Tahoma;">사냥꾼 -
+                #ABD473</span></p>
+        <p><span style="color: rgb(255, 125, 10);" _foo="color: rgb(255, 125, 10); font-family: Tahoma;">드루이드 -
+                #FF7D0A</span></p>
+        <p><span style="color: rgb(255, 245, 105);" _foo="color: rgb(255, 245, 105); font-family: Tahoma;">도적 -
+                #FFF569</span></p>
+        <p><span style="color: rgb(0, 255, 150);" _foo="color: rgb(0, 255, 150); font-family: Tahoma;">수도사 -
+                #00FF96</span></p>
+        <p><span style="color: rgb(163, 48, 201);" _foo="color: rgb(163, 48, 201); font-family: Tahoma;">악마사냥꾼 -
+                #A330C9</span></p>
+        <p><span style="color: rgb(105, 204, 240);" _foo="color: rgb(105, 204, 240); font-family: Tahoma;">마법사 -
+                #69CCF0</span></p>
+        <p><span style="color: rgb(148, 130, 201);" _foo="color: rgb(148, 130, 201); font-family: Tahoma;">흑마법사 -
+                #9482C9</span></p>
+        <p><span style="color: rgb(154, 154, 154);" _foo="color: rgb(154, 154, 154); font-family: Tahoma;">사제 - #FFFFFF
+                (흰색이라 안 보여서 회색으로)</span></p>
+        <p><span style="color: rgb(154, 154, 154);" _foo="color: rgb(154, 154, 154); font-family: Tahoma;"><br></span>
+        </p>
+        <p><br></p>
+    </div>
+
+
     <table id="mandalartable">
         <!-- Row 1 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="11:"></td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="21:"></td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="31:"></td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="41:">&nbsp;</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="51:">&nbsp;</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="61:">&nbsp;</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="71:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="81:">&nbsp;</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="91:">&nbsp;</td>
         </tr>
         <!-- Row 2 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="12:"></td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="22:" class="bg_paladin">사람</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="32:"></td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="42:">&nbsp;</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="52:" class="bg_priest">정신</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="62:">&nbsp;</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="72:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="82:" class="bg_deathknight">커리어</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="92:">&nbsp;</td>
         </tr>
         <!-- Row 3 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="13:"></td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="23:"></td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="33:" class="bg_paladin_light"></td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="43:">&nbsp;</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="53:" class="bg_priest_light">&nbsp;</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="63:">&nbsp;</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="73:" class="bg_deathknight_light">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="83:"></td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="93:">&nbsp;</td>
         </tr>
         <!-- Row 4 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="14:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="24:">&nbsp;</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="34:">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="44:" class="bg_paladin">사람</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="54:" class="bg_priest">정신건강</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="64:" class="bg_deathknight">커리어</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="74:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="84:">&nbsp;</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="94:">&nbsp;</td>
         </tr>
         <!-- Row 5 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="15:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="25:" class="bg_hunter">가족</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="35:" class="bg_hunter_light">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="45:" class="bg_hunter">가족</td>
             <!-- Column 5 -->
-            <td>생존</td>
+            <td title="55:" class="bg_high">지경살</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="65:" class="bg_rogue">경제력</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="75:" class="bg_rogue_light">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="85:" class="bg_rogue">경제력</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="95:">&nbsp;</td>
         </tr>
         <!-- Row 6 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="16:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="26:">&nbsp;</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="36:">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="46:" class="bg_druid">취미</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="56:" class="bg_warrior">육체</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="66:" class="bg_mage">가능성</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="76:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="86:">&nbsp;</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="96:">&nbsp;</td>
         </tr>
         <!-- Row 7 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="17:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="27:">&nbsp;</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="37:" class="bg_druid_light">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="47: 점심 산책">점심 산책</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="57: 식전 샐러드" class="bg_warrior_light">식전<br>샐러드</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="67: 식후 영양제">식후<br>영양제</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="77:" class="bg_mage_light">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="87:">&nbsp;</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="97:">&nbsp;</td>
         </tr>
         <!-- Row 8 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="18:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="28:" class="bg_druid">취미</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="38:">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="48: 근력 운동">근력 운동</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="58:" class="bg_warrior">육체</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="68:">밤 10시<br>취침</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="78:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="88:" class="bg_mage">가능성</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="98:">&nbsp;</td>
         </tr>
         <!-- Row 9 -->
         <tr>
             <!-- Column 1 -->
-            <td>&nbsp;</td>
+            <td title="19:">&nbsp;</td>
             <!-- Column 2 -->
-            <td>&nbsp;</td>
+            <td title="29:">&nbsp;</td>
             <!-- Column 3 -->
-            <td>&nbsp;</td>
+            <td title="39:">&nbsp;</td>
             <!-- Column 4 -->
-            <td>&nbsp;</td>
+            <td title="49: 자전거로 출퇴근">자전거로<br>출퇴근</td>
             <!-- Column 5 -->
-            <td>&nbsp;</td>
+            <td title="59:">&nbsp;</td>
             <!-- Column 6 -->
-            <td>&nbsp;</td>
+            <td title="69:">&nbsp;</td>
             <!-- Column 7 -->
-            <td>&nbsp;</td>
+            <td title="79:">&nbsp;</td>
             <!-- Column 8 -->
-            <td>&nbsp;</td>
+            <td title="89:">&nbsp;</td>
             <!-- Column 9 -->
-            <td>&nbsp;</td>
+            <td title="99:">&nbsp;</td>
         </tr>
     </table>
 </body>
+
 </html>
