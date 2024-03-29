@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024.03.29</title>
+</head>
+<body>
+    <h2>시멘틱 요소 사용법</h2>
+    <hr>
+    <blockquote>
+        시멘틱 요소는 기존에 만능 div 태그 사용 비중을 줄이고 의미 있는 태그로 사용해보자라는 것 같음, 왜냐면 이젠 css로 거의 모든게 컨트롤 가능하니까
+    </blockquote>
+    <h3>#nav 태그 : 네비게이션 뭐 기존방식의 TOP 정도로 사용하는듯</h3>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="home">Home</a></li>
+        </ul>
+    </nav>
+    <blockquote>
+        그 밖에 article(=글, 기사), section(=부문, 구역), aside 등이 있다  time 태그도 있다.<br>
+        내 생각에 기존에 쓰던게 아니면 뭘써도 상관 없을 것 같음
+    </blockquote>
+    ul#nav>li.item$*4>a{Item $}
+    <ul id="nav">
+        <li class="item1"><a href="">Item 1</a></li>
+        <li class="item2"><a href="">Item 2</a></li>
+        <li class="item3"><a href="">Item 3</a></li>
+        <li class="item4"><a href="">Item 4</a></li>
+    </ul>
+</body>
+</html>

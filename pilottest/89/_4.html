@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컨트롤 들</title>
+    <style>
+        section {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        table#nth_test {
+            width: 300px;
+            border: 1px solid aquamarine;
+        }
+
+        table#nth_test tr:nth-of-type(2n){
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>와 새 컨트롤!</h3>
+    <hr>
+    <input type="color" id="color-picker" onchange="changeBackgroundColor()"><br>
+    <section></section>
+    <form action="/wow">
+        <input type="date" required step="1"><br>
+        <input type="month" required step="1"><br>
+        <input type="text" minlength="3" maxlength="50" required step="1" ><br>
+        <input type="range" required>
+        <button>go!</button>
+    </form>
+
+    <br><br>
+
+    <table id="nth_test">
+        <tr>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>10</td>
+        </tr>
+    </table>
+
+</body>
+<script>
+function changeBackgroundColor() {
+            const selectedColor = document.getElementById("color-picker").value;
+            document.querySelector("section").style.backgroundColor = selectedColor;
+        }
+</script>
+</html>
