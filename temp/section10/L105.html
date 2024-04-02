@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>105. Flex-Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #container {
+            background-color: #003049;
+            width: 90%;
+            height: 500px;
+            margin: 0 auto;
+            border: 5px solid #003049;
+            display: flex;
+            flex-direction: row;
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column-reverse; */
+            /* flex-direction: column; */
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            justify-content: flex-start;
+            /* flex-wrap: wrap; */
+            flex-wrap: nowrap;
+            /* flex-wrap: wrap-reverse; */
+        }
+
+        #container div {
+            width: 600px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://developer.mozilla.org/ko/docs/Web/CSS/justify-content">[참고]</a>
+    <h1>Let's Play With Flexbox</h1>
+
+    <section id="container">
+        <div style="background-color: #80ffdb"></div>
+        <div style="background-color: #64dfdf"></div>
+        <div style="background-color: #48bfe3"></div>
+        <div style="background-color: #5390d9"></div>
+        <div style="background-color: #6930c3"></div>
+    </section>
+
+</body>
+
+</html>
