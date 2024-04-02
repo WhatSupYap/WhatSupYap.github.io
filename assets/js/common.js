@@ -1,4 +1,4 @@
-function xIsEmpty(p) {
+﻿function xIsEmpty(p) {
   if (typeof p === "undefined") {
     return true;
   }

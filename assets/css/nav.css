@@ -1,0 +1,23 @@
+﻿nav#topbar {
+    background-color: black;
+    height: 70px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+
+nav#topbar a {
+    color: white;
+}
+
+nav#topbar a:hover {
+    color: white;
+}
+
+nav#topbar ul {
+    margin-top: 0px;
+    padding-top: 25px;
+}
+
+body {
+    margin: 0px;
+}

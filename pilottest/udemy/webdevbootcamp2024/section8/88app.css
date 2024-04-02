@@ -1,0 +1,18 @@
+h1{
+    background-color: palegoldenrod;
+    border: 1px solid red;
+}
+
+span{
+    background-color: paleturquoise;
+    border: 1px solid black;
+    
+}
+
+div {
+    height: 200px;
+    width: 200px;
+    background-color: coral;
+    border: 1px solid violet;
+    display: inline-block;
+}
