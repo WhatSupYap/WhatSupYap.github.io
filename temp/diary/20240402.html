@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary</title>
+    <link rel="stylesheet" href="/assets/css/diary.css">
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/diary.js"></script>
+</head>
+<body>
+    <diary>
+        <today description="날짜" year="2024" month="04" day="02"></today>
+        <forecast description="날씨" weather="맑음" temperature="10-22°C" airquality="나쁨, 46"></forecast>
+        <sleep description="수면" bedtime="22:20" wakeuptime="05:20" hoursofsleep="7"></sleep>
+        <workout description="운동">
+            <item type="cardio">
+                <name>자전거</name>
+                <duration>39m</duration>
+                <distance>8.97km</distance>
+            </item>
+            <item type="cardio">
+                <name>자전거</name>
+                <duration>21m</duration>
+                <distance>4.15km</distance>
+            </item>
+            <item type="weight">
+                <name>푸시업</name>
+                <total>22</total>
+                <max>12</max>
+            </item>
+            <item type="weight">
+                <name>온몸당기기</name>
+                <total>30</total>
+                <max>30</max>
+            </item>
+        </workout>
+        <study description="공부">
+            <item description="웹 개발">
+                <duration>2h</duration>
+                <start>07:00</start>
+                <end>09:00</end>
+            </item>
+        </study>
+        <todo description="할일">
+            <item description="정산" status="완료">
+                <status>완료</status>
+            </item>
+        </todo>
+    </diary>
+</body>
+</html>
