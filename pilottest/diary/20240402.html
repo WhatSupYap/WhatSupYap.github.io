@@ -5,11 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diary</title>
-    <link rel="stylesheet" href="/assets/css/diary.css">
     <script src="/assets/js/common.js"></script>
-    <script src="/assets/js/diary.js"></script>
+    <!-- <link rel="stylesheet" href="/assets/css/diary.css">    
+    <script src="/assets/js/diary.js"></script> -->
+    <style>
+        today, forecast, sleep, workout, workout item, study, study item, todo, todo item {
+            display: block;
+            margin-left: 15px;
+        }
+
+        [description]::before {
+            content: "• " attr(description)
+        }
+
+        today::after {
+            content: ": "  attr(year) "년 " attr(month) "월 " attr(day) "일"
+        }
+
+        forecast::after {
+            content: ": "  attr(weather) " / 온도: " attr(temperature) " / 미세먼지: " attr(airquality) "일"
+        }
+
+        sleep::after {
+            content: ": " attr(bedtime) " ~ " attr(wakeuptime) " (총 " attr(hoursofsleep) "시간)"
+        }
+
+        workout item[type="cardio"]::before {
+            color: red;
+            content: "• ";
+        }
+
+        workout item[type="weight"]::before  {
+            color:blue;
+            content: "• ";
+        }
+    </style>
 </head>
 <body>
+    <blockquote>
+        커스텀 태그(xml 형식)로 계속 진행하려 하였으나, 조언을 듣고 커스텀 태그는 포기하기로 함
+    </blockquote>
+
     <diary>
         <today description="날짜" year="2024" month="04" day="02"></today>
         <forecast description="날씨" weather="맑음" temperature="10-22°C" airquality="나쁨, 46"></forecast>
@@ -49,5 +85,21 @@
             </item>
         </todo>
     </diary>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = document.querySelector("today");
+
+            if (xIsEmpty(today)) return;
+
+            const year = today.getAttribute("year");
+            const month = today.getAttribute("month");
+            const day = today.getAttribute("day");
+
+            if (xIsEmpty(year) || xIsEmpty(month) || xIsEmpty(day)) return;
+
+            document.title += " > " + year + "" + month + "" + day;
+
+        });
+    </script>
 </body>
 </html>

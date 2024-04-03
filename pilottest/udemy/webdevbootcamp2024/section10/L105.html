@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>105. Flex-Directory</title>
+    <script src="/assets/js/common.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body {
@@ -22,23 +23,120 @@
             margin: 0 auto;
             border: 5px solid #003049;
             display: flex;
-            flex-direction: row;
-            /* flex-direction: row-reverse; */
-            /* flex-direction: column-reverse; */
-            /* flex-direction: column; */
-            /* justify-content: flex-end; */
-            /* justify-content: center; */
-            justify-content: flex-start;
-            /* flex-wrap: wrap; */
-            flex-wrap: nowrap;
-            /* flex-wrap: wrap-reverse; */
         }
 
         #container div {
-            width: 600px;
+            width: 200px;
             height: 200px;
+            text-align: center;
+            font-size: 4em;
+            flex-basis: 400px;;
         }
+
+        #size div {
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+        }
+
+        #selectors,
+        #size {
+            /* display: flex; */
+            display: block;
+            /* align-items: center; */
+            /* justify-content: center; */
+            /* margin: auto; */
+        }
+
+        input[type='range'] {
+            display: block;
+        }
+
+        #selectors1
+        {
+             display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            /* margin: auto; */
+        }
+        /* selectors1 */
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            change_options();
+
+            const elements = document.querySelectorAll("input[type='range']");
+
+            elements.forEach(function (element) {
+                element.addEventListener("input", function () {
+
+                    const length = element.value;
+                    const mode = element.getAttribute("mode");
+                    const idx = getIndexOfNode(element.parentNode, element.parentNode.parentNode.querySelectorAll("div"));
+                    const target_siblings = document.querySelectorAll("#container div");
+
+                    if (mode === "V") {
+                        target_siblings[idx].style.height = length + "px";
+                    }
+                    else if (mode === "H") {
+                        target_siblings[idx].style.width = length + "px";
+                    }
+                    else if (mode === "FS") {
+                        target_siblings[idx].style.fontSize = length + "em";
+                    }
+
+
+
+                });
+            });
+        });
+
+        function change_options() {
+            const flex_direction = document.querySelector("#flex-direction");
+            const justify_content = document.querySelector("#justify-content");
+            const align_items = document.querySelector("#align-items");
+            const flex_wrap = document.querySelector("#flex-wrap");
+            const align_content = document.querySelector("#align-content");
+            const align_self = document.querySelector("#align-self");
+            const container = document.querySelector("#container");
+
+            container.style.alignItems = align_items.value;
+            container.style.flexDirection = flex_direction.value;
+            container.style.justifyContent = justify_content.value;
+            container.style.flexWrap = flex_wrap.value;
+            container.style.alignContent = align_content.value;
+            container.style.alignSelf = align_self.value;
+            /// container.style.justify-content = 
+
+        }
+
+        function change_options2() {
+            const target_div = document.querySelector("#target-div");
+            const align_self = document.querySelector("#align-self");
+            const container = document.querySelectorAll("#container div");
+
+            if (xIsEmpty(target_div.value) || xIsEmpty(align_self.value)) return;
+            
+            container[target_div.value].style.alignSelf = align_self.value;
+            /// container.style.justify-content = 
+
+        }
+
+
+
+        function getIndexOfNode(node, parent) {
+            let index = 0;
+
+            for (let i = 0; i < parent.length; i++) {
+                if (parent[i] === node) {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+    </script>
 </head>
 
 <body>
@@ -46,13 +144,95 @@
     <h1>Let's Play With Flexbox</h1>
 
     <section id="container">
-        <div style="background-color: #80ffdb"></div>
-        <div style="background-color: #64dfdf"></div>
-        <div style="background-color: #48bfe3"></div>
-        <div style="background-color: #5390d9"></div>
-        <div style="background-color: #6930c3"></div>
+        <div style="background-color: #80ffdb">H</div>
+        <div style="background-color: #64dfdf">E</div>
+        <div style="background-color: #48bfe3">L</div>
+        <div style="background-color: #5390d9">L</div>
+        <div style="background-color: #6930c3">O</div>
     </section>
-
+    <div id="selectors1">
+        <section id="selectors">
+            <label for="flex-direction">flex-direction</label>
+            <select id="flex-direction" onchange="change_options()">
+                <option value=""></option>
+                <option value="row">row</option>
+                <option value="row-reverse">row-reverse</option>
+                <option value="column">column</option>
+                <option value="column-reverse">column-reverse</option>
+            </select>
+            <label for="justify-content">justify-content</label>
+            <select id="justify-content" onchange="change_options()">
+                <option value=""></option>
+                <option value="center">center</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+            </select>
+            <label for="align-items">align-items</label>
+            <select id="align-items" onchange="change_options()">
+                <option value=""></option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+            </select>
+            <label for="flex-wrap">flex-wrap</label>
+            <select id="flex-wrap" onchange="change_options()">
+                <option value=""></option>
+                <option value="wrap">wrap</option>
+                <option value="nowrap">nowrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+            </select>
+            <label for="align-content">align-content</label>
+            <select id="align-content" onchange="change_options()">
+                <option value=""></option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+            </select><br>
+            <label for="align-self">align-self</label>
+            <select id="target-div" onchange="change_options2()">
+                <option value=""></option>
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">3</option>
+                <option value="3">4</option>
+                <option value="4">5</option>
+            </select>
+            <select id="align-self" onchange="change_options2()">
+                <option value=""></option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+            </select>
+            <section id="size">
+                <div style="background-color: #80ffdb">
+                    <input type="range" min="100" max="600" value="200" mode="H">
+                    <input type="range" min="100" max="600" value="200" mode="V">
+                    <input type="range" min="1" max="8" value="4" mode="FS">
+                </div>
+                <div style="background-color: #64dfdf">
+                    <input type="range" min="100" max="600" value="200" mode="H">
+                    <input type="range" min="100" max="600" value="200" mode="V">
+                    <input type="range" min="1" max="8" value="4" mode="FS">
+                </div>
+                <div style="background-color: #48bfe3">
+                    <input type="range" min="100" max="600" value="200" mode="H">
+                    <input type="range" min="100" max="600" value="200" mode="V">
+                    <input type="range" min="1" max="8" value="4" mode="FS">
+                </div>
+                <div style="background-color: #5390d9">
+                    <input type="range" min="100" max="600" value="200" mode="H">
+                    <input type="range" min="100" max="600" value="200" mode="V">
+                    <input type="range" min="1" max="8" value="4" mode="FS">
+                </div>
+                <div style="background-color: #6930c3">
+                    <input type="range" min="100" max="600" value="200" mode="H">
+                    <input type="range" min="100" max="600" value="200" mode="V">
+                    <input type="range" min="1" max="8" value="4" mode="FS">
+                </div>
+            </section>
+        </section>
+    </div>
 </body>
 
 </html>
