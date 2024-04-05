@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv='Pragma' content='no-cache' />
+    <title>폼 컬럼 마스터 관리</title>
+    <style>
+
+        body {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .top, .top-search {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top {
+            height: 31px;
+            background: url(/GWImages/Blue/Covi/common/n_tbbg.gif) repeat-x;
+        }
+
+        .top-title {
+            margin-left: 10px;
+        }
+
+        .top-search {
+            width: 180px;
+            margin-right: 10px;
+        }
+
+        .top-search-text {
+            width: 120px;
+            height: 22px;
+            box-sizing: border-box;
+            border: 1px solid #86a0cc;
+            /*margin-right: 10px;*/
+        }
+
+        .top-search-button {
+            background: left url(/GwImages/BLUE/Covi/Common/btn/btn_icon01_search.gif) white;
+            background-position: 5px;
+            background-repeat: no-repeat;
+            padding-left: 20px;
+            height: 22px;
+            box-sizing: border-box;
+            border: 1px solid #86a0cc;
+            transition: 200ms ease-in-out;
+        }
+
+            .top-search-button:hover {
+                background: left url(/GwImages/BLUE/Covi/Common/btn/btn_icon01_search.gif) #fff9d7;
+                background-position: 5px;
+                background-repeat: no-repeat;
+                border: #d6b079 solid 1px;
+            }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav1 {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            flex-direction: row;
+            margin-top: 10px;
+        }
+
+            .nav1 li {
+                display: inline;
+            }
+
+        .nav1-tab {
+            height: 22px;
+            border: 1px solid #B4B4B4;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(#FAFAFA, #E9E9E9);
+            color: #666666;
+            transition: 200ms ease-in-out;
+        }
+
+        .nav1-tab-on {
+            height: 22px;
+            border: 1px solid #B4B4B4;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(#6C7DB3, #41548E);
+            color: white;
+            transition: 200ms ease-in-out;
+        }
+
+        .nav1-tab:hover {
+            height: 22px;
+            border: 1px solid #B4B4B4;
+            border-radius: 3px 3px 0 0;
+            background: linear-gradient(#6C7DB3, #41548E);
+            color: white;
+        }
+
+
+        .main-table {
+            width: 100%;
+            color: #7c7c7c;
+        }
+
+            .main-table thead th {
+                background-color: #e1e2f2;
+                height: 30px;
+            }
+
+            .main-table tbody td {
+                border-bottom: 1px solid gray;
+                height: 25px;
+                height: 26px;
+                cursor: pointer;
+            }
+
+            .main-table tr {
+                transition: 100ms ease-in-out;
+            }
+
+                .main-table tr:hover {
+                    background-color: rgb(183, 255, 211, 0.5);
+                }
+
+        @media (max-width:1100px) {
+            .main-table {
+                font-size: 11px;
+            }
+        }
+
+        #divSelectPosotionLayout {
+            position: fixed;
+        }
+
+        #divSelectPosotion {
+            position: fixed;
+            width: 200px;
+            top: 35%;
+            left: 50%;
+            margin-left: -100px;
+            height: 130px;
+            border: 1px solid gray;
+            z-index: 1002;
+            background-color: White;
+            text-align: center;
+        }
+
+        #divSelectPosotion .p1 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        #divCurtain {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: lightgray;
+            filter: alpha(opacity=80);
+            opacity: 0.8;
+        }
+
+        .err_msg {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="divSelectPosotionLayout">
+        <div id="divSelectPosotion">
+            <img src="/GwImages/Blue/Covi/Blog/Common/Images/loading2.gif" style="padding-bottom: 10px; padding-top: 20px" />
+            <p class="p1">로딩중입니다.</p>
+            <p>잠시만 기다려 주십시오.</p>
+        </div>
+        <div id="divCurtain"></div>
+    </div>
+    <header class="top">
+        <span class="top-title">타이틀</span>
+        <div class="top-search">
+            <input type="text" class="top-search-text" />
+            <button type="button" class="top-search-button">검색</button>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav1">
+            <li><button type="button" class="nav1-tab" tbid="tbody1" onclick="Tab_Click(this);">공통</button></li>
+            <li><button type="button" class="nav1-tab" tbid="tbody2" onclick="Tab_Click(this);">Operation</button></li>
+            <li><button type="button" class="nav1-tab" tbid="tbody3" onclick="Tab_Click(this);">재경</button></li>
+            <li><button type="button" class="nav1-tab" tbid="tbody4" onclick="Tab_Click(this);">인재</button></li>
+        </ul>
+    </nav>
+    <main>
+        <table class="main-table">
+            <colgroup>
+                <col style="width:25%" />
+                <col style="width:25%" />
+                <col style="width:50%" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Form Name</th>
+                    <th>Form Prefix</th>
+                    <th>Description</th>
+                </tr>
+            <tbody id="tbody1">
+                <tr onclick="OpenPopup(this);" fmpf="1"><td class="fname">탭1번</td><td>탭1번</td><td></td></tr>
+                <tr><td class="fname">AP FUNDING 신청서</td><td>WF_AP_FUNDING</td><td></td></tr>
+                <tr><td class="fname">Concurring Review 신청</td><td>WF_TAX_CONCURRING_REVIEW</td><td>Tax 부서 Concurring Review 신청 문서입니다.</td></tr>
+                <tr><td class="fname">기안지(일반품의서)</td><td>WF_GIANJI_FORM</td><td>일반품의 기안 문서입니다.</td></tr>
+                <tr><td class="fname">지출의뢰서</td><td>WF_3PBR_PAYMENT_SWIFT</td><td>[3P거래] 각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다. SWIFT</td></tr>
+                <tr><td class="fname">[구]지출의뢰서</td><td>WF_GICHUL_GYULIL</td><td>각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">지출의뢰서</td><td>WF_3PBR_PAYMENT</td><td>[3P거래] 각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">가지급금 신청</td><td>WF_ADVANCED_REQ</td><td>가지급금(Advanced Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">소액현금 신청</td><td>WF_PETTY_CASH_REQ</td><td>소액현금 신청서(Petty Cash Request)를 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">발신공문</td><td>WF_GONGMUN_OUT</td><td>법인에서 발송되는 모든 공문을 등록하는 문서입니다.</td></tr>
+                <tr><td class="fname">행사(세미나/이벤트) 관련 비용 사전승인 신청</td><td>WF_PREAPP_EVENT_REQ</td><td>행사(세미나/이벤트) 관련 비용 사전승인 신청 양식입니다.</td></tr>
+                <tr><td class="fname">매뉴얼 조서 스캔 요청</td><td>WF_ASSG_REPORT_SCAN_REQ</td><td></td></tr>
+                <tr><td class="fname">최종 산출물 품의</td><td>WF_END_SANCHULMUL_NOTPD</td><td>최종산출물에 대한 내부 기안 승인 및 외부 고객사 담당자에게 메일 발송이 가능한 품의 양식입니다.</td></tr>
+                <tr><td class="fname">사용인감 신청</td><td>WF_AUDIT_USE_STAMP</td><td>법인 사용인감 신청 문서입니다.</td></tr>
+                <tr><td class="fname">법인정책 제/개정 신청</td><td>WF_RRO_LAW_POLICY_DEFAULT</td><td>법인정책의 제·개정 시, 신청하는 양식입니다.</td></tr>
+                <tr><td class="fname">계약서 수정 승인 요청서</td><td>WF_CONTRACT_CHG_FORM</td><td>TAX ,FA 계약서 수정 승인 요청 문서 입니다.</td></tr>
+                <tr><td class="fname">업무협조전</td><td>WF_FORM_COORDINATE</td><td></td></tr>
+                <tr><td class="fname">테스트 양식</td><td>WF_TEST_YANGSIK</td><td></td></tr>
+            </tbody>
+            <tbody id="tbody2">
+                <tr><td class="fname">탭2번</td><td>탭2번</td><td></td></tr>
+                <tr><td class="fname">AP FUNDING 신청서</td><td>WF_AP_FUNDING</td><td></td></tr>
+                <tr><td class="fname">Concurring Review 신청</td><td>WF_TAX_CONCURRING_REVIEW</td><td>Tax 부서 Concurring Review 신청 문서입니다.</td></tr>
+                <tr><td class="fname">기안지(일반품의서)</td><td>WF_GIANJI_FORM</td><td>일반품의 기안 문서입니다.</td></tr>
+                <tr><td class="fname">지출의뢰서</td><td>WF_3PBR_PAYMENT_SWIFT</td><td>[3P거래] 각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다. SWIFT</td></tr>
+                <tr><td class="fname">[구]지출의뢰서</td><td>WF_GICHUL_GYULIL</td><td>각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">지출의뢰서</td><td>WF_3PBR_PAYMENT</td><td>[3P거래] 각종 거래처 비용지급(Payment Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">가지급금 신청</td><td>WF_ADVANCED_REQ</td><td>가지급금(Advanced Request)을 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">소액현금 신청</td><td>WF_PETTY_CASH_REQ</td><td>소액현금 신청서(Petty Cash Request)를 신청하는 문서입니다.</td></tr>
+                <tr><td class="fname">발신공문</td><td>WF_GONGMUN_OUT</td><td>법인에서 발송되는 모든 공문을 등록하는 문서입니다.</td></tr>
+                <tr><td class="fname">행사(세미나/이벤트) 관련 비용 사전승인 신청</td><td>WF_PREAPP_EVENT_REQ</td><td>행사(세미나/이벤트) 관련 비용 사전승인 신청 양식입니다.</td></tr>
+                <tr><td class="fname">매뉴얼 조서 스캔 요청</td><td>WF_ASSG_REPORT_SCAN_REQ</td><td></td></tr>
+                <tr><td class="fname">최종 산출물 품의</td><td>WF_END_SANCHULMUL_NOTPD</td><td>최종산출물에 대한 내부 기안 승인 및 외부 고객사 담당자에게 메일 발송이 가능한 품의 양식입니다.</td></tr>
+                <tr><td class="fname">사용인감 신청</td><td>WF_AUDIT_USE_STAMP</td><td>법인 사용인감 신청 문서입니다.</td></tr>
+                <tr><td class="fname">법인정책 제/개정 신청</td><td>WF_RRO_LAW_POLICY_DEFAULT</td><td>법인정책의 제·개정 시, 신청하는 양식입니다.</td></tr>
+                <tr><td class="fname">계약서 수정 승인 요청서</td><td>WF_CONTRACT_CHG_FORM</td><td>TAX ,FA 계약서 수정 승인 요청 문서 입니다.</td></tr>
+                <tr><td class="fname">업무협조전</td><td>WF_FORM_COORDINATE</td><td></td></tr>
+                <tr><td class="fname">테스트 양식</td><td>WF_TEST_YANGSIK</td><td></td></tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+<script>
+    // document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
+
+
+
+        document.querySelector(".top-search-text").addEventListener("keydown", (e) => {
+            if (e.key == "Enter" || e.keyCode == 13) {
+                SearchText();
+            }
+        });
+
+        document.querySelector(".top-search-button").addEventListener("click", (e) => {
+            SearchText();
+        });
+
+        Tab_Click();
+        Curtain_hide();
+
+    });
+
+    function OpenPopup(tr) {
+
+        const fmpf = tr.getAttribute("fmpf");
+
+        window.open("/CoviWeb/Approval/popup_column_mapping_master.html?fmpf=" + fmpf, "SettingAppLine", "height=565px;width:1100px;status=no;resizable=no;help=no;");
+    }
+
+    function Curtain_hide() {
+        document.querySelector("#divSelectPosotionLayout").style.display = "none";
+    }
+
+    function Tab_Click(nav_button) {
+
+        const nav_buttons = document.querySelectorAll(".nav1 button");
+
+        if (xIsEmpty(nav_button)) nav_button = nav_buttons[0];
+
+        const attr_tbid = "tbid";
+
+        const target_tbody_id = nav_button.getAttribute(attr_tbid);
+        const hide_list = document.querySelectorAll(".main-table tbody");
+        for (var i = 0; i < hide_list.length; i++) {
+
+            const current_id = hide_list[i].getAttribute("id");
+            var display = "";
+            if (target_tbody_id != current_id) display = "none";
+            hide_list[i].style.display = display;
+        }
+
+        for (var i = 0; i < nav_buttons.length; i++) {
+            const current_id = nav_buttons[i].getAttribute(attr_tbid);
+            var css_class = "nav1-tab";
+            if (target_tbody_id == current_id) {
+                css_class = "nav1-tab-on";
+            }
+            nav_buttons[i].setAttribute("class", css_class);
+        }
+
+    }
+
+    function SearchText() {
+        const ctrl = document.querySelector(".top-search-text");
+        const keyword = ctrl.value;
+
+        // 키워드 없으면 리턴
+        if (xIsEmpty(keyword)) return;
+
+        const nav_button_result = document.querySelector(".nav1 button[keyword='" + keyword + "']");
+
+        if (!xIsEmpty(nav_button_result)) {
+            Tab_Click(nav_button_result);
+            return;
+        }
+
+        const main_table = document.querySelector(".main-table");
+        const main_table_td_fnames = main_table.querySelectorAll("td.fname");
+        // td.fname
+        const new_tbody = document.createElement("tbody");
+
+        for (var i = 0; i < main_table_td_fnames.length; i++) {
+            if (0 <= main_table_td_fnames[i].innerText.replaceAll(" ", "").indexOf(keyword.replaceAll(" ", ""))) {
+                new_tbody.appendChild(main_table_td_fnames[i].parentElement.cloneNode(true));
+            }
+        }
+
+        // 검색된게 없으면 리턴
+        if (0 == new_tbody.querySelectorAll("tr").length) {
+
+            const new_td = document.createElement("td");
+            new_td.innerText = "검색 결과가 없습니다.";
+            new_td.setAttribute("colspan", "3");
+            new_td.setAttribute("class", "err_msg");
+            new_tbody.appendChild(document.createElement("tr").appendChild(new_td));
+        }
+
+        const result_tbody = main_table.querySelectorAll("tbody[id^='new']");
+        const new_id = "new_tbody" + (result_tbody.length + 1).toString();
+        new_tbody.setAttribute("id", new_id);
+        main_table.appendChild(new_tbody);
+        const new_li = document.createElement("li");
+        const new_button = document.createElement("button");
+        new_button.setAttribute("type", "button");
+        new_button.setAttribute("class", "nav1-tab");
+        new_button.setAttribute("tbid", new_id);
+        new_button.setAttribute("onclick", "Tab_Click(this);");
+        new_button.setAttribute("keyword", keyword);
+        new_button.innerText = "검색:" + keyword;
+        new_li.appendChild(new_button);
+        document.querySelector(".nav1").appendChild(new_li);
+
+        Tab_Click(new_button);
+    }
+
+    function xIsEmpty(p) {
+        if (typeof p === "undefined" || p == null) {
+            return true;
+        }
+        else if (p.toString() === "") {
+            return true;
+        }
+        return false;
+    }
+
+</script>
+</html>
