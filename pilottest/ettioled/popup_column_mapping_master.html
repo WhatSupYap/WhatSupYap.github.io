@@ -12,7 +12,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between
+            justify-content: space-between;
         }
 
         ul {
@@ -101,8 +101,7 @@
             /* border-bottom: 1px solid gray; */
         }
 
-        .item_detail
-        {
+        .item_detail {
             display: block;
             overflow: auto;
             scrollbar-width: thin;
@@ -155,25 +154,53 @@
             color: rgba(0, 0, 0, 0.7);
         }
 
-        table, tr, td {
+        table,
+        tr,
+        td {
             border-collapse: collapse;
         }
 
         #item_table th {
             background-color: #e2e2e2;
-        }
-
-        #item_table th, #item_table td  {
-            border-bottom: 1px solid rgb(200, 200, 200);
-            
-            /* table-layout: fixed; */
-        }
-
-        td.col-id, td.col-id {
+            text-align: left;
             padding-left: 10px;
         }
 
-    </style>
+        #item_table th,
+        #item_table td {
+            border-bottom: 1px solid rgb(200, 200, 200);
+            height: 24px;
+            box-sizing: border-box;
+            /* table-layout: fixed; */
+        }
+
+        #item_table td input[type='text'] {
+            /* width: calc(50% - 10px); */
+            width: calc(100% - 10px);
+        }
+
+        #item_table .th1,
+        #item_table .th2 {
+            width: calc(50% - 31px);
+        }
+
+        #item_table .td_infos {
+            width: calc(50% - 31px);
+        }
+
+        #item_table .th3 {
+            width: 62px;
+        }
+
+        td.col-id,
+        td.col-id {
+            padding-left: 10px;
+        }
+
+        .col {
+            display: inline-flex;
+        }
+    </style>    
 </head>
 
 <body>
@@ -200,19 +227,16 @@
             <div id="div-list" class="flex-center-center">
                 <div class="item">
                     <strong class="flex-sbetween-center" style="display: inline;">폼 컬럼 리스트</strong>
-                    <button style="height: 20px; box-sizing: border-box; font-size: 12px; float: right; margin-right: 20px;" onclick="alert('미구현');">행추가</button>
+                    <button
+                        style="height: 20px; box-sizing: border-box; font-size: 12px; float: right; margin-right: 20px;"
+                        onclick="addRow_Click();">행추가</button>
                     <div class="item_detail">
                         <table id="item_table">
-                            <colgroup>
-                                <col style="width: auto;">
-                                <col style="width: auto;">
-                                <col style="width: 62px">
-                            </colgroup>
                             <thead>
                                 <tr>
-                                    <th>컬럼ID</th>
-                                    <th>컬럼명</th>
-                                    <th>옵션</th>
+                                    <th class="th1">컬럼ID</th>
+                                    <th class="th2">컬럼명</th>
+                                    <th class="th3">옵션</th>
                                 </tr>
                             </thead>
                         </table>
@@ -238,10 +262,15 @@
         </section>
     </main>
     <footer class="flex-sbetween-center side-padding">
-        <button onclick="alert('기능 미구현');">엑셀 불러오기</button>
+        <button onclick="importExcel_Click();">엑셀 불러오기</button>
+        <div style="display: none;">
+            <input type="file" id="excelFile" onchange="excelExport(event)"/>
+        </div>
         <span>&nbsp;</span>
     </footer>
+    <script src="/assets/js/xlsx.full.min.js"></script>
     <script>
+
         const class_name_colid = "col-id";
         const class_name_colnm = "col-name";
         const class_name_colopt = "col-option";
@@ -257,13 +286,22 @@
             const item_table = document.querySelector("#item_table");
             const item_tr = item_table.querySelectorAll("tbody tr");
 
+            var invaildCtrl = null;
+
             var xml = "";
             xml += "<" + xml_root_nodename + ">";
             for (let i = 0; i < item_tr.length; i++) {
-                const this_col_id = item_tr[i].querySelector("td." + class_name_colid).innerText;
-                const this_col_name = item_tr[i].querySelector("td." + class_name_colnm).innerText;
-                xml += "<" + this_col_id + ">" + this_col_name + "</" + this_col_id + ">";
+                const this_col_id_td = item_tr[i].querySelector("td." + class_name_colid);
+                const this_col_name_td = item_tr[i].querySelector("td." + class_name_colnm);
+
+                const this_col_id_value = this_col_id_td.innerText.trim();
+                const this_col_name_value = this_col_name_td.innerText.trim();
+
+                if (this_col_id_value == "" || this_col_name_value == "") continue;
+
+                xml += "<" + this_col_id_value + ">" + this_col_name_value + "</" + this_col_id_value + ">";
             }
+
             xml += "</" + xml_root_nodename + ">";
 
             item_xml.value = xml;
@@ -278,77 +316,187 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(xmlString, "text/xml");
 
-            const new_tbody = document.createElement("tbody");
+            const target_tbody = document.createElement("tbody");
             for (let i = 0; i < doc.childNodes[0].childNodes.length; i++) {
 
                 const node = doc.childNodes[0].childNodes[i];
-                const new_tr = document.createElement("tr");
-                new_tr.setAttribute("idx",i);
-
-                const new_td_col_id = document.createElement("td");
-                new_td_col_id.classList.add(class_name_colid);
-                new_td_col_id.innerHTML = node.nodeName;
-                new_tr.appendChild(new_td_col_id);
-
-                const new_td_col_name = document.createElement("td");
-                new_td_col_name.classList.add(class_name_colnm);
-                new_td_col_name.innerHTML = node.innerHTML;
-                new_tr.appendChild(new_td_col_name);
-
-                const new_td_col_option = document.createElement("td");
-                new_td_col_name.classList.add(class_name_colopt);
-                // <button>-</button><button>▲</button><button>▼</button>
-                const new_btn_1 = document.createElement("button");
-                new_btn_1.innerText = text_minus;
-                new_btn_1.addEventListener("click", function(e) { col_opt_click(e.currentTarget); });
-                const new_btn_2 = document.createElement("button");
-                new_btn_2.innerText = text_up;
-                new_btn_2.addEventListener("click", function(e) { col_opt_click(e.currentTarget); });
-                const new_btn_3 = document.createElement("button");
-                new_btn_3.innerText = text_down;
-                new_btn_3.addEventListener("click", function(e) { col_opt_click(e.currentTarget); });
-
-                new_td_col_option.appendChild(new_btn_1);
-                new_td_col_option.appendChild(new_btn_2);
-                new_td_col_option.appendChild(new_btn_3);
-
-                new_tr.appendChild(new_td_col_option);
-
-                new_tbody.appendChild(new_tr);
+                addRow(target_tbody, node.nodeName, node.innerHTML);
             }
 
             const item_table = document.querySelector("#item_table");
             const item_tbody = item_table.querySelector("tbody");
 
             if (item_tbody != null) item_table.removeChild(item_tbody);
-            item_table.appendChild(new_tbody);
+            item_table.appendChild(target_tbody);
         }
 
-        function col_opt_click(ctrl)
-        {
-            const current_tr = ctrl.parentElement.parentElement;
-            const current_tbody = current_tr.parentElement;
-
-            if (ctrl.innerText == text_minus)
-            {
-                const current_tbody = current_tr.parentElement;
-                current_tbody.removeChild(current_tr);
-            }
-            else if (ctrl.innerText == text_up)
-            {
-                current_tbody.insertBefore(current_tr, current_tr.previousSibling);
-            }
-            if (ctrl.innerText == text_down)
-            {
-                current_tbody.insertBefore(current_tr.nextSibling, current_tr);
-            }
-
-        }
-
-        function setsample()
-        {
-            item_xml.value = "<column_mapping><COL_NAME_1>시금치</COL_NAME_1><COL_ID_2>감자</COL_ID_2><COL_ID_3>고구마</COL_ID_3><COL_ID_4>녹차</COL_ID_4><COL_ID_5>참치회</COL_ID_5><COL_ID_6>마포갈비</COL_ID_6><COL_ID_7>컬럼명 7</COL_ID_7><COL_ID_8>컬럼명 8</COL_ID_8><COL_ID_9>컬럼명 9</COL_ID_9><COL_ID_10>컬럼명 10</COL_ID_10><COL_ID_11>컬럼명 11</COL_ID_11><COL_ID_12>컬럼명 12</COL_ID_12><COL_ID_13>컬럼명 13</COL_ID_13><COL_ID_14>컬럼명 14</COL_ID_14><COL_ID_15>컬럼명 15</COL_ID_15><COL_ID_16>컬럼명 16</COL_ID_16><COL_ID_17>컬럼명 17</COL_ID_17><COL_ID_18>컬럼명 18</COL_ID_18><COL_ID_19>컬럼명 19</COL_ID_19><COL_ID_20>컬럼명 20</COL_ID_20><COL_ID_21>컬럼명 21</COL_ID_21><COL_ID_22>컬럼명 22</COL_ID_22><COL_ID_23>컬럼명 23</COL_ID_23><COL_ID_24>컬럼명 24</COL_ID_24><COL_ID_25>컬럼명 25</COL_ID_25><COL_ID_26>컬럼명 26</COL_ID_26><COL_ID_27>컬럼명 27</COL_ID_27><COL_ID_28>컬럼명 28</COL_ID_28><COL_ID_29>컬럼명 29</COL_ID_29><COL_ID_30>컬럼명 30</COL_ID_30><COL_ID_31>컬럼명 31</COL_ID_31><COL_ID_32>컬럼명 32</COL_ID_32><COL_ID_33>컬럼명 33</COL_ID_33><COL_ID_34>컬럼명 34</COL_ID_34><COL_ID_35>컬럼명 35</COL_ID_35><COL_ID_36>컬럼명 36</COL_ID_36><COL_ID_37>컬럼명 37</COL_ID_37><COL_ID_38>컬럼명 38</COL_ID_38><COL_ID_39>컬럼명 39</COL_ID_39><COL_ID_40>컬럼명 40</COL_ID_40><COL_ID_41>컬럼명 41</COL_ID_41><COL_ID_42>컬럼명 42</COL_ID_42><COL_ID_43>컬럼명 43</COL_ID_43><COL_ID_44>컬럼명 44</COL_ID_44><COL_ID_45>컬럼명 45</COL_ID_45><COL_ID_46>컬럼명 46</COL_ID_46><COL_ID_47>컬럼명 47</COL_ID_47><COL_ID_48>컬럼명 48</COL_ID_48><COL_ID_49>컬럼명 49</COL_ID_49><COL_ID_50>컬럼명 50</COL_ID_50><COL_ID_51>컬럼명 51</COL_ID_51><COL_ID_52>컬럼명 52</COL_ID_52><COL_ID_53>컬럼명 53</COL_ID_53><COL_ID_54>컬럼명 54</COL_ID_54><COL_ID_55>컬럼명 55</COL_ID_55><COL_ID_56>컬럼명 56</COL_ID_56><COL_ID_57>컬럼명 57</COL_ID_57><COL_ID_58>컬럼명 58</COL_ID_58><COL_ID_59>컬럼명 59</COL_ID_59><COL_ID_60>컬럼명 60</COL_ID_60><COL_ID_61>컬럼명 61</COL_ID_61><COL_ID_62>컬럼명 62</COL_ID_62><COL_ID_63>컬럼명 63</COL_ID_63><COL_ID_64>컬럼명 64</COL_ID_64><COL_ID_65>컬럼명 65</COL_ID_65><COL_ID_66>컬럼명 66</COL_ID_66><COL_ID_67>컬럼명 67</COL_ID_67><COL_ID_68>컬럼명 68</COL_ID_68><COL_ID_69>컬럼명 69</COL_ID_69><COL_ID_70>컬럼명 70</COL_ID_70><COL_ID_71>컬럼명 71</COL_ID_71><COL_ID_72>컬럼명 72</COL_ID_72><COL_ID_73>컬럼명 73</COL_ID_73><COL_ID_74>컬럼명 74</COL_ID_74><COL_ID_75>컬럼명 75</COL_ID_75><COL_ID_76>컬럼명 76</COL_ID_76><COL_ID_77>컬럼명 77</COL_ID_77><COL_ID_78>컬럼명 78</COL_ID_78><COL_ID_79>컬럼명 79</COL_ID_79><COL_ID_80>컬럼명 80</COL_ID_80><COL_ID_81>컬럼명 81</COL_ID_81><COL_ID_82>컬럼명 82</COL_ID_82><COL_ID_83>컬럼명 83</COL_ID_83><COL_ID_84>컬럼명 84</COL_ID_84><COL_ID_85>컬럼명 85</COL_ID_85><COL_ID_86>컬럼명 86</COL_ID_86><COL_ID_87>컬럼명 87</COL_ID_87><COL_ID_88>컬럼명 88</COL_ID_88><COL_ID_89>컬럼명 89</COL_ID_89><COL_ID_90>컬럼명 90</COL_ID_90><COL_ID_91>컬럼명 91</COL_ID_91><COL_ID_92>컬럼명 92</COL_ID_92><COL_ID_93>컬럼명 93</COL_ID_93><COL_ID_94>컬럼명 94</COL_ID_94><COL_ID_95>컬럼명 95</COL_ID_95><COL_ID_96>컬럼명 96</COL_ID_96><COL_ID_97>컬럼명 97</COL_ID_97><COL_ID_98>컬럼명 98</COL_ID_98><COL_ID_99>컬럼명 99</COL_ID_99><COL_ID_100>컬럼명 100</COL_ID_100></column_mapping>";
+        function setsample() {
+            item_xml.value = "<column_mapping><COL_NAME_1>시금치</COL_NAME_1><COL_ID_2>감자</COL_ID_2><COL_ID_3>고구마</COL_ID_3><COL_ID_4>녹차</COL_ID_4><COL_ID_5>참치회</COL_ID_5><COL_ID_6>마포갈비</COL_ID_6><COL_ID_7>평양냉면</COL_ID_7><COL_ID_8>피자</COL_ID_8><COL_ID_9>양념치킨</COL_ID_9><COL_ID_10>컬럼명 10</COL_ID_10><COL_ID_11>컬럼명 11</COL_ID_11><COL_ID_12>컬럼명 12</COL_ID_12><COL_ID_13>컬럼명 13</COL_ID_13><COL_ID_14>컬럼명 14</COL_ID_14><COL_ID_15>컬럼명 15</COL_ID_15><COL_ID_16>컬럼명 16</COL_ID_16><COL_ID_17>컬럼명 17</COL_ID_17><COL_ID_18>컬럼명 18</COL_ID_18><COL_ID_19>컬럼명 19</COL_ID_19><COL_ID_20>컬럼명 20</COL_ID_20><COL_ID_21>컬럼명 21</COL_ID_21><COL_ID_22>컬럼명 22</COL_ID_22><COL_ID_23>컬럼명 23</COL_ID_23><COL_ID_24>컬럼명 24</COL_ID_24><COL_ID_25>컬럼명 25</COL_ID_25><COL_ID_26>컬럼명 26</COL_ID_26><COL_ID_27>컬럼명 27</COL_ID_27><COL_ID_28>컬럼명 28</COL_ID_28><COL_ID_29>컬럼명 29</COL_ID_29><COL_ID_30>컬럼명 30</COL_ID_30><COL_ID_31>컬럼명 31</COL_ID_31><COL_ID_32>컬럼명 32</COL_ID_32><COL_ID_33>컬럼명 33</COL_ID_33><COL_ID_34>컬럼명 34</COL_ID_34><COL_ID_35>컬럼명 35</COL_ID_35><COL_ID_36>컬럼명 36</COL_ID_36><COL_ID_37>컬럼명 37</COL_ID_37><COL_ID_38>컬럼명 38</COL_ID_38><COL_ID_39>컬럼명 39</COL_ID_39><COL_ID_40>컬럼명 40</COL_ID_40><COL_ID_41>컬럼명 41</COL_ID_41><COL_ID_42>컬럼명 42</COL_ID_42><COL_ID_43>컬럼명 43</COL_ID_43><COL_ID_44>컬럼명 44</COL_ID_44><COL_ID_45>컬럼명 45</COL_ID_45><COL_ID_46>컬럼명 46</COL_ID_46><COL_ID_47>컬럼명 47</COL_ID_47><COL_ID_48>컬럼명 48</COL_ID_48><COL_ID_49>컬럼명 49</COL_ID_49><COL_ID_50>컬럼명 50</COL_ID_50><COL_ID_51>컬럼명 51</COL_ID_51><COL_ID_52>컬럼명 52</COL_ID_52><COL_ID_53>컬럼명 53</COL_ID_53><COL_ID_54>컬럼명 54</COL_ID_54><COL_ID_55>컬럼명 55</COL_ID_55><COL_ID_56>컬럼명 56</COL_ID_56><COL_ID_57>컬럼명 57</COL_ID_57><COL_ID_58>컬럼명 58</COL_ID_58><COL_ID_59>컬럼명 59</COL_ID_59><COL_ID_60>컬럼명 60</COL_ID_60><COL_ID_61>컬럼명 61</COL_ID_61><COL_ID_62>컬럼명 62</COL_ID_62><COL_ID_63>컬럼명 63</COL_ID_63><COL_ID_64>컬럼명 64</COL_ID_64><COL_ID_65>컬럼명 65</COL_ID_65><COL_ID_66>컬럼명 66</COL_ID_66><COL_ID_67>컬럼명 67</COL_ID_67><COL_ID_68>컬럼명 68</COL_ID_68><COL_ID_69>컬럼명 69</COL_ID_69><COL_ID_70>컬럼명 70</COL_ID_70><COL_ID_71>컬럼명 71</COL_ID_71><COL_ID_72>컬럼명 72</COL_ID_72><COL_ID_73>컬럼명 73</COL_ID_73><COL_ID_74>컬럼명 74</COL_ID_74><COL_ID_75>컬럼명 75</COL_ID_75><COL_ID_76>컬럼명 76</COL_ID_76><COL_ID_77>컬럼명 77</COL_ID_77><COL_ID_78>컬럼명 78</COL_ID_78><COL_ID_79>컬럼명 79</COL_ID_79><COL_ID_80>컬럼명 80</COL_ID_80><COL_ID_81>컬럼명 81</COL_ID_81><COL_ID_82>컬럼명 82</COL_ID_82><COL_ID_83>컬럼명 83</COL_ID_83><COL_ID_84>컬럼명 84</COL_ID_84><COL_ID_85>컬럼명 85</COL_ID_85><COL_ID_86>컬럼명 86</COL_ID_86><COL_ID_87>컬럼명 87</COL_ID_87><COL_ID_88>컬럼명 88</COL_ID_88><COL_ID_89>컬럼명 89</COL_ID_89><COL_ID_90>컬럼명 90</COL_ID_90><COL_ID_91>컬럼명 91</COL_ID_91><COL_ID_92>컬럼명 92</COL_ID_92><COL_ID_93>컬럼명 93</COL_ID_93><COL_ID_94>컬럼명 94</COL_ID_94><COL_ID_95>컬럼명 95</COL_ID_95><COL_ID_96>컬럼명 96</COL_ID_96><COL_ID_97>컬럼명 97</COL_ID_97><COL_ID_98>컬럼명 98</COL_ID_98><COL_ID_99>컬럼명 99</COL_ID_99><COL_ID_100>컬럼명 100</COL_ID_100></column_mapping>";
             parsingXml2Table();
+        }
+
+        function xIsEmpty(p) {
+            if (typeof p === "undefined" || p == null) {
+                return true;
+            }
+            else if (p.toString() === "") {
+                return true;
+            }
+            return false;
+        }
+
+        function addRow_Click() {
+            var has_tbody = true;
+            const item_table = document.querySelector("#item_table");
+            var target_tbody = item_table.querySelector("tbody");
+            if (xIsEmpty(target_tbody)) {
+                has_tbody = false;
+                target_tbody = document.createElement("tbody");
+            }
+            addRow(target_tbody, "", "");
+
+            if (!has_tbody) {
+                item_table.appendChild(target_tbody);
+            }
+
+            const tr = target_tbody.querySelectorAll("tr");
+            tr[tr.length - 1].querySelector("td").click();
+        }
+
+        function addRow(target_tbody, node_id, node_name) {
+            const new_tr = document.createElement("tr");
+            // new_tr.setAttribute("idx", i);
+            // td id, name 생성
+            const td_infos = [[class_name_colid, node_id], [class_name_colnm, node_name]];
+            td_infos.forEach(td_info => {
+                const new_td = document.createElement("td");
+                new_td.classList.add(td_info[0]);
+                new_td.classList.add("td_infos");
+                const new_span = document.createElement("span");
+                new_span.innerText = td_info[1];
+                new_td.appendChild(new_span);
+                new_td.addEventListener("click", function (e) {
+
+                    //if (stop) return;
+                    // item_xml.value += ",1";
+                    const current_td = e.currentTarget;
+                    if (0 < current_td.querySelectorAll("input[type='text']").length) return;
+                    const span = current_td.querySelector("span");
+                    const new_text = document.createElement("input");
+                    new_text.setAttribute("type", "text");
+                    new_text.setAttribute("value", span.innerText);
+                    current_td.appendChild(new_text);
+                    new_text.focus();
+                    span.style.display = "none";
+
+                    const events = ["focusout", "keyup"];
+                    events.forEach(evt => {
+                        new_text.addEventListener(evt, function (e) {
+
+                            if (e.type == "keyup" && !(e.keyCode == 13 || e.keyCode == 27)) return;
+
+                            const current_td = e.currentTarget.parentElement;
+                            const span = current_td.querySelector("span");
+                            const text = current_td.querySelector("input[type='text']");
+                            var new_text = text.value;
+                            var old_text = span.innerText;
+
+                            // if (0 == new_text.length)
+                            // {
+                            //     item_xml.value += ",2";
+                            //     text.focus();
+                            //     stop = true;
+                            //     return;
+                            // }
+
+                            var is_okey = false;
+                            if (0 < new_text.length && new_text != old_text) {
+                                if (e.type == "keyup" && (e.key == "Enter" || e.keyCode == 13)) {
+                                    is_okey = true;
+                                }
+                                else if (e.type == "focusout") {
+                                    is_okey = true;
+                                }
+                            }
+                            if (is_okey) {
+                                span.innerText = text.value;
+                            }
+
+                            if (!xIsEmpty(text)) current_td.removeChild(text);
+                            span.style.display = "";
+                        });
+
+                    });
+
+                });
+                new_tr.appendChild(new_td);
+            });
+
+            // td opt 생성
+            const new_td_col_option = document.createElement("td");
+            new_td_col_option.classList.add(class_name_colopt);
+
+            const OptButtons = [text_minus, text_up, text_down];
+            OptButtons.forEach(OptButton => {
+                const new_btn = document.createElement("button");
+                new_btn.innerText = OptButton;
+                new_btn.addEventListener("click", function (e) {
+                    //col_opt_click(e.currentTarget); 
+                    const ctrl = e.currentTarget;
+                    const current_tr = ctrl.parentElement.parentElement;
+                    const current_tbody = current_tr.parentElement;
+
+                    if (ctrl.innerText == text_minus) {
+                        const current_tbody = current_tr.parentElement;
+                        current_tbody.removeChild(current_tr);
+                    }
+                    else if (ctrl.innerText == text_up) {
+                        current_tbody.insertBefore(current_tr, current_tr.previousSibling);
+                    }
+                    if (ctrl.innerText == text_down) {
+                        current_tbody.insertBefore(current_tr.nextSibling, current_tr);
+                    }
+                });
+                new_td_col_option.appendChild(new_btn);
+            });
+
+            new_tr.appendChild(new_td_col_option);
+            target_tbody.appendChild(new_tr);
+        }
+
+        function excelExport(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function () {
+                var fileData = reader.result;
+                var wb = XLSX.read(fileData, { type: 'binary' });
+                wb.SheetNames.forEach(function (sheetName) {
+                    var rowObj = XLSX.utils.sheet_to_json(wb.Sheets[sheetName]);
+
+                    var target_tbody = document.createElement("tbody");
+                    for (var i = 0; i < rowObj.length; i++)
+                    {
+                        addRow(target_tbody, rowObj[i].COLUMN_ID, rowObj[i].COLUMN_NAME);
+                    }
+                    const item_table = document.querySelector("#item_table");
+                    item_table.appendChild(target_tbody);
+                    
+                    const item_tbody = item_table.querySelector("tbody");
+                    if (item_tbody != null) item_table.removeChild(item_tbody);
+                    item_table.appendChild(target_tbody);
+
+                });
+
+                parsingTable2Xml();
+            };
+            reader.readAsBinaryString(input.files[0]);
+
+            input.value = "";
+        }
+
+        function importExcel_Click()
+        {
+            document.querySelector("#excelFile").click();
         }
 
     </script>

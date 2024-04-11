@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let var const</title>
+    <style>
+        textarea {
+            width: 300px;
+            height: 500px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="let_test()">let</button>
+    <button onclick="var_test()">var</button>
+    <button onclick="const_test()">const</button>
+    <div>
+        <label for="code">코드</label>
+        <textarea id="code"></textarea>
+    </div>
+    <script>
+        function let_test()
+        {
+            code.value = "";
+            code.value += "let a = 1;\r\n";
+            code.value += "{\r\n";
+            code.value += "let b = 2;\r\n";
+            code.value += "}\r\n";
+            code.value += "a = 3;\r\n";
+            code.value += "//b = 4;\r\n";            
+            code.value += "alert(a + b);";
+
+            try {
+                let a = 1;
+                {
+                    let b = 2;
+                }
+                a = 3;
+                //b = 4;
+                alert(a + b);
+            } catch (error) {
+                // 에러 발생 시 실행되는 코드
+                //console.error(error.message); // "변수가없음 is not defined" 출력
+                alert(error.message);
+            }
+        }
+
+        function var_test()
+        {
+            code.value = "";
+            code.value += "var a = 1;\r\n";
+            code.value += "{\r\n";
+            code.value += "var b = 2;\r\n";
+            code.value += "}\r\n";
+            code.value += "a = 3;\r\n";
+            code.value += "//b = 4;\r\n";            
+            code.value += "alert(a + b);";
+
+            try {
+                var a = 1;
+                {
+                    var b = 2;
+                }
+                a = 3;
+                //b = 4;
+                alert(a + b);
+            } catch (error) {
+                // 에러 발생 시 실행되는 코드
+                //console.error(error.message); // "변수가없음 is not defined" 출력
+                alert(error.message);
+            }
+        }
+
+        function const_test()
+        {
+            code.value = "";
+            code.value += "const a = 1;\r\n";
+            code.value += "{\r\n";
+            code.value += "const b = 2;\r\n";
+            code.value += "}\r\n";
+            code.value += "a = 3;\r\n";
+            code.value += "//b = 4;\r\n";            
+            code.value += "alert(a + b);";
+
+            try {
+                const a = 1;
+                {
+                    const b = 2;
+                }
+                a = 3;
+                //b = 4;
+                alert(a + b);
+            } catch (error) {
+                // 에러 발생 시 실행되는 코드
+                //console.error(error.message); // "변수가없음 is not defined" 출력
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+</html>
