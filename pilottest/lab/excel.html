@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엑셀 업/다운</title>
+    <script src="/assets/js/xlsx.full.min.js"></script>
+    <script src="/assets/js/FileSaver.min.js"></script>
+</head>
+<body>
+    
+    <button onclick="downExcelSample()">엑셀 다운</button>
+    <script>
+        function downExcelSample() {
+                // step 1. workbook 생성
+                var wb = XLSX.utils.book_new();
+
+                // step 2. 시트 만들기 
+                var newWorksheet = excelHandler.getWorksheet();
+
+                newWorksheet["B2"].z = "0.00%";
+                newWorksheet["B3"].z = "#,##0";
+                
+
+                // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
+                XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+                // step 4. 엑셀 파일 만들기 
+                var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+
+                // step 5. 엑셀 파일 내보내기 
+                saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), excelHandler.getExcelFileName());
+            }
+            var excelHandler = {
+                getExcelFileName: function () {
+                    return 'upload_sample.xlsx';
+                },
+                getSheetName: function () {
+                    return 'Sheet1';
+                },
+                getExcelData: function () {
+                    return [['COLUMN_ID', 'COLUMN_NAME'], ['FOOD_1', 1.1], ['FOOD_2', 1234567894561423456789], ['FOOD_3', '햄버거']];
+                },
+                getWorksheet: function () {
+                    return XLSX.utils.aoa_to_sheet(this.getExcelData());
+                }
+            }
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+                var view = new Uint8Array(buf);  //create uint8array as viewer
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+                return buf;
+            }
+    </script>
+</body>
+</html>
