@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코딩연습 50: Some/Every + @</title>
+</head>
+<body>
+    <div id="divResult"></div>
+    <script>
+
+        const numbers1 = [1,2,3,4,5,6];
+        const names = ["김","이","박","최"];
+        const scores = [100,200,120,90,180];
+
+        const allEvens_every = (numbers) => {
+            return numbers.every(number => number % 2 == 0);
+        }
+
+        const allEvens_some = (numbers) => {
+            //if (numbers.some((number) => { }))
+            // names.every(name => name[0] == "김");
+            return numbers.some(number => number % 2 == 0);
+        }
+
+        const charactor = {
+            id: "뿌뿌뿡",
+            job: "paladin",
+            atk: 100,
+            def: 10,
+            doAttack: () => {
+                return this.atk;
+            },
+            sogae1: () => {
+                setTimeout(() => {
+                    divResult.innerHTML += `<br>소개1: 팀원의 체력을 책임진다 인간성기사 ${this.id}!`;
+                }, 1000);
+            },
+            sogae2: () => {
+                //divResult.innerHTML += `<br>${this}`;
+                divResult.innerHTML += `<br>소개2: 팀원의 체력을 책임진다 인간성기사 ${this.id}!`;
+            },
+            sogae3: function() {
+                setTimeout(() => {
+                    divResult.innerHTML += `<br>소개3: 팀원의 체력을 책임진다 인간성기사 ${this.id}!`;
+                }, 1000);
+            },
+            sogae4: function() {
+                //divResult.innerHTML += `<br>${this}`;
+                divResult.innerHTML += `<br>소개4: 팀원의 체력을 책임진다 인간성기사 ${this.id}!`;
+            }
+
+
+        }
+
+        const doit = () => {
+
+            const divResult = document.getElementById("divResult");
+
+            divResult.innerHTML += "const numbers1 = [1,2,3,4,5,6];";
+
+            divResult.innerHTML += "<br>allEvens_every:" + allEvens_every(numbers1);
+            divResult.innerHTML += "<br>allEvens_some:" + allEvens_some(numbers1);;
+
+            //divResult.innerHTML += "<br>allEvens_some:" + allEvens_some(numbers1);;
+
+            // 대충 반복된다는 것인듯 accumulator = 배열돌면서리턴되는 값, currentValue 배열 현재 밸류
+            divResult.innerHTML += "<br>numbers1.reduce:" + numbers1.reduce((accumulator, currentValue) => { return accumulator +  currentValue });
+
+            divResult.innerHTML += "<br>names.reduce:" + names.reduce((accumulator, currentValue) => { return accumulator +  currentValue });
+
+            divResult.innerHTML += "<br>scores.reduce:" + scores.reduce((min, currentValue) => {
+                if (currentValue < min)
+                {
+                    return currentValue;
+                }
+                else
+                {
+                    return min;
+                }
+
+                //return accumulator +  currentValue;
+            });
+
+            charactor.sogae1();
+            charactor.sogae2();
+            charactor.sogae3();
+            charactor.sogae4();
+
+        }
+
+        doit();
+        
+
+    </script>
+</body>
+</html>

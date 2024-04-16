@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 23 - 자바스크립트의 최신 기능들</title>
+    <script src="/assets/js/dummy.js"></script>
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+            /* width: 100%;
+            height: 100%; */
+            /* height: 100vh; */
+            margin: 0;
+            /* display: flex; */
+        }
+
+        h1.h1-title,
+        .divConsole {
+            color: white;
+            padding-left: 20px;
+            padding-right: 50px;
+            /* display: block; */
+        }
+
+        .lab {
+            padding-left: 20px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid white;
+        }
+
+        .jusuk {
+            color: rgb(0, 155, 0);
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h1-title"></h1>
+    <div class="divConsole">
+        <div class="lab l243">
+            <h2>243. 매개 변수 분해</h2>
+            <span></span>
+        </div>
+        <div class="lab l242">
+            <h2>242. 객체 분해</h2>
+            <span></span>
+        </div>
+        <div class="lab l241">
+            <h2>241. 배열 분해</h2>
+            <span></span>
+        </div>
+        <div class="lab l240">
+            <h2>240. Rest 매개 변수</h2>
+            <span></span>
+        </div>
+        <div class="lab l239">
+            <h2>239. 객체 스프레드 구문</h2>
+            <span></span>
+        </div>
+        <div class="lab l238">
+            <h2>238. 행렬 리터럴 스프레드 구문</h2>
+            <span></span>
+        </div>
+        <div class="lab l237">
+            <h2>237. 함수 호출시의 스프레드 구문 `...array`</h2>
+            <span></span>
+        </div>
+        <div class="lab l236">
+            <h2>236. 기본 매개 변수 `param = "default"`</h2>
+            <span></span>
+        </div>
+    </div>
+    <script>
+        let lab = 0;
+        let func_name = "";
+        const h1Title = document.getElementsByClassName("h1-title")[0];
+        h1Title.innerText = document.querySelector("title").innerText;
+
+        const logConsole = (title, msg) => {
+            const divConsole = document.querySelector(`.l${lab} span`);
+            divConsole.innerHTML += `<br> ${title} : ${msg}`;
+        }
+
+        const logConsole2 = (msg = "") => {
+            const divConsole = document.querySelector(`.l${lab} span`);
+            divConsole.innerHTML += `<br> ${msg}`;
+        }
+
+        const logConsole3 = (msg = "") => {
+
+            const divConsole = document.querySelector(`.l${lab} span`);
+            const span = document.createElement("span");
+            span.classList.add("jusuk");
+            span.innerHTML = ` // ${msg}`;
+            divConsole.appendChild(span);
+        }
+
+        const doL236 = (numberSide) => {
+            return Math.floor(Math.random() * numberSide) + 1;
+        }
+
+        const doL236_withDefault_old = (numberSide) => {
+            if (numberSide === undefined) {
+                numberSide = 6;
+            }
+            return Math.floor(Math.random() * numberSide) + 1;
+        }
+
+        const doL236_withDefault_new = (numberSide = 6) => {
+            return Math.floor(Math.random() * numberSide) + 1;
+        }
+
+        { // 236
+            lab = 236;
+            func_name = "doL236()";
+
+            logConsole(func_name, doL236());
+            logConsole(`${func_name} + 기본값 옛날버젼`, doL236_withDefault_old());
+            logConsole(`${func_name} + 기본값 신규버젼`, doL236_withDefault_new());
+        }
+
+        { // 237
+            lab++;
+            func_name = `do${lab}()`;
+
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 123, 2345, 435, 66, 45645, 7, 12322];
+
+            logConsole2(`가능`);
+            logConsole(`ㄴ Math.max(1,2,3,4,5,6,7,8,123,2345,435,66,45645,7,12322);`, Math.max(1, 2, 3, 4, 5, 6, 7, 8, 123, 2345, 435, 66, 45645, 7, 12322));
+            logConsole2();
+            logConsole2(`const numbers = [1,2,3,4,5,6,7,8,123,2345,435,66,45645,7,12322];`);
+            logConsole2();
+            logConsole2(`불가능`);
+            logConsole(`ㄴ Math.max(numbers);`, Math.max(numbers));
+            logConsole2(`가능`);
+            logConsole(`ㄴ Math.max(...numbers);`, Math.max(...numbers)); logConsole3(`"..."이 포인트`);
+            logConsole2();
+            logConsole(`numbers`, numbers);
+            logConsole(`...numbers`, ...numbers);
+        }
+
+        { // 238
+            const allClasses = [];
+            lab++;
+            func_name = `do${lab}()`;
+
+            allClasses.push(...swingDance.pattens, ...wow.classes);
+            logConsole(`allClasses.push(...swingDance.pattens, ...wow.classes);`, allClasses);
+        }
+
+        { // 239
+            lab++;
+            func_name = `do${lab}()`;
+
+            const cbsProfessions = { ...wow.character.카운트베이시.professions, ...wow.classes };
+
+            logConsole(`cbsProfessions = {...wow.character.카운트베이시.professions, ...wow.classes};`, cbsProfessions);
+
+        }
+
+        { // 240
+            lab++;
+            func_name = `do${lab}()`;
+
+            // function sum() {
+            //     console.log(arguments);
+            // }
+
+            function sum(...nums) {
+                return nums.reduce((total, num) => total + num);
+            }
+
+            logConsole2(`function sum(...nums) { return nums.reduce((total, num) => total + num); }`);
+            logConsole3("...부분이 포인트");
+            logConsole(`sum(1,2,3,4,5,6,56456,7,7);`, sum(1, 2, 3, 4, 5, 6, 56, 7, 7));
+            logConsole2();
+
+            const marioKartResult = (first, second, ...everyElse) => {
+                logConsole(`영예의 1등은`, first);
+                logConsole(`에 못지 않은 2등은`, second);
+                logConsole(`감사합니다.`, everyElse);
+            }
+
+            marioKartResult("마리오", "루이지", "쿠파", "데이지 공주")
+
+        }
+
+        { // 241
+            lab++;
+            func_name = `do${lab}()`;
+
+            const damages = wow.character.카운트베이시.trainingDummyDamage;
+            const [first, second, third, ...nexts] = damages;
+
+            logConsole2("wow.character.카운트베이시.trainingDummyDamage: [50,70,90,30,20,230]");
+            logConsole2("const [first, second, third, ...nexts] = damages;");
+            logConsole("first", first);
+            logConsole("second", second);
+            logConsole("third", third);
+            logConsole("nexts", nexts);
+            logConsole2();
+
+        }
+
+        { // 242
+            lab++;
+            func_name = `do${lab}()`;
+
+
+            const cb = wow.character.부캐;
+
+            const { level, class_, race, ...nexts } = wow.character.부캐;
+
+            logConsole2("wow.character.부캐");
+            logConsole2("const [level, class_, race, ...nexts] = wow.character.부캐;");
+            logConsole("level", level);
+            logConsole("class", class_);
+            logConsole("race", race);
+            logConsole("nexts", nexts);
+            logConsole2();
+        }
+
+        { // 243
+            lab++;
+            func_name = `do${lab}()`;
+
+            logConsole2("swingDance.anmu.filter((mu) => 160 < mu.bpm).map(mu => {");
+            logConsole2("logConsole2(`${mu.name}`);");
+            logConsole2("});");
+
+            swingDance.anmu.filter((mu) => 160 < mu.bpm).map(mu => {
+                logConsole2(`${mu.name}`);
+            });
+
+
+            //swingDance.anmu.filter((mu) => 160 < mu.bpm);
+
+        }
+        /*
+        { // 239
+        lab++;
+        func_name = `do${lab}()`;
+        }
+*/
+        //logConsole(lab, func_name, doL236());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코딩연습 55~8</title>
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+            /* width: 100%;
+            height: 100%; */
+            /* height: 100vh; */
+            margin: 0;
+            /* display: flex; */
+        }
+
+        h1.h1-title,
+        .divConsole {
+            color: white;
+            padding-left: 20px;
+            /* display: block; */
+        }
+
+        .lab {
+            border-bottom: 1px solid white;
+        }
+
+        .cp57 li {
+        background-color: #B10DC9;
+        }
+
+        .cp57 .highlight {
+        background-color: #7FDBFF;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h1-title"></h1>
+    <div class="divConsole">
+        <!--
+            index.html에 몇 가지 기본 마크업을 제공해 드렸습니다. 마크업을 직접 변경하지 마세요. 대신 JavaScript를 사용하여 다음과 같이 변경하세요.
+
+            id가 container인 div를 선택하세요. JavaScript를 사용하여 텍스트 정렬을 'center'로 설정하세요.
+
+            이미지를 선택하고 JavaScript를 사용하여 너비를 150px으로, 테두리 반경을 50%로 지정하세요.
+
+            JavaScript에서 속성 이름을 사용할 때는 camelCased 형식을 사용해야 한다는 것을 잊지 마세요.(background-color가 아닌 backgroundColor 등)
+        -->
+        <div class="lab cp55">
+            <h2>55. 마법의 숲 서클 연습</h2>
+            <div class="container">
+                <h1>I &hearts; Trees</h1>
+                <img src="https://images.unsplash.com/photo-1596328546171-77e37b5e8b3d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80" alt="">
+            </div>
+            <script>
+                document.querySelector(".cp55 .container").style.textAlign = "center";
+                //const img = document.querySelector(".cp55 img");
+                const img = document.querySelector(".cp55 .container img");
+                img.style.width = "150px";
+                img.style.borderRadius = "50%";
+            </script>
+        </div>
+        <div class="lab cp56">
+            <h2>56. 무지개 텍스트 연습</h2>
+            <!--DON'T TOUCH THIS FILE PLEASE!-->
+            <h1>
+                <span>R</span>
+                <span>A</span>
+                <span>I</span>
+                <span>N</span>
+                <span>B</span>
+                <span>O</span>
+                <span>W</span>
+            </h1>
+            <script>
+
+                const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+                const spans = document.querySelectorAll(".cp56 span");
+                //const spans = document.querySelectorAll("span");
+                let cnt_cp56 = 0;
+                for (let span of spans)
+                {
+                    span.style.color = colors[cnt_cp56];
+                    cnt_cp56++;
+                }
+
+
+            </script>
+        </div>
+        <!--
+            index.html을 보면 6개의 <li> 요소가 있으며, 이 중 2개에는 'highlight'클래스가 적용되어 있습니다.
+
+            JavaScript와 classList 속성을 사용하여 highlight클래스를 가진 요소를 반전하세요.
+
+            기본적으로 모든 <li> 요소를 순회하면서 각 요소의 'highlight' 클래스를 토글하세요. 최종 결과는 다음과 같아야 합니다.
+        -->
+        <div class="lab cp57">
+            <h2>57. ClassList 실습: 반전</h2>
+            <!--LEAVE THIS FILE ALONE!-->
+            <ul>
+                <li>Hello</li>
+                <li class="highlight">Hello</li>
+                <li>Hello</li>
+                <li>Hello</li>
+                <li class="highlight">Hello</li>
+                <li>Hello</li>
+            </ul>
+            <script>
+                const liNormal = document.querySelectorAll("li:not(.highlight)");
+                const lihighlight = document.querySelectorAll("li.highlight");
+                for (let li of liNormal)
+                {
+                    li.classList.add("highlight");
+                }
+                for (let li of lihighlight)
+                {
+                    li.classList.remove("highlight");
+                }
+            </script>
+        </div>
+        <!-- 
+            index.html을 건드리지 않고 JavaScript를 사용하여 정확히 100개의 새 버튼 요소를 생성하세요!
+            index.html에 제공해 드린 컨테이너 요소 안에 각각의 새 버튼을 추가하세요.
+            안타깝게도 유데미의 연습 도구에서는 append 메서드를 지원하지 않으므로 appendChild를 사용해야 할 것입니다. 다음 단계를 따르세요.
+
+            정확히 100개의 새 버튼 요소를 생성합니다.
+
+            각 버튼의 내부에는 텍스트가 있어야 합니다(내용은 상관 없음).
+
+            각 버튼은 container div 안에 추가되어야 합니다.
+
+            힌트: 100번 반복하세요. 루프 안에 새로운 빈 버튼 요소를 생성하세요. 버튼에 내부 텍스트를 추가하세요. appendChild를 사용하여 컨테이너에 버튼을 추가하세요.
+        -->
+        <div class="lab cp58">
+            <h2>58. 버튼 100개 만들기 연습</h2>
+            
+            <div class="container">
+            </div>
+            <script>
+                const thisDiv = document.querySelector("div.cp58");
+                const container = thisDiv.querySelector(".container");
+                // const container = document.querySelector("#container");
+                for (let i = 0; i < 100; i++)
+                {
+                    const btn = document.createElement("button");
+                    btn.innerText = "Hey!"
+                    container.appendChild(btn);
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

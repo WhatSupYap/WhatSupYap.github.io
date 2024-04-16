@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout과 setInterval</title>
+</head>
+
+<body>
+    <h1>setInterval 예제</h1>
+    <button class="btnTestSetTimeout">SetTimeout</button>
+    <button class="btnTestSetInterval">SetInterval</button>
+    <button class="btnTestClearInterval">ClearInterval</button>
+    <div id="diva"></div>
+    
+    
+    
+    <h1>setInterval 예제</h1>
+    <p id="counter">0</p>
+    <button id="startBtn">시작</button>
+    <button id="stopBtn" disabled>중지</button>
+
+    <script>
+        const testSetTimeout = () => {
+            document.getElementById("diva").innerHTML += "<br>Ready!";
+            setTimeout(() => {
+                document.getElementById("diva").innerHTML += "<br>Go!";
+            }, 3000)
+            document.getElementById("diva").innerHTML += "<br>Are you still there?";
+        }
+
+        
+        let id;
+        let cnt = 0;
+
+        const btnTestSetTimeout = document.getElementsByClassName("btnTestSetTimeout");
+        const btnTestSetInterval = document.getElementsByClassName("btnTestSetInterval");
+        const btnTestClearInterval = document.getElementsByClassName("btnTestClearInterval");
+
+        btnTestSetTimeout[0].addEventListener("click", testSetTimeout);
+        btnTestSetInterval[0].addEventListener("click", () => {
+            
+            id = setInterval(() => {
+                if(cnt == 0)
+                {
+                document.getElementById("diva").innerHTML += "<br>Get! Set!";
+                document.getElementById("diva").innerHTML += "<br>Ready!";
+            }
+                cnt++;
+                document.getElementById("diva").innerHTML += "<br>Go! " + cnt;
+            }, 1000)
+            
+        });
+
+        btnTestClearInterval[0].addEventListener("click", () => {
+            alert("cnt:" + cnt);
+            clearInterval(id);
+        });
+        
+
+        let intervalId;
+    let counter = 0;
+
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const counterElement = document.getElementById('counter');
+
+    startBtn.addEventListener('click', () => {
+      // setInterval 사용하여 1초마다 counter 증가 및 화면 표시
+      intervalId = setInterval(() => {
+        counter++;
+        counterElement.textContent = counter;
+      }, 1000);
+
+      // 시작 버튼 비활성화 및 중지 버튼 활성화
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+    });
+
+    stopBtn.addEventListener('click', () => {
+      // setInterval 취소
+      clearInterval(intervalId);
+
+      // 시작 버튼 활성화 및 중지 버튼 비활성화
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+    });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박자 기록</title>
+    <style>
+        .pressPlace{
+            background-color: aquamarine;
+            width: 300px;
+            height: 300px;
+            border: 1px solid sandybrown;
+        }
+
+        .down {
+            background-color: black;
+            height: 10px;
+            display:inline-block;
+        }
+        .up {
+            background-color: white;
+            height: 10px;
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+    <button id="startBtn">▶</button>
+    <button id="stopBtn">■</button>
+
+    <input type="text" id="divSpace" placeholder="마우스 클릭 후 스페이스 바를 누르세요">
+    <div id="resultArea" class="pressPlace"></div>
+    <div id="resultArea2">
+
+    </div>
+
+    <script>
+
+        let recodingFlag = false;
+
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const divSpace = document.getElementById('divSpace');
+        const resultArea = document.getElementById('resultArea');
+        const resultArea2 = document.getElementById('resultArea2');
+        
+
+        // 초기화
+        stopBtn.disabled = true;
+
+        startBtn.addEventListener("click", () => {
+            recodingFlag = true;
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        stopBtn.addEventListener("click", () => {
+
+            downTime = null;
+            upTime = null;
+            IsKeydowning = false;
+            recodingFlag = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+
+        let keyupcount = 0;
+        let keydowncount = 0;
+        let downTime = null;
+        let upTime = null;
+        let IsKeydowning = false;
+        const timelabs = [];
+        let oldtime = null;
+
+
+        // divSpace.addEventListener('keydown', () => {
+            
+        //     keydowncount++;
+        //     resultArea.innerText = `down: ${keydowncount}`;
+
+        //     if (downTime === null)
+        //     {
+        //         oldtime = Date.now();
+        //     }
+        //     else
+        //     {
+        //         const newTime = Date.now();
+        //         const elapsedTime = newTime - oldtime;
+        //         const divdown = document.createElement("div");
+        //         divdown.classList.add("down");
+        //         divdown.style.height = `${elapsedTime/10}px`;
+        //         resultArea2.appendChild(divdown);
+        //         timelabs.push({ms: elapsedTime, type: "up"});
+        //         //resultArea.innerText += `<br>down: ${elapsedTime}ms`;
+        //         downTime = null;
+        //     }
+        // });
+
+        divSpace.addEventListener('keydown', () => {
+            if (!recodingFlag) return;
+            keydowncount++;
+            resultArea.innerText = `down: ${keydowncount} up: ${keyupcount}`;
+            //if(IsKeydowning) return;
+
+            if (downTime === null)
+            {
+                downTime = Date.now();
+                IsKeydowning = true;
+            }
+            else
+            {
+                downTime = Date.now();
+                const elapsedTime = downTime - upTime;
+                const divdown = document.createElement("div");
+                divdown.classList.add("up");
+                divdown.style.width = `${elapsedTime/10}px`;                
+                resultArea2.appendChild(divdown);
+                timelabs.push({ms: elapsedTime, type: "up"});
+                //resultArea.innerText += `<br>down: ${elapsedTime}ms`;
+                
+            }
+        });
+
+        divSpace.addEventListener('keyup', () => {
+            if (!recodingFlag) return;
+            //if (downTime === null) return;
+            ///const endTime = Date.now();
+            upTime = Date.now();
+            const elapsedTime = upTime - downTime;
+            const divdown = document.createElement("div");
+            divdown.classList.add("down");
+            divdown.style.width = `${elapsedTime/10}px`;
+            timelabs.push({ms: elapsedTime, type: "down"});
+            resultArea2.appendChild(divdown);
+
+            //resultArea.innerText += `<br>UP: ${elapsedTime}ms`;
+            //downTime = null;
+            keyupcount++;
+            resultArea.innerText = `down: ${keydowncount} up: ${keyupcount}`;
+            IsKeydowning = false;
+        });
+
+    </script>
+</body>
+</html>

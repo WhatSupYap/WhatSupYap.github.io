@@ -87,7 +87,7 @@
             width: 30px;
         }
 
-        #div-list,
+        #divList,
         #div-textarea {
             width: calc((100% - 30px) / 2);
         }
@@ -222,20 +222,20 @@
                 </span></h1>
         </header>
         <nav class="flex-sbetween-center side-padding">
-            <div id="div-version">
+            <div id="divVersion">
                 <strong>버젼관리</strong>
-                <select id="sct-version" pre-revision="0">
+                <select id="sctVersion" pre-revision="0">
                     <option value="0">0 (최신)</option>
 
                 </select>
             </div>
-            <div id="div-buttons">
+            <div id="divButtons">
                 <button id="save-form">저장</button>
                 <button id="cancel-form">취소</button>
             </div>
         </nav>
         <section class="content">
-            <div id="div-list" class="flex-center-center">
+            <div id="divList" class="flex-center-center">
                 <div class="item">
                     <strong class="flex-sbetween-center" style="display: inline;">폼 컬럼 리스트</strong>
                     <button id="add-row"
@@ -294,7 +294,7 @@
         const text_minus = "-";
         const text_up = "▲";
         const text_down = "▼";
-        const sct_v = document.getElementById("sct-version");
+        const sct_v = document.getElementById("sctVersion");
         const form = document.getElementById("form1");
         const const_prefix_hdn_new = "hdnNew_";
         const const_prefix_hdn_ori = "hdnOrigin_";
@@ -387,7 +387,7 @@
                     events.forEach(evt => {
                         new_text.addEventListener(evt, function (e) {
 
-                            if (e.type == "keyup" && !(e.keyCode == 13 || e.keyCode == 27)) return;
+                            if (e.type === "keyup" && !(e.keyCode === 13 || e.keyCode === 27)) return;
 
                             const current_td = e.currentTarget.parentElement;
                             const span = current_td.querySelector("span");

@@ -1,0 +1,173 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    
+    <script>
+        const abc = function (coco) {
+            return "abc:" + coco;
+        }
+
+        function callTwice(func) {
+            func();
+            func();
+        }
+
+        function rollDie(){
+
+            const a = Math.floor(Math.random() * 6) + 1;
+            document.write(a);
+        }
+        
+        // 리턴값으로 함수를 반환하기 = 실행 X
+        function returnFunction()
+        {
+            const rand = Math.random();
+            if (rand > 0.5)
+            {
+                return function() 
+                {
+                    document.write("<br>");
+                    document.writeln("아 졸려");
+                    document.write("<br>");
+                    document.writeln("멍청이!");
+                }
+            }
+            else
+            {
+                return function() 
+                {
+                    document.write("<br>");
+                    document.writeln("집에 가서 자고싶다");
+                    document.write("<br>");
+                    document.writeln("멍청이!");
+                }
+            }
+        }
+
+        function warriorAttack()
+        {
+            document.write("<br>");
+            document.writeln("전사의 파워어택 데미지:" + warrior.powerAttack());
+        }
+
+
+        const warrior = {
+            HP:  1000,
+            ATK: 40,
+            DEF: 30,
+            powerAttack: function() {
+                
+                return this.ATK * (Math.floor(Math.random() * 6) + 1);
+            }
+        }        
+
+        document.writeln(abc("123"));
+        document.write("<br>");
+        callTwice(rollDie);
+        //console.log
+        returnFunction();
+
+        warriorAttack();
+
+        const square = {
+            area: function (a) {
+                return a * a;
+            },
+            perimeter: function (a) {
+                return a * 4;
+            }
+        }
+
+        /*
+
+        hen이라는 이름의 오브젝트를 정의하세요. 이 오브젝트는 세 가지 속성을 가져야 합니다.
+
+name은 'Helen'으로 설정되어야 합니다.
+
+eggCount는 0으로 설정되어야 합니다.
+
+layAnEgg는 eggCount의 값을 1씩 증가시키고 문자열 "EGG"를 반환하는 메서드여야 합니다. this 키워드를 사용해야 할 것입니다.
+
+hen.name // "Helen"
+hen.eggCount // 0
+hen.layAnEgg() // "EGG"
+hen.layAnEgg() // "EGG"
+hen.eggCount // 2
+        */
+
+        const hen = {
+            name: "Helen",
+            eggCount: 0,
+            layAnEgg: function() {
+                this.eggCount += 1;
+            }
+        }
+
+        try
+        {
+            hen.xx();
+        }
+        catch (ex)
+        {
+            document.write("<br>");
+            document.writeln(ex + "오류 데미지:" + warrior.powerAttack(1));
+        }
+
+        // DO NOT ALTER THE FOLLOWING CODE:
+const fullNames = [{first: 'Albus', last: 'Dumbledore'}, {first: 'Harry', last: 'Potter'}, {first: 'Hermione', last: 'Granger'}, {first: 'Ron', last: 'Weasley'}, {first: 'Rubeus', last: 'Hagrid'}, {first: 'Minerva', last: 'McGonagall'}, {first: 'Severus', last: 'Snape'}];
+
+// Write your code here
+
+const firstNames = fullNames.map(function(arry) {
+    return arry.first;
+});
+
+const firstNames2 = fullNames.map(arry => (
+    `${arry.first} ${arry.last}`
+));
+
+// const firstNames3 = fullNames.map(this.first);
+/*
+greet라는 이름의 화살표 함수 표현식을 작성하세요. 이 함수는 사람의 이름을 나타내는 단일 문자열 인수를 받아야 하며 아래와 같은 인사말 문자열을 반환해야 합니다.
+
+greet("Hagrid") //"Hey Hagrid!" 
+greet("Luna") //"Hey Luna!"
+반드시 화살표 함수 구문을 사용하세요!
+*/
+
+const greet3 = (name) => (
+    "Hey " + name + "!"
+)
+// 위아래 기능적 동일
+const greet4 = (name) => {
+    return "Hey " + name + "!";
+}
+
+const gree53 = (name) => "Hey " + name + "!";
+
+const aaa = function (num) {
+    return num % 2 === 0;
+}
+const aaa2 = (num) => {
+    return num % 2 === 0;
+}
+const aaa3 = num => {
+    return num % 2 === 0;
+}
+const aaa4 = num => (
+    num % 2 === 0
+)
+const aaa5 = num => num % 2 === 0;
+
+
+
+
+    </script>
+</body>
+</html>

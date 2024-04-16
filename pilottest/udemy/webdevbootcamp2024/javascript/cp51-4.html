@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코딩연습 51~4</title>
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+            /* width: 100%;
+            height: 100%; */
+            /* height: 100vh; */
+            margin: 0;
+            /* display: flex; */
+        }
+
+        h1.h1-title,
+        .divConsole {
+            color: white;
+            padding-left: 20px;
+            /* display: block; */
+        }
+
+        .lab {
+            border-bottom: 1px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="h1-title"></h1>
+    <div class="divConsole">
+        <div class="lab cp51">
+            <h2 id="mainheading">I &hearts; unicorns</h2>
+            <img src="https://devsprouthosting.com/images/unicorn.jpg" id="unicorn" alt="unicorn">
+            <script>
+                const image = document.getElementById("unicorn");
+                const heading = document.getElementById("mainheading");
+            </script>
+        </div>
+        <!--
+            "done" 클래스를 가진 모든 요소를 선택하고 그것을 doneTodos라는 변수에 저장하세요.
+            
+            하나의 체크박스를 선택하고 그것을 checkbox라는 변수에 저장하세요. 페이지에 입력 요소가 두 개 이상 있으니 주의하세요!
+            type 속성을 사용하여 선택해야 할 것입니다.
+            
+            (CSS 속성 선택자가 기억나지 않는다면 구글에서 검색해 보세요! 저라면 그렇게 할 거에요!)
+                
+
+        -->
+        <div class="lab cp52">
+            <h2>Garden Todos</h2>
+            <input type="text" placeholder="New Todo">
+            <ul>
+                <li>Start Seedlings</li>
+                <li class="done">Deadhead Zinnias</li>
+                <li class="done">Water Tomatoes</li>
+                <li class="done">Harvest Potatoes</li>
+                <li>Prune Roses</li>
+            </ul>
+            <label>Delete All</label>
+            <input type="checkbox" id="scales" name="scales" checked>
+            <script>
+
+
+                const doneTodos = document.querySelectorAll(".done");
+                const checkbox = document.querySelector("input[type=checkbox]");
+            </script>
+        </div>
+        <!--
+            피클 연습
+                index.html에 몇 가지 기본 마크업을 제공해 드렸습니다.
+
+                JavaScript를 사용하여 현재 "Delicious"라고 쓰여 있는 <span> 요소를 선택하세요.
+
+                JavaScript를 사용하여 해당 텍스트를 "Disgusting"으로 변경하세요. 여러분이 피클을 좋아하는 별난 입맛을 가졌더라도 텍스트를 'Disgusting'로 변경해 주세요.
+
+                속임수를 써서 HTML 파일을 직접 업데이트할 수도 있겠지만 그러지 않으셨으면 좋겠습니다! JavaScript를 사용하여 HTML을 조작하는 것이 이 실습의 목표이니까요.
+        -->
+        <div class="lab cp53">
+            <h2>피클 연습</h2>
+            <!--PLEASE LEAVE THIS LINE ALONE! MAKE YOUR CHANGES USING JAVASCRIPT!!-->
+            <h1>Pickles Are <span>Delicious</span></h1>
+            <script>
+                document.querySelector("h1 span").innerText = "Disgusting";
+            </script>
+        </div>
+        <!--
+            속성 조작 실습
+            DOM 요소 속성으로 작업하는 연습을 해보겠습니다. 아주 기본적인 마크업 몇 가지를 제공해 드렸습니다. 이미지 요소를 선택하고
+
+            해당 소스를 다음 url로 변경하세요. https://devsprouthosting.com/images/chicken.jpg
+
+            대체 텍스트를"chicken"으로 변경하세요.
+        -->
+        <div class="lab cp54">
+            <h2>속성 조작 실습</h2>
+            <!--DONT CHANGE ANYTHING IN THIS FILE, PLEASE!-->
+            Egg and Chicken
+
+
+            <h4>Which Came First?</h4>
+            <img src="https://devsprouthosting.com/images/egg.jpg" width="200px">
+            <!-- image source: unsplash.com -->
+            <script>
+                document.querySelector("img").setAttribute("src","https://devsprouthosting.com/images/chicken.jpg");
+                document.querySelector("img").setAttribute("alt","chicken");
+            </script>
+        </div>
+    </div>
+    <script>
+        const h1Title = document.getElementsByClassName("h1-title")[0];
+        h1Title.innerText = document.querySelector("title").innerText;
+
+    </script>
+</body>
+
+</html>
