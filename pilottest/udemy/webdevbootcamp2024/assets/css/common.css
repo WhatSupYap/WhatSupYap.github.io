@@ -1,0 +1,42 @@
+﻿/* <link href="/pilottest/udemy/webdevbootcamp2024/assets/css/common.css" rel="stylesheet"> */
+/* 유데미 강의 전용 CSS */
+
+
+body {
+    background-color: rgb(20, 20, 20);
+    /* width: 100%;
+    height: 100%; */
+    /* height: 100vh; */
+    margin: 0;
+    /* display: flex; */
+    color: white;
+}
+
+h1.h1-title {    
+    padding-left: 20px;
+    margin-bottom: 30px;
+    /* display: block; */
+}
+
+a, a:link {
+    color: rgb(255, 245, 190);
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: rgb(255, 235, 122);
+}
+
+section {
+    padding-left: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+tl t::before {
+ content: "#";
+}
+
+tl t {
+    font-size: 12px;
+}

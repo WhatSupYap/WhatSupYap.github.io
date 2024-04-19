@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* display: none; */
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* 원하는 너비 조정 */
+  background-color: white;
+  padding: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.popup.show {
+  display: block;
+}
+    </style>
+</head>
+<body>
+
+    123123123
+    <div class="popup">
+        <div class="popup-content">123123123
+          </div>
+        <button class="close-button">닫기</button>
+      </div>
+      <script>
+        const popup = document.querySelector('.popup');
+const closeButton = document.querySelector('.close-button');
+
+closeButton.addEventListener('click', () => {
+  popup.classList.remove('show');
+});
+      </script>
+</body>
+</html>

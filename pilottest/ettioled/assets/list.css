@@ -1,0 +1,264 @@
+﻿body {
+    margin: 0;
+    font-size: 12px;
+}
+
+.top,
+.top-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.top {
+    height: 31px;
+    background: url(/GWImages/Blue/Covi/common/n_tbbg.gif) repeat-x;
+}
+
+.top-title {
+    margin-left: 10px;
+}
+
+.top-search {
+    width: 180px;
+    margin-right: 10px;
+}
+
+.top-search-text {
+    width: 120px;
+    height: 22px;
+    box-sizing: border-box;
+    border: 1px solid #86a0cc;
+    /*margin-right: 10px;*/
+}
+
+.top-search-button {
+    background: left url(/GwImages/BLUE/Covi/Common/btn/btn_icon01_search.gif) white;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    height: 22px;
+    box-sizing: border-box;
+    border: 1px solid #86a0cc;
+}
+
+.top-search-button:hover {
+    background: left url(/GwImages/BLUE/Covi/Common/btn/btn_icon01_search.gif) #fff9d7;
+    background-position: 5px;
+    background-repeat: no-repeat;
+    border: #d6b079 solid 1px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav1 {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.nav1 li {
+    display: inline;
+}
+
+.nav1-tab {
+    height: 22px;
+    border: 1px solid #B4B4B4;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(#FAFAFA, #E9E9E9);
+    color: #666666;
+    /*transition: 200ms ease-in-out;*/
+}
+
+.nav1-tab-on {
+    height: 22px;
+    border: 1px solid #B4B4B4;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(#6C7DB3, #41548E);
+    color: white;
+    /*transition: 200ms ease-in-out;*/
+}
+
+.nav1-tab:hover {
+    height: 22px;
+    border: 1px solid #B4B4B4;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(#6C7DB3, #41548E);
+    color: white;
+}
+
+.main-table {
+    width: 100%;
+    color: #7c7c7c;
+}
+
+.main-table thead th {
+    background-color: #e1e2f2;
+    height: 30px;
+}
+
+.main-table tbody td {
+    border-bottom: 1px solid gray;
+    height: 25px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.main-table tr:hover {
+    background-color: rgb(183, 255, 211, 0.5);
+}
+
+@media (max-width:1100px) {
+    .main-table {
+        font-size: 11px;
+    }
+}
+
+.err_msg {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    height: 30px;
+}
+
+/* 레이어 팝업 공통 */
+
+.layerPop {
+    position: fixed;
+}
+
+.layerPop-Curtain {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: lightgray;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+/*  레이어 팝업 - 로딩 */
+
+.layerPop-loding .layerPop-Content {
+    position: fixed;
+    width: 200px;
+    top: 35%;
+    left: 50%;
+    margin-left: -100px;
+    height: 130px;
+    border: 1px solid gray;
+    z-index: 1002;
+    background-color: White;
+    text-align: center;
+}
+
+.layerPop-loding .p1 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.layerPop-Gif {
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+
+
+/*  list_column_mapping_master_exceldown.aspx 레이어 팝업 */
+
+.layerPop-FormInfo .layerPop-Content {
+    position: fixed;
+    width: 600px;
+    /* height: 220px; */
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    /* margin-left: -100px; */
+    border: 1px solid gray;
+    border-radius: 2px;
+    z-index: 1002;
+    background-color: White;
+    text-align: center;
+}
+
+.layerPop-FormInfo .p1 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.layerPop-FormInfo .layerPop-Content {
+    display: flex;
+    flex-direction: column;
+}
+
+.layerPop-FormInfo .pop-title {
+    background-color: #253050;
+    height: 50px;
+    display: flex;
+    /* justify-items: center; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.layerPop-FormInfo h2 {
+    margin: 0px;
+    color: white;
+}
+
+.layerPop-FormInfo .close-laypop,
+.layerPop-FormInfo .space-empty {
+    width: 24px;
+    height: 24px;
+}
+
+.layerPop-FormInfo dt,
+.layerPop-FormInfo dd {
+    display: inline;
+    text-align: left;
+}
+
+.layerPop-FormInfo dl {
+    display: flex;
+    flex-direction: flex-start;
+    min-height: 40px;
+    margin: 0 10px 0 10px;
+    align-items: center;
+}
+
+.layerPop-FormInfo .excel-down {
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 500;
+}
+
+.layerPop-FormInfo .mg-10px {
+    margin: 10px;
+}
+
+.layerPop-FormInfo .font-14px {
+    font-size: 14px;
+}
+
+.layerPop-FormInfo .bsbb {
+    box-sizing: border-box;
+}
+
+.layerPop-FormInfo .w100 {
+    width: 100px;
+}
+
+.layerPop-FormInfo .w480 {
+    width: 480px;
+}
+
+.layerPop-FormInfo .dl-content {
+    border-bottom: 1px solid gray;
+}

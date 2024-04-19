@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang="ko"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Pragma" content="no-cache">
-    <title>폼 컬럼 마스터 관리</title>
+    <title>폼 데이터 다운로드</title>
     <link rel="stylesheet" href="assets/list.css">
 </head>
 
@@ -16,8 +16,10 @@
     </header>
     <nav>
         <ul class="nav1">
-            <li><button type="button" class="nav1-tab" tbid="tbody0" onclick="Tab_Click(this);" cid="8b05e038-0c82-4023-9113-5f373b5eb95d">공통</button></li>
-<li><button type="button" class="nav1-tab-on" tbid="tbody1" onclick="Tab_Click(this);" cid="45d97bef-66bc-469e-a0b4-d1ec9bb74df1">Operation</button></li>
+            <li>
+            </li>
+            <li><button type="button" class="nav1-tab-on" tbid="tbody0" onclick="Tab_Click(this);" cid="8b05e038-0c82-4023-9113-5f373b5eb95d">공통</button></li>
+<li><button type="button" class="nav1-tab" tbid="tbody1" onclick="Tab_Click(this);" cid="45d97bef-66bc-469e-a0b4-d1ec9bb74df1">Operation</button></li>
 <li><button type="button" class="nav1-tab" tbid="tbody2" onclick="Tab_Click(this);" cid="41f92952-16e0-46ef-b4d4-eb6768611ed8">재경</button></li>
 <li><button type="button" class="nav1-tab" tbid="tbody3" onclick="Tab_Click(this);" cid="2bef6777-ab14-4ed1-9427-37fa248f72f5">인재</button></li>
 <li><button type="button" class="nav1-tab" tbid="tbody4" onclick="Tab_Click(this);" cid="2cae010c-132f-4dc2-9224-6fa51842ef6b">IT</button></li>
@@ -55,7 +57,7 @@
                     <th>Description</th>
                 </tr>
             </thead>
-            <tbody id="tbody0" cid="8b05e038-0c82-4023-9113-5f373b5eb95d" style="display: none;">
+            <tbody id="tbody0" cid="8b05e038-0c82-4023-9113-5f373b5eb95d" style="">
 <tr class="fmif" fmid="fdc27c72-d2b4-4e57-a406-2ec9cd6abb7f" csnm="공통" fname="MUST WIN PURSUIT 펀드 신청서" fmpf="WF_CI_MUSTWIN_REQ" fmds="" rvs="0"><td>MUST WIN PURSUIT 펀드 신청서</td><td>WF_CI_MUSTWIN_REQ</td><td></td></tr>
 <tr class="fmif" fmid="842cb815-48b0-45fa-8361-da2d7ea71681" csnm="공통" fname="AP FUNDING 신청서" fmpf="WF_AP_FUNDING" fmds="" rvs="0"><td>AP FUNDING 신청서</td><td>WF_AP_FUNDING</td><td></td></tr>
 <tr class="fmif" fmid="f457ac33-be1a-4ce2-8079-f437b990f31b" csnm="공통" fname="Concurring Review 신청" fmpf="WF_TAX_CONCURRING_REVIEW" fmds="Tax 부서 Concurring Review 신청 문서입니다. " rvs="0"><td>Concurring Review 신청</td><td>WF_TAX_CONCURRING_REVIEW</td><td>Tax 부서 Concurring Review 신청 문서입니다. </td></tr>
@@ -75,7 +77,7 @@
 <tr class="fmif" fmid="20b3ab58-aa7b-49e3-8fdf-5b631eb0519b" csnm="공통" fname="업무협조전" fmpf="WF_FORM_COORDINATE" fmds="" rvs="0"><td>업무협조전</td><td>WF_FORM_COORDINATE</td><td></td></tr>
 <tr class="fmif" fmid="335640e5-7c3e-4873-8fc7-6a9e983d0778" csnm="공통" fname="테스트 양식" fmpf="WF_TEST_YANGSIK" fmds="" rvs="0"><td>테스트 양식</td><td>WF_TEST_YANGSIK</td><td></td></tr>
 </tbody>
-<tbody id="tbody1" cid="45d97bef-66bc-469e-a0b4-d1ec9bb74df1" style="">
+<tbody id="tbody1" cid="45d97bef-66bc-469e-a0b4-d1ec9bb74df1" style="display: none;">
 <tr class="fmif" fmid="ff9dea0f-9a31-4868-9f86-edf8253efaca" csnm="Operation" fname="경조금 신청" fmpf="WF_KYUNGJOGUM_REQ" fmds="각종 경조금을 신청하는 문서입니다." rvs="0"><td>경조금 신청</td><td>WF_KYUNGJOGUM_REQ</td><td>각종 경조금을 신청하는 문서입니다.</td></tr>
 <tr class="fmif" fmid="02ca1b32-f5d1-4c7b-9b1a-fc0b7fe4889c" csnm="Operation" fname="프로젝트 숙소(업무용 주택) 신청서" fmpf="WF_PROJECT_ACC_REQ" fmds="프로젝트 숙소(업무용 주택) 신청서입니다." rvs="0"><td>프로젝트 숙소(업무용 주택) 신청서</td><td>WF_PROJECT_ACC_REQ</td><td>프로젝트 숙소(업무용 주택) 신청서입니다.</td></tr>
 <tr class="fmif" fmid="54f5e49e-f9dd-4e57-98f4-e958e50837e1" csnm="Operation" fname="책자 신청" fmpf="WF_GA_FIRM_BOOK_REQ" fmds="" rvs="0"><td>책자 신청</td><td>WF_GA_FIRM_BOOK_REQ</td><td></td></tr>
@@ -458,6 +460,39 @@
 
         </table>
     </main>
+    <!-- 레이어 팝업 -  -->
+    <div class="layerPop layerPop-FormInfo" style="display: none;">
+        <div class="layerPop-Content">
+            <div class="pop-title">
+                <span class="space-empty">&nbsp;</span>
+                <h2 class="fname">해외출장 신청4</h2>
+                <button class="close-laypop bsbb mg-10px">X</button>
+            </div>
+            <dl class="dl-content">
+                <dt class="w100">유형</dt>
+                <dd class="csnm w480">Operation</dd>
+            </dl>
+            <dl class="dl-content">
+                <dt class="w100">Form Prefix</dt>
+                <dd class="fmpf w480">WF_OVERSEAS_TRAVEL_REQ</dd>
+            </dl>
+            <dl class="dl-content">
+                <dt class="w100">Description</dt>
+                <dd class="fmds w480" style="overflow: auto; line-height: 25px">해외출장에 대한 승인을 요청하는 문서입니다.</dd>
+            </dl>
+            <dl>
+                <dt class="w100">날짜선택</dt>
+                <dd class="form-data w480">
+                    <input type="date" class="sDate datePicker">~<input type="date" class="eDate datePicker">
+                </dd>
+            </dl>
+            <button class="excel-down bsbb font-14px mg-10px" rvs="4" fmid="5acdd8f3-4f6b-48b5-87ce-f76d78d7a811" fname="해외출장 신청4">
+                <img src="/GwImages/BLUE/Covi/Common/btn/btn_icon01_excel.gif" alt="엑셀출력">
+                <span class="btnText">엑셀출력</span>
+            </button>
+        </div>
+        <div class="layerPop-Curtain"></div>
+    </div>
     <!-- 레이어 팝업 - 로딩중 -->
     <div class="layerPop layerPop-loding" style="display: none;">
         <div class="layerPop-Content">
@@ -467,16 +502,10 @@
         </div>
         <div class="layerPop-Curtain"></div>
     </div>
-    <script src="assets/list.js"></script>        
-    <script>
+    <script src="assets/xlsx.full.min.js"></script>
+    <script src="assets/FileSaver.min.js"></script>
+    <script src="assets/list.js"></script>
+    <script src="assets/formDownload.js"></script>
 
-        for (let fmif of document.querySelectorAll("tr.fmif")) {
-            fmif.addEventListener("click", () => tr_Click(fmif));
-        }
-
-        const tr_Click = (tr) => {
-            window.open("./popup_column_mapping_master.aspx?fid=" + tr.getAttribute("fmid"), "SettingAppLine", "height=565px;width:1100px;status=no;resizable=no;help=no;");
-        }
-    </script>
 
 </body></html>

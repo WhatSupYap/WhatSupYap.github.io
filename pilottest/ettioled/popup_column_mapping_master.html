@@ -1,7 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ko">
-
-<head>
+<html lang="ko"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Pragma" content="no-cache">
     <title>폼 컬럼 마스터 상세</title>
@@ -87,7 +85,7 @@
             width: 30px;
         }
 
-        #divList,
+        #div-list,
         #div-textarea {
             width: calc((100% - 30px) / 2);
         }
@@ -210,36 +208,36 @@
 
 <body>
     <div style="display:none;">
-        <form name="form1" method="post"
-            action="popup_column_mapping_master.aspx?fid=c634c6df-dbb6-405c-884a-4cd9a90f72fb" id="form1">
+        <form name="form1" method="post" action="popup_column_mapping_master.aspx?fid=ff9dea0f-9a31-4868-9f86-edf8253efaca" id="form1">
             <input type="submit" name="btnSave" value="" id="btnSave">
+            <input type="hidden" id="hdnOrigin_0" revision="0" value="<column_mapping><name>이름</name><employee_no>사원번호</employee_no><division>부서</division><classification>직급</classification><enter_date>입사일</enter_date><birth_date>생일</birth_date><request_date>요청일</request_date><amount>금액</amount></column_mapping>">
+
         </form>
     </div>
     <main>
         <header class="flex-sbetween-center">
             <h1>폼 컬럼 마스터 상세 - <span id="form-name">
-                    테스트
+                    경조금 신청
                 </span></h1>
         </header>
         <nav class="flex-sbetween-center side-padding">
-            <div id="divVersion">
+            <div id="div-version">
                 <strong>버젼관리</strong>
-                <select id="sctVersion" pre-revision="0">
+                <select id="sct-version" pre-revision="0">
                     <option value="0">0 (최신)</option>
 
                 </select>
             </div>
-            <div id="divButtons">
+            <div id="div-buttons">
                 <button id="save-form">저장</button>
                 <button id="cancel-form">취소</button>
             </div>
         </nav>
         <section class="content">
-            <div id="divList" class="flex-center-center">
+            <div id="div-list" class="flex-center-center">
                 <div class="item">
                     <strong class="flex-sbetween-center" style="display: inline;">폼 컬럼 리스트</strong>
-                    <button id="add-row"
-                        style="height: 20px; box-sizing: border-box; font-size: 12px; float: right; margin-right: 20px;">행추가</button>
+                    <button id="add-row" style="height: 20px; box-sizing: border-box; font-size: 12px; float: right; margin-right: 20px;">행추가</button>
                     <div class="item_detail">
                         <table id="item_table">
                             <thead>
@@ -249,7 +247,7 @@
                                     <th class="th3">옵션</th>
                                 </tr>
                             </thead>
-                        </table>
+                        <tbody><tr><td class="col-id td_infos"><span>name</span></td><td class="col-name td_infos"><span>이름</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>employee_no</span></td><td class="col-name td_infos"><span>사원번호</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>division</span></td><td class="col-name td_infos"><span>부서</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>classification</span></td><td class="col-name td_infos"><span>직급</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>enter_date</span></td><td class="col-name td_infos"><span>입사일</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>birth_date</span></td><td class="col-name td_infos"><span>생일</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>request_date</span></td><td class="col-name td_infos"><span>요청일</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr><tr><td class="col-id td_infos"><span>amount</span></td><td class="col-name td_infos"><span>금액</span></td><td class="col-option"><button>-</button><button>▲</button><button>▼</button></td></tr></tbody></table>
                     </div>
                 </div>
             </div>
@@ -281,10 +279,8 @@
         </div>
         <span>&nbsp;</span>
     </footer>
-<!-- 필수, SheetJS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
-<!--필수, FileSaver savaAs 이용 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="assets/xlsx.full.min.js"></script>
+    <script src="assets/FileSaver.min.js"></script>
     <script>
 
         const class_name_colid = "col-id";
@@ -294,7 +290,7 @@
         const text_minus = "-";
         const text_up = "▲";
         const text_down = "▼";
-        const sct_v = document.getElementById("sctVersion");
+        const sct_v = document.getElementById("sct-version");
         const form = document.getElementById("form1");
         const const_prefix_hdn_new = "hdnNew_";
         const const_prefix_hdn_ori = "hdnOrigin_";
@@ -335,7 +331,7 @@
 
             const parser = new DOMParser();
             const doc = parser.parseFromString(xmlString, "text/xml");
-
+            
             if (xIsEmpty(isFirst)) isFirst = false;
 
             if (!isFirst && 0 < doc.childNodes[0].querySelectorAll("parsererror").length) {
@@ -387,7 +383,7 @@
                     events.forEach(evt => {
                         new_text.addEventListener(evt, function (e) {
 
-                            if (e.type === "keyup" && !(e.keyCode === 13 || e.keyCode === 27)) return;
+                            if (e.type == "keyup" && !(e.keyCode == 13 || e.keyCode == 27)) return;
 
                             const current_td = e.currentTarget.parentElement;
                             const span = current_td.querySelector("span");
@@ -620,7 +616,7 @@
                 if (!confirm("저장하시겠습니까?\r\n저장은 XML 기준으로 진행됩니다.")) return;
 
 
-
+                
                 // 지금 화면 저장
                 packXml2Form(sct_v);
 
@@ -638,13 +634,15 @@
                     element.value = element.value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
                     const revision = element.getAttribute("revision");
 
-                    if (0 < origin_list.length) {
+                    if (0 < origin_list.length)
+                    {
                         const originValue = origin_list.querySelector("[revision=" + revision + "]").value;
                         if (element.value != originValue) {
                             hdn_save_list.value += revision + ",";
                         }
                     }
-                    else {
+                    else
+                    {
                         hdn_save_list.value += revision + ",";
                     }
                 });
@@ -679,13 +677,11 @@
             });
 
 
-            setDefault("0");
+        setDefault("0");
 
-        });
+    });
 
     </script>
 
 
-</body>
-
-</html>
+</body></html>
