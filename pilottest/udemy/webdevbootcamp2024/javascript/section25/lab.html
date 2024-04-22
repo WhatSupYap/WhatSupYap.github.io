@@ -6,61 +6,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강의</title>
     <script src="/pilottest/udemy/webdevbootcamp2024/assets/js/common.js"></script>
+    <script src="/assets/js/dummy.js"></script>
     <link href="/pilottest/udemy/webdevbootcamp2024/assets/css/common.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
 </head>
 
 <body>
-    <section lab="267">
-        <h2>폼 이벤트 및 preventDefault</h2>
-        <article>
-            
-        </article>
-        <tl>
-            <t>서브밋 막기</t>
-        </tl>
-    </section>
-    <section lab="265">
-        <h2>이벤트와 'this'라는 키워드</h2>
-        <article>
-            
-        </article>
-    </section>
-    <section lab="264">
-        <h2>랜덤 컬러 연습하기</h2>
-        <article>
-            <button id="btn264">Click Me!</button>
-        </article>
-    </section>
-    <section lab="263">
-        <h2>addEventListener</h2>
-        <article>
-            <ul>
-                <li><a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener">mdn</a></li>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events#specifications">참고</a></li>
-                <li>
-                    <h3>element.onclick 와 element.addEventListener 의 차이점</h3>
-                    element.onclick = 1 이벤트 1 펑션<br>
-                    element.addEventListener = 1 이벤트 다중 펑셩 허용<br>
-                    <div>
-                        <button id="btnOnclick">element.onclick</button>
-                        <button id="btnAddEventListener">element.addEventListener</button>
-                    </div>
-                    <div id="divPaper">
+    <main>
+        <section lab="270">
+            <h2>이벤트 위임</h2>
+            <article>
+                <div>
+                    <button class="add">추가</button>
+                    <table class="event-delegate no-d">
+                        <colgroup>
+                            <col style="width: 150px;">
+                            <col style="width: 200px;">
+                            <col style="width: 100px;">
+                            <col style="width: 100px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">노 이벤트 위임 : 이벤트를 직접 넣음</th>
+                            </tr>
+                            <tr>
+                                <th>직업</th>
+                                <th>종족</th>
+                                <th>레벨</th>
+                                <th>삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Shaman</td>
+                                <td>Dark Iron Dwarf</td>
+                                <td class="item-center">49</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                            <tr>
+                                <td>Druid</td>
+                                <td>Dracthyr</td>
+                                <td class="item-center">89</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                            <tr>
+                                <td>Paladin</td>
+                                <td>Lightforged Draenei</td>
+                                <td class="item-center">39</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <button class="add">추가</button>
+                    <table class="event-delegate yes-d">
+                        <colgroup>
+                            <col style="width: 150px;">
+                            <col style="width: 200px;">
+                            <col style="width: 100px;">
+                            <col style="width: 100px;">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="4">이벤트 위임: 부모창에게 넣고 내림</th>
+                            </tr>
+                            <tr>
+                                <th>직업</th>
+                                <th>종족</th>
+                                <th>레벨</th>
+                                <th>삭제</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Deamon Hunter</td>
+                                <td>Zandalari Troll</td>
+                                <td class="item-center">79</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                            <tr>
+                                <td>Mage</td>
+                                <td>Gnome</td>
+                                <td class="item-center">33</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                            <tr>
+                                <td>Shaman</td>
+                                <td>Orc</td>
+                                <td class="item-center">34</td>
+                                <td class="item-center"><button class="remove">X</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+            <tl>
+                <t>이벤트 버블링!</t>
+            </tl>
+        </section>
+        <section lab="269">
+            <h2>이벤트 버블링</h2>
+            <article>
+                <p>
+                    <button id="btn269_1">나는 이벤트 버블링이 일어나고</button>
+                    <button id="btn269_2">나는 이벤트 버블링이 안 일어나고</button>
+                </p>
+            </article>
+            <tl>
+                <t>이벤트 버블링!</t>
+            </tl>
+        </section>
+        <section lab="268">
+            <h2>입력과 변경 이벤트</h2>
+            <article>
+                <div>
+                    <input type="date" id="date268">
+                    <input type="text" id="text268">
+                </div>
+                <textarea id="textarea268"></textarea>
+            </article>
+            <tl>
+                <t>input 이벤트</t>
+            </tl>
+        </section>
+        <section lab="267">
+            <h2>폼 이벤트 및 preventDefault</h2>
+            <article>
+                <form id="form267" action="/test">
+                    <button>Submit</button>
+                </form>
+            </article>
+            <tl>
+                <t>서브밋 막기</t>
+            </tl>
+        </section>
+        <section lab="265">
+            <h2>이벤트와 'this'라는 키워드</h2>
+            <article>
 
-                    </div>
-                </li>
-            </ul>
-        </article>
-    </section>
-    <section lab="262">
-        <h2>온클릭(onclick) 속성 : element.onclick</h2>
-        <article>
-            <img id="img262" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
-        </article>
-    </section>
-    
+            </article>
+        </section>
+        <section lab="264">
+            <h2>랜덤 컬러 연습하기</h2>
+            <article>
+                <button id="btn264">Click Me!</button>
+            </article>
+        </section>
+        <section lab="263">
+            <h2>addEventListener</h2>
+            <article>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener">mdn</a>
+                    </li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events#specifications">참고</a></li>
+                    <li>
+                        <h3>element.onclick 와 element.addEventListener 의 차이점</h3>
+                        element.onclick = 1 이벤트 1 펑션<br>
+                        element.addEventListener = 1 이벤트 다중 펑셩 허용<br>
+                        <div>
+                            <button id="btnOnclick">element.onclick</button>
+                            <button id="btnAddEventListener">element.addEventListener</button>
+                        </div>
+                        <div id="divPaper">
+
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <section lab="262">
+            <h2>온클릭(onclick) 속성 : element.onclick</h2>
+            <article>
+                <img id="img262" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png">
+            </article>
+        </section>
+    </main>
 </body>
 <foot>
     <script src="lab.js"></script>
 </foot>
+
 </html>

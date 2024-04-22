@@ -178,7 +178,7 @@ ul {
     position: fixed;
     width: 600px;
     /* height: 220px; */
-    top: calc(50% - 150px);
+    top: calc(50% - 250px);
     left: calc(50% - 300px);
     /* margin-left: -100px; */
     border: 1px solid gray;

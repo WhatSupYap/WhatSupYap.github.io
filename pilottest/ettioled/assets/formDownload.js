@@ -110,7 +110,12 @@ document.querySelector("." + excelButtonClass).addEventListener("click", (e) => 
                     const doc = getDocFromXml(row.XmlString);
                     for (const cm of listColMapping)
                     {
-                        excelRow.push(doc.querySelector(cm.id).innerHTML);
+                        const node =  doc.querySelector(cm.id);
+
+                        if (node == null)
+                            excelRow.push("");
+                        else
+                            excelRow.push(doc.querySelector(cm.id).innerHTML);
                     }
                     listExcelRow.push(excelRow);
                     cnt++;

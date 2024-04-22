@@ -19,13 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const originTitle = document.title;
         document.title = repeatText_1 + section + " - " + originTitle;
         const h1Title = document.createElement("h1");
-        h1Title.classList.add("h1-title");
+        h1Title.classList.add("main-title");
         h1Title.innerText = " - " + originTitle;
         const link = document.createElement("a");
         link.href = "index.html";
         link.innerText = repeatText_1 + section;
         h1Title.insertAdjacentElement("afterbegin",link);
-        document.body.insertAdjacentElement("afterbegin",h1Title); //.appendChild(h1Title);
+        const main = document.querySelector("main");
+        main.insertAdjacentElement("afterbegin",h1Title); //.appendChild(h1Title);
 
         if (page =="cp")
         {
@@ -41,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     setDefault();
     //debugger;
+
+    document.querySelector(".laypop").style.display = "none"
+    
 
 });
 

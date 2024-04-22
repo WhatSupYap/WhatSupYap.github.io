@@ -1,0 +1,11 @@
+section[lab="270"] table {
+    border-collapse: collapse;
+}
+
+section[lab="270"] th, section[lab="270"] td {
+    border: 1px solid white;
+}
+
+section[lab="270"] .item-center {
+    text-align: center;
+}
