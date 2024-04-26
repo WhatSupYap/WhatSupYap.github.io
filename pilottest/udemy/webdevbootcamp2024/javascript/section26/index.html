@@ -6,31 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>점수 관리자 제작하기</title>
     <script src="/assets/js/dummy.js"></script>
-    <script src="/pilottest/udemy/webdevbootcamp2024/assets/js/common.js"></script>
-    <link href="/pilottest/udemy/webdevbootcamp2024/assets/css/common.css" rel="stylesheet">
+    <!-- <script src="/pilottest/udemy/webdevbootcamp2024/assets/js/common.js"></script> -->
+    <!-- <link href="/pilottest/udemy/webdevbootcamp2024/assets/css/common.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <!-- <link href="app.css" rel="stylesheet"> -->
+    <style>
+        .winner {
+            color: green;
+        }
+
+        .loser {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="laypop">
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half is-offset-one-quarter">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">Ping Pong Score Keeper</p>
+                            <button class="card-header-icon" aria-label="more options">
+                                <span class="icon">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </header>
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <!-- <img src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                                    alt="Placeholder image" /> -->
+                                <img src="https://i.namu.wiki/i/ITfDecKn6V5g3gXPBx501iJrSKT3SpHDTPSdMicWwByaOq08uVqbVwBh2PfTmowcD1DHnhQ3wgbUOD0tmaKUI0QnFeoteycFdqgBihyvvq6E2-cuzdW4qixwZw2dUgElXlWcc-jW5SnJJW00UyZlPg.webp"
+                                    alt="하스스톤">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <!-- <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="https://bulma.io/assets/images/placeholders/96x96.png"
+                                            alt="Placeholder image" />
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">John Smith</p>
+                                    <p class="subtitle is-6">@johnsmith</p>
+                                </div>
+                            </div> -->
+
+                            <div class="content">
+                                <h1 class="title is-1"><span id="uthersDisplay">0</span> to <span
+                                        id="guldansDisplay">0</span></h1>
+                                <p class="subtitle">우서! 그 상대는 굴단!</p>
+                            </div>
+                            <label for="playto" class="label is-large is-inline">Playing to</label>
+                            <div class="select is-rounded">
+                                <select name="" id="playto">
+                                    <option value="5">5</option>
+                                    <option value="7">7</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <footer class="card-footer">
+                            <button id="uthersButton" class="card-footer-item button is-warning">Uther</button>
+                            <button id="guldansButton" class="card-footer-item button is-danger">Guldan</button>
+                            <button id="reset" class="card-footer-item button is-primary">Reset</button>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--  -->
+
+    <!-- <div class="laypop">
         <div class="laypop-content">L O A D I N G . . .</div>
         <div class="laypop-curtain"></div>
-    </div>
-    <main>
-        <div class="main-content">
-            <h2><span id="uthersDisplay">0</span> to <span id="guldansDisplay">0</span></h2>
-            <select name="" id="playto">
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="7">7</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-            </select>
-            <button id="uthersButton">Uther</button>
-            <button id="guldansButton">Guldan</button>
-            <button id="reset">Reset</button>
-        </div>
-    </main>
+    </div> -->
     <script src="app.js"></script>
 </body>
 

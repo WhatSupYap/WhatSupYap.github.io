@@ -49,18 +49,6 @@ Warrior	        198, 155, 109	        #C69B6D	Tan
 
 */
 
-class classColor {
-    r = 0;
-    g = 0;
-    b = 0;
-    constructor(r, g, b)
-    {
-        this.r = r;
-        this.g = g;
-        this.b = b;
-    }
-}
-
 class wowClass2 {
     name = "";
     constructor(name, color)
