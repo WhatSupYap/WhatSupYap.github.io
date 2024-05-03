@@ -1,4 +1,4 @@
-﻿class Color {
+﻿export class Color {
 	constructor(r, g, b, name) {
 		this.r = r;
 		this.g = g;

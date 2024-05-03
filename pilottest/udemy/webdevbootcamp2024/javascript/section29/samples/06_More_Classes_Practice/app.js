@@ -1,3 +1,3 @@
-//import * as mymodule from './import.js'
+import { Color } from "./import";
 
 //console.log(mymodule);
