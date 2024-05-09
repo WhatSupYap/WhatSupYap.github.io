@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>npm 오류</title>
+</head>
+<body>
+    <h3>문제 기록</h3>
+    cowsay : 이 시스템에서 스크립트를 실행할 수 없으므로 경로\Roaming\npm\cowsay.ps1 파일을 로드할 수 없습니다. 자세한 내용은 about_Execution_Policies(https://go.microsoft.c
+    om/fwlink/?LinkID=135170)를 참조하십시오.
+    위치 줄:1 문자:1
+    + cowsay helll
+    + ~~~~~~
+    + CategoryInfo          : 보안 오류: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+
+
+    해결방법
+    Set-ExecutionPolicy Unrestricted
+</body>
+</html>
