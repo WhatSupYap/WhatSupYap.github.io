@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(Interlock) Partner Expense Report</title>
+    <link rel="stylesheet" href="/assets/css/doc.css">
+</head>
+
+<body>
+    <div class="content">
+        <h2>[Interlock] Partner Expense Report</h2>
+        <ul>
+            <li><a target="_blank" href="https://amedeloitte.sharepoint.com/:f:/r/sites/KRSWIFTOnboarding/Shared%20Documents/Report/Expense%20Budget%20Report?csf=1&web=1&e=Vbeh32">작업문서</a></li>
+            <li><a target="_blank" href="https://krinterlockdev.deloitte.com/">개발서버</a></li>
+            <li><a target="_blank" href="https://krinterlockqa.deloitte.com/">QA서버</a></li>
+        </ul>
+        <hr>
+        <h3>기능별 작업내역</h3>
+        <ul>
+            <li>파트너 - 성공/실패 리스트 노출 (완료)</li>
+            <li>파트너, GL 중복영역 작업 (진행중)</li>
+        </ul>
+        <hr>
+        <h3>작업내역</h3>
+        <ul>
+            <h4>웹소스</h4>
+            <ul>
+                <li>\Interlock\Controllers\Sap_PartnerExpenseReportContoroller.cs</li>
+                <li>\Interlock\Views\Sap_PartnerExpenseReport\ExpenseBudgetUpload.cshtml</li>
+            </ul>
+            <h4>DB</h4>
+            <h5>테이블</h5>
+            <ul>
+                <li>TB_EXP_BUDGET_CC</li>
+                <li>TB_EXP_BUDGET_CC_TEMP</li>
+                <li>TB_EXP_BUDGET_PERNR</li>
+                <li>TB_EXP_BUDGET_PERNR_TEMP</li>
+            </ul>
+            <h5>프로시져</h5>
+            <ul>
+                <li>SP_EXP_BUDGET_DEL</li>
+                <li>SP_EXP_BUDGET_PERNR_INS</li>
+                <li>SP_EXP_BUDGET_PERNR_SEL</li>
+                <li>SP_EXP_BUDGET_PERNR_TEMP_INS</li>
+                <li>SP_EXP_BUDGET_PERNR_TEMP_INS_PP</li>
+                <li>SP_EXP_BUDGET_CC_INS (미완성)</li>
+                <li>SP_EXP_BUDGET_CC_SEL (미완성)</li>
+                <li>SP_EXP_BUDGET_CC_TEMP_INS (미완성)</li>
+                <li>SP_EXP_BUDGET_CC_TEMP_INS_PP (미완성)</li>
+            </ul>
+        </ul>        
+        <hr>
+        <h3>용어일람</h3>
+        <ul>
+            <li>GL - 계정 - Cost Element</li>
+            <li>GJAHR - Fiscal Year - FY</li>
+            <li>PERNR - Partner - PN</li>
+            <li>KOSTL - Cost Center - CC</li>
+            <li>FUNCT - Business Unit - BU</li>
+        </ul>
+        <hr>
+        <h3>메모</h3>
+        <ul>
+            <li>C:\dev\002.Interlock\01.Source\Interlock\Views\Sap_FlashReport\PlanUpload.cshtml(참고용)</li>
+            <li>C:\dev\002.Interlock\01.Source\Interlock\Views\Sap_PartnerExpenseReport\ExpenseBudgetUpload.cshtml</li>
+        </ul>
+    </div>
+
+    <script src="/assets/js/doc.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 ﻿String.prototype.left = function (length) { if (this.length <= length) return this; else return this.substring(0, length); }
 String.prototype.right = function (length) { if (this.length <= length) return this; else return this.substring(this.length - length, this.length); }
 
+
 const now = new Date();
 const year = now.getFullYear();
 const month = ("00" + (now.getMonth() + 1)).right(2); // 월은 0부터 시작하기 때문에 1을 더합니다.

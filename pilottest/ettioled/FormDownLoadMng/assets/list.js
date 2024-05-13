@@ -1,6 +1,11 @@
 ﻿document.addEventListener("DOMContentLoaded", () => {
     Tab_Click();
     hideLayerPop();
+
+
+    // 테스트용 삭제요망
+    //  document.querySelector(".top-search-text").value = "emrp";
+    // SearchText();
 });
 
 document.querySelector(".top-search-text").addEventListener("keydown", (e) => { if (e.key == "Enter" || e.keyCode == 13) { SearchText(); } });
@@ -53,6 +58,7 @@ function SearchText() {
 
     const nav_button_result = document.querySelector(".nav1 button[keyword='" + keyword + "']");
 
+    // 이미 같은 텍스트로 검색결과가 있으면 리턴
     if (!xIsEmpty(nav_button_result)) {
         Tab_Click(nav_button_result);
         return;
@@ -76,7 +82,7 @@ function SearchText() {
     for (const tr of main_table_tr_list) {
         const fname = tr.getAttribute("fname");
         if (fname === null) continue;
-        if (0 <= fname.replaceAll(" ", "").indexOf(keyword.replaceAll(" ", ""))) {
+        if (0 <= fname.replaceAll(" ", "").toLowerCase().indexOf(keyword.replaceAll(" ", "").toLowerCase())) {
             new_tbody.appendChild(tr.cloneNode(true));
         }
     }
@@ -103,12 +109,11 @@ function SearchText() {
     main_table.appendChild(new_tbody);
     const new_li = document.createElement("li");
     const new_button = document.createElement("button");
-    const new_button_attrs = [["type", "button"], ["class", "nav1-tab"], ["tbid", new_id], ["onclick", "Tab_Click(this);"], ["keyword", keyword]];
-
-    for (const attr of new_button_attrs)
-    {
-        new_button.setAttribute(attr[0], attr[1]);
-    }
+    new_button.setAttribute("type", "button");
+    new_button.setAttribute("class", "nav1-tab");
+    new_button.setAttribute("tbid", new_id);
+    new_button.setAttribute("onclick", "Tab_Click(this);");
+    new_button.setAttribute("keyword", keyword);
     new_button.innerText = "검색:" + keyword;
     new_li.appendChild(new_button);
     document.querySelector(".nav1").appendChild(new_li);
