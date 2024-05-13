@@ -10,3 +10,10 @@ div.content {
     box-sizing: border-box;
     padding: 20px;
 }
+
+blockquote {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: lightgray;
+}
