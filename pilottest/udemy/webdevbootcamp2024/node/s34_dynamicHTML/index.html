@@ -22,11 +22,19 @@
                 서버 구성
             </li>
             <blockquote>
-                npm init -y<br>
+                npm init -y
                 npm i express
             </blockquote>
             <li>index.js에 파일작성</li>
+            <li>views 폴더가 기본 디렉토리임</li>
         </ul>
+        <h2>뷰 디렉토리 설정하기</h2>
+        <blockquote>
+            // __dirname 혹은 소스가 있는 디렉토리
+            app.set('views', path.join(__dirname, '/views'));
+        </blockquote>
+        <h2>EJS 보간 구문</h2>
     </div>
+    <script src="/assets/js/doc.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+</head>
+<body>
+    <h1>Your random number is: <%= rand %></h1>
+    <% if(rand % 2 === 0) { %>
+        <h2>호뤠이!</h2>
+    <% } else {%>
+        <h2>이런..</h2>
+    <% } %>
+    <% rand % 2 === 0 ? 'even은 짝수' : 'odd는 홀수' %>
+    <%# %=는 바로 출력됨 %는 출력 안됨 %>
+</body>
+</html>
