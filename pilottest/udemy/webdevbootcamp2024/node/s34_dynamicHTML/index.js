@@ -7,6 +7,16 @@ app.set('view engine', 'ejs');
 // __dirname 혹은 소스가 있는 디렉토리
 app.set('views', path.join(__dirname, '/views'));
 
+app.get('/cats', (req, res) => {
+    const cats = 
+    [
+        'blue', '애용이', '다옹이', '나비', '오리'
+    ]
+    res.render('cats', { cats});
+    //res.render('cats', { allCats: cats});
+})
+
+
 app.get('/', (req, res) => {
     //res.send(`HI! ${__dirname}`)
     //const num = Math.floor(Math.random() * 10) + 1;
