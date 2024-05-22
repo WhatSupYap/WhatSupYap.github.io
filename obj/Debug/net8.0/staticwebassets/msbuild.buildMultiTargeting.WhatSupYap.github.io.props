@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WhatSupYap.github.io.props" />
+</Project>

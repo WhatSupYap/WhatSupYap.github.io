@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "c:\\Develop\\blog\\WhatSupYap.github.io\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WhatSupYap.github.io.bundle.scp.css",
+      "PackagePath": "staticwebassets\\WhatSupYap.github.io.bundle.scp.css"
+    },
+    {
+      "Id": "c:\\Develop\\blog\\WhatSupYap.github.io\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "c:\\Develop\\blog\\WhatSupYap.github.io\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "c:\\Develop\\blog\\WhatSupYap.github.io\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "c:\\Develop\\blog\\WhatSupYap.github.io\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WhatSupYap.github.io.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WhatSupYap.github.io.props",
+      "PackagePath": "build\\WhatSupYap.github.io.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WhatSupYap.github.io.props",
+      "PackagePath": "buildMultiTargeting\\WhatSupYap.github.io.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WhatSupYap.github.io.props",
+      "PackagePath": "buildTransitive\\WhatSupYap.github.io.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
