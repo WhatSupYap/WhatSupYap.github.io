@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WhatSupYap.github.io")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9d0333b137ae3f385ad0c6b50b0d837b83b7186")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d09e49094c8382529d59e1c4a3fc909191744bc0")]
 [assembly: System.Reflection.AssemblyProductAttribute("WhatSupYap.github.io")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WhatSupYap.github.io")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
