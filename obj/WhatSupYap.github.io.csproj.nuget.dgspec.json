@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj": {}
+    "C:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj": {}
   },
   "projects": {
-    "c:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj": {
+    "C:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj",
+        "projectUniqueName": "C:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj",
         "projectName": "WhatSupYap.github.io",
-        "projectPath": "c:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj",
+        "projectPath": "C:\\Develop\\blog\\WhatSupYap.github.io\\WhatSupYap.github.io.csproj",
         "packagesPath": "C:\\Users\\김범섭\\.nuget\\packages\\",
-        "outputPath": "c:\\Develop\\blog\\WhatSupYap.github.io\\obj\\",
+        "outputPath": "C:\\Develop\\blog\\WhatSupYap.github.io\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\김범섭\\AppData\\Roaming\\NuGet\\NuGet.Config",
