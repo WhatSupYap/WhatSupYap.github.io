@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="" />
+        <link rel="stylesheet" href="themes/whatsup/static/css/base.css?v=20240719144718" />
+        <link rel="stylesheet" href="themes/whatsup/static/font-awesome/css/font-awesome.css?v=20240719144718" />
+  
+
+
+
+    <meta name="tags" content="AWS" />
+    <meta name="tags" content="SAA" />
+    <meta name="tags" content="Solution Architect Associate" />
+    <meta name="tags" content="자기개발" />
+
+        
+    </head>
+    <body>
+        <div class="content">
+            <header>
+                <div class="h_left"><a href="/"><span class="fa-solid fa-seedling"> What Sup Blog</span></a></div>
+                <div class="h_right"></div>
+            </header>
+<article>
+  <header>
+    <h2>
+      <a href="/yeonseubmunjejeongri.html" rel="bookmark"
+         title="Permalink to 연습문제정리">연습문제정리</a></h2>
+ 
+  </header>
+  <!-- <script src="/assets/js/wsy/xCommon.js"></script> -->
+
+<h1>문제풀이</h1>
+<h2>섹션7 EC2 인스턴스 스토리지</h2>
+<h3>문제 2</h3>
+<blockquote>
+<p>루트 볼륨 유형과 데이터 저장을 위한 기타 EBS 볼륨 유형, 두개의 EBS 볼륨으로 EC2 인스턴스를 실행했습니다. EC2 인스턴스는 한 달 후에 종료할 예정입니다. 각 EBS 볼륨에 기본적으로 나타날 행위 특성은 무엇일까요?</p>
+</blockquote>
+<ul>
+<li>[ ] 루트 볼륨 유형과 EBS 볼륨 유형이 모두 삭제됨</li>
+<li>[X] 루트 볼륨 유형은 삭제되지만, EBS 볼륨 유형은 삭제되지 않음</li>
+<li>[ ] 루트 볼륨 유형은 삭제되지 않고, EBS 볼륨 유형은 삭제됨</li>
+<li>[ ] 루트 볼륨 유형과 EBS 볼륨 유형 모두 삭제 되지않음</li>
+</ul>
+<blockquote>
+<p class="prompt-tip">루트 볼륨의 경우, '종료 시 삭제' 속성이 기본, EBS 볼륨은 기본적으로 비활성</p>
+</blockquote>
+<h3>문제 3</h3>
+<blockquote>
+<p>노스버지니아 리전 us-east-1에 AMI를 사용하면 어떤 AWS 리전에 있는 EC2 인스턴스라도 실행 할 수 있습니다.
+- [ ] 예
+- [X] 아니오</p>
+<p class="prompt-tip">AMI는 특정 AWS 리전에 국한되며, 각 AWS 리전에는 고유한 AMI가 있습니다. 다른 AWS 리전에서 AMI를 사용해 EC2 인스턴스 실행 불가능, 대상 AWS 리전으로 AMI를 복사해서 EC2 인스턴스를 생성하는 것은 가능.</p>
+</blockquote>
+<h3>문제 4</h3>
+<blockquote>
+<p>다음 중, EC2 인스턴스를 생성할 때 부팅 볼륨으로 사용할 수 있는 EBS 볼륨 유형은 무엇인가요?
+- [ ] gp2, gp3, st1, sc1
+- [X] gp2, gp3, io1, io2
+- [ ] io1, io2, st1, sc1</p>
+<p class="prompt-tip">gp2, gp3, io1, io2 만 가능, SSD</p>
+</blockquote>
+<h3>문제 5</h3>
+<blockquote>
+<p>EBS 다중 연결이란 무엇일까요?
+- [ ] 동일한 EBS 볼륨을 다수의 AZ에 있는 다수의 EC2 인스턴스에 연결
+- [ ] 다수의 EBS 볼륨을 동일한 AZ에 있는 동일 EC2 인스턴스에 연결
+- [X] 동일한 EBS 볼륨을 동일한 AZ에 있는 다수의 EC2 인스턴스에 연결
+- [ ] 다수의 EBS 볼륨을 다수의 AZ에 있는 동일 EC2 인스턴스에 연결</p>
+<p class="prompt-tip">EBS 다중 연결을 사용하면, 동일한 EBS 볼륨을 동일 AZ 상에 있는 다수의 EC2 인스턴스에 연결할 수 있습니다. 각 EC2 인스턴스는 완전한 읽기/쓰기 권한을 갖게 됩니다.</p>
+</blockquote>
+  <footer>
+    <p>Published: <time datetime="2023-11-24T14:52:00+09:00">
+      금 24 11월 2023
+    </time></p>
+    <address>
+      By           <a href="/author/whatsup7.html">WhatSup7</a>
+    </address>
+    <p>
+        Category: <a href="/category/11.html">11</a>
+    </p>
+    <p>
+        Tags:
+            <a href="/tag/aws.html">AWS</a>
+            <a href="/tag/saa.html">SAA</a>
+            <a href="/tag/solution-architect-associate.html">Solution Architect Associate</a>
+            <a href="/tag/jagigaebal.html">자기개발</a>
+    </p>
+  </footer>
+  </article>
+        </div>
+    </body>
+</html>

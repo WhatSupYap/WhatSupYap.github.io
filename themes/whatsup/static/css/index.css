@@ -1,0 +1,76 @@
+.image-box {
+    position: relative;
+    /* 이미지 상단에 타이틀 배치를 위해 상대적 위치 설정 */
+    /*width: 300px;  이미지 너비 설정 */
+    height: 100px;
+    /* 이미지 높이 설정 */
+
+    /* background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url("https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg");*/
+
+
+    transition: background-size 5s ease;
+    /* 마우스 오버 시 부드러운 확대 효과를 위한 transition 설정 */
+}
+
+.title {
+    position: absolute;
+    /* 이미지 상단에 배치 */
+    top: 20px;
+    /* 상단 여백 */
+    left: 15px;
+    /* 좌측 여백 */
+    color: white;
+    /* 흰색 글자색 */
+    font-size: 20px;
+    /* 글자 크기 */
+}
+
+
+
+.tags {
+    position: absolute;
+    /* 이미지 상단에 배치 */
+    top: 55px;
+    /* 상단 여백 */
+    left: 15px;
+    /* 좌측 여백 */
+    color: white;
+    /* 흰색 글자색 */
+    font-size: 20px;
+    /* 글자 크기 */
+}
+
+.date {
+    position: absolute;
+    /* 이미지 상단에 배치 */
+    top: 15px;
+    /* 상단 여백 */
+    right: 15px;
+    /* 우측 여백 */
+    color: white;
+    /* 흰색 글자색 */
+    font-size: 15px;
+    /* 글자 크기 */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1px 5px 1px 5px;
+    border-radius: 10px;
+
+}
+
+/* unvisited link */
+.tags a:link, .tags a:visited {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+/* mouse over link */
+.tags a:hover, .tags a:active {
+    color: rgb(255, 255, 255);
+}
+
+.image-box:hover {
+    background-position: center !important;
+    /* 마우스 오버 시 이미지 하단에 배치 */
+    transition: background-position 30s ease;
+    /*background-size: 110%;  마우스 오버 시 이미지 확대 배율 설정 
+    transition: background-size 5s ease; */
+}

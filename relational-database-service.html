@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="" />
+        <link rel="stylesheet" href="themes/whatsup/static/css/base.css?v=20240719144718" />
+        <link rel="stylesheet" href="themes/whatsup/static/font-awesome/css/font-awesome.css?v=20240719144718" />
+  
+
+
+
+
+        
+    </head>
+    <body>
+        <div class="content">
+            <header>
+                <div class="h_left"><a href="/"><span class="fa-solid fa-seedling"> What Sup Blog</span></a></div>
+                <div class="h_right"></div>
+            </header>
+<article>
+  <header>
+    <h2>
+      <a href="/relational-database-service.html" rel="bookmark"
+         title="Permalink to Relational Database Service">Relational Database Service</a></h2>
+ 
+  </header>
+  <h1>TAG names should always be lowercase</h1>
+<p>tags: AWS, SAA, Solution Architect Associate, 자기개발
+pin: false</p>
+<h1>math: true</h1>
+<h1>mermaid: true</h1>
+<h1>image:</h1>
+<p>#path: https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg
+  #lqip: https://img-b.udemycdn.com/course/240x135/4389576_a7d6_9.jpg # or base64 URI </p>
+<hr>
+<h2>RDS Orverview</h2>
+<ul>
+<li>RDS stands for Relational Database Service</li>
+<li>It's managed DB service for DB user SQL as a query language.</li>
+<li>It allows you to create databases in the cloud that are managed by AWS</li>
+<li>Postgres</li>
+<li>MySQL</li>
+<li>MariaDB</li>
+<li>Oracle</li>
+<li>Microsoft SQL Server</li>
+<li>Aurora (AWS Proprietary databse)</li>
+</ul>
+<h2>Advantage over using RDS versus deploying DB on EC2</h2>
+<ul>
+<li>RDS is a managed service:</li>
+<li>Automated provisioning, OS patching</li>
+<li>Continuous backups and restore to spcific<a href="#rfn_1" id="tt1" title="구체적인, 명확한, 분명한 (=precise)">[1]</a> timestamp (Point in Time Restore)!</li>
+<li>Monitoring dashboards</li>
+<li>Read replicas for improved read perfomance</li>
+<li>Multi AZ setup for DR (Disaster Recovery<a href="#rfn_2" id="tt2" title="재난 복구">[2]</a>)</li>
+<li>Maintenance windows for upgrades</li>
+<li>Scaling capability (vertical and horizontal)</li>
+<li>Storage backed by EBS (gp2 or io1)</li>
+<li>BUT you can't SSH into your instances</li>
+</ul>
+<h2>RDS - Storage Auto Scaling</h2>
+<ul>
+<li>Helps you increase storage on your RDS DB instance dynamically</li>
+<li>When RDS detects you are running out of free database storage, it scales automatically</li>
+<li>Avoid manually scaling ouyr database storage</li>
+<li>You have to set Maximum Storage Threshold (maximum limit for DB storage)</li>
+<li>Automatically modify storage if:</li>
+<li>Free Storage is less than 10% of allocated storage</li>
+<li>Low-storage lasts at least 5 minutes</li>
+<li>6 hours have passed since last modification</li>
+<li>Useful for applications with unpredictable workloads</li>
+<li>Supports all RDS database engines (MariaDB, MySQL, PostgreSQL, SQL Server, Oracle)</li>
+</ul>
+<h2>RDS Read Replicas for read scalability</h2>
+<ul>
+<li>Up to 15 Read Replicas</li>
+<li>Within AZ, Cross AZ or Corss Region</li>
+<li>Replication is ASYNC, so reads are eventually consistent</li>
+<li>Replicas can be Promoted to their own DB</li>
+<li>Applications must update the connection string to leverage read replicas</li>
+</ul>
+<h2>RDS Read Replicas</h2>
+<h3>Use Cases</h3>
+<ol>
+<li>You have a production database that is taking on normal load</li>
+<li>You want to run a reporting application to run some analytics</li>
+<li>You create a Read Replica to run the new workload there</li>
+<li>The production application is unaffected</li>
+<li>Read replicas are used for <code>SELECT</code>(=read) only kind of statements (not INSERT, UPDATE, DELETE)</li>
+</ol>
+<h3>Network Cost</h3>
+<ul>
+<li>In AWS there's a network cost when data goes from one AZ to another</li>
+<li>For RDS Read Replicas within the same region, you don't pay that fee<a href="#rfn_3" id="tt3" title="수수료">[3]</a></li>
+</ul>
+<h2>RDS Muilti AZ (Disaster Recovery)</h2>
+<ul>
+<li>SYNC replication</li>
+<li>One DNS name - automatic app failover<a href="#rfn_4" id="tt4" title="시스템 대체 작동 ((주 시스템의 작동이 정지되면 예비 장치가 자동으로 대체 작동함))">[4]</a> to standby</li>
+<li>Failover in case of loss of AZ, loss of network, instance or storage failure</li>
+<li>No manual intervention<a href="#rfn_5" id="tt5" title="개입">[5]</a> in apps</li>
+<li>
+<p>Not used for scaling</p>
+</li>
+<li>
+<p>Note: The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)</p>
+</li>
+</ul>
+<h2>RDS - From Single-AZ to Multi-AZ</h2>
+<ul>
+<li>Zero downtime operation (no need to stop the DB)</li>
+<li>Just click on "modify" for the database</li>
+<li>The following happens internally:</li>
+<li>A snapshot is taken</li>
+<li>A new DB is restored from the snapshot in a new AZ</li>
+<li>Synchronization is established<a href="#rfn_6" id="tt6" title="성립되다">[6]</a> between the two databse</li>
+</ul>
+<hr>
+<h3>모르는 단어</h3>
+<!-- [[2]][tt2]{: #tt2}) -->
+
+<ul>
+<li><a href="#tt1" id="rfn_1">[1]</a> 구체적인, 명확한, 분명한 (=precise)</li>
+<li><a href="#tt2" id="rfn_2">[2]</a> 재난 복구</li>
+<li><a href="#tt3" id="rfn_3">[3]</a> 수수료</li>
+<li><a href="#tt4" id="rfn_4">[4]</a> 시스템 대체 작동 ((주 시스템의 작동이 정지되면 예비 장치가 자동으로 대체 작동함))</li>
+<li><a href="#tt5" id="rfn_5">[5]</a> 개입</li>
+<li><a href="#tt6" id="rfn_6">[6]</a> 성립되다</li>
+</ul>
+  <footer>
+    <p>Published: <time datetime="2023-11-29T16:22:00+09:00">
+      수 29 11월 2023
+    </time></p>
+    <address>
+      By           <a href="/author/whatsup7.html">WhatSup7</a>
+    </address>
+    <p>
+        Category: <a href="/category/11.html">11</a>
+    </p>
+  </footer>
+  </article>
+        </div>
+    </body>
+</html>

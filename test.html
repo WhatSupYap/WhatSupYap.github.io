@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 오버 효과 카드</title>
+    <style>
+        .card {
+    width: 300px; /* 카드 너비 */
+    height: 200px; /* 카드 높이 */
+    margin: 20px; /* 카드 여백 */
+    position: relative; /* 이미지 위에 글자가 올라오도록 설정 */
+}
+
+.card-image {
+    position: absolute; /* 이미지를 카드 내부에 배치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg'); /* 배경 이미지 설정 */
+    background-size: cover; /* 배경 이미지가 카드 전체를 채우도록 설정 */
+    filter: brightness(0.7); /* 배경 이미지 밝기 70% 감소 */
+    transition: filter 0.3s ease; /* 마우스 오버 시 부드러운 변화를 위한 transition 설정 */
+}
+
+.card-content {
+    position: absolute; /* 글자를 카드 내부에 배치 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 글자를 중앙 정렬 */
+    color: #ffffff; /* 글자 색상 */
+}
+
+.card:hover .card-image {
+    filter: brightness(1); /* 마우스 오버 시 이미지 밝기 원래대로 */
+}
+
+.card:hover .card-content h2 {
+    color: red; /* 마우스 오버 시 글자 색상 빨간색 */
+}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-image"></div>
+        <div class="card-content">
+            <h2>제목</h2>
+            <p>내용</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

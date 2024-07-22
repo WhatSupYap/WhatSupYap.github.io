@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+}
+
+div.content {
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+div.content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+blockquote {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px 10px 10px 20px;
+    background-color: lightgray;
+}
+
+blockquote.q {
+    background-color: lightgreen;
+}
+
+blockquote.a {
+    background-color: lightgoldenrodyellow;
+}

@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: gray;
+}
+
+div.content {
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+div.content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+div.content article {
+    display: block;
+    background-color: rgb(128, 128, 128);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+div.content article .curtain {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+
+blockquote {
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px 10px 10px 20px;
+    background-color: lightgray;
+}
+
+blockquote.q {
+    background-color: lightgreen;
+}
+
+blockquote.a {
+    background-color: lightgoldenrodyellow;
+}
+
+.rm-5 {
+    margin-right: 5px;
+}

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>What Sup - misc</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2023-11-29T16:22:00+09:00</updated><entry><title>Relational Database Service</title><link href="/relational-database-service.html" rel="alternate"></link><published>2023-11-29T16:22:00+09:00</published><updated>2023-11-29T16:22:00+09:00</updated><author><name>WhatSup7</name></author><id>tag:None,2023-11-29:/relational-database-service.html</id><summary type="html">&lt;h1&gt;math: true&lt;/h1&gt;
+&lt;h1&gt;mermaid: true&lt;/h1&gt;
+&lt;h1&gt;image:&lt;/h1&gt;
+&lt;p&gt;#path: https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg
+  #lqip: https://img-b.udemycdn.com/course/240x135/4389576_a7d6_9.jpg # or base64 URI &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;RDS Orverview&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;RDS stands for Relational Database Service&lt;/li&gt;
+&lt;li&gt;It's managed DB service for DB user SQL as a query language.&lt;/li&gt;
+&lt;li&gt;It allows you to …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;math: true&lt;/h1&gt;
+&lt;h1&gt;mermaid: true&lt;/h1&gt;
+&lt;h1&gt;image:&lt;/h1&gt;
+&lt;p&gt;#path: https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg
+  #lqip: https://img-b.udemycdn.com/course/240x135/4389576_a7d6_9.jpg # or base64 URI &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;RDS Orverview&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;RDS stands for Relational Database Service&lt;/li&gt;
+&lt;li&gt;It's managed DB service for DB user SQL as a query language.&lt;/li&gt;
+&lt;li&gt;It allows you to create databases in the cloud that are managed by AWS&lt;/li&gt;
+&lt;li&gt;Postgres&lt;/li&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;MariaDB&lt;/li&gt;
+&lt;li&gt;Oracle&lt;/li&gt;
+&lt;li&gt;Microsoft SQL Server&lt;/li&gt;
+&lt;li&gt;Aurora (AWS Proprietary databse)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Advantage over using RDS versus deploying DB on EC2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;RDS is a managed service:&lt;/li&gt;
+&lt;li&gt;Automated provisioning, OS patching&lt;/li&gt;
+&lt;li&gt;Continuous backups and restore to spcific&lt;a href="#rfn_1" id="tt1" title="구체적인, 명확한, 분명한 (=precise)"&gt;[1]&lt;/a&gt; timestamp (Point in Time Restore)!&lt;/li&gt;
+&lt;li&gt;Monitoring dashboards&lt;/li&gt;
+&lt;li&gt;Read replicas for improved read perfomance&lt;/li&gt;
+&lt;li&gt;Multi AZ setup for DR (Disaster Recovery&lt;a href="#rfn_2" id="tt2" title="재난 복구"&gt;[2]&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Maintenance windows for upgrades&lt;/li&gt;
+&lt;li&gt;Scaling capability (vertical and horizontal)&lt;/li&gt;
+&lt;li&gt;Storage backed by EBS (gp2 or io1)&lt;/li&gt;
+&lt;li&gt;BUT you can't SSH into your instances&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RDS - Storage Auto Scaling&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Helps you increase storage on your RDS DB instance dynamically&lt;/li&gt;
+&lt;li&gt;When RDS detects you are running out of free database storage, it scales automatically&lt;/li&gt;
+&lt;li&gt;Avoid manually scaling ouyr database storage&lt;/li&gt;
+&lt;li&gt;You have to set Maximum Storage Threshold (maximum limit for DB storage)&lt;/li&gt;
+&lt;li&gt;Automatically modify storage if:&lt;/li&gt;
+&lt;li&gt;Free Storage is less than 10% of allocated storage&lt;/li&gt;
+&lt;li&gt;Low-storage lasts at least 5 minutes&lt;/li&gt;
+&lt;li&gt;6 hours have passed since last modification&lt;/li&gt;
+&lt;li&gt;Useful for applications with unpredictable workloads&lt;/li&gt;
+&lt;li&gt;Supports all RDS database engines (MariaDB, MySQL, PostgreSQL, SQL Server, Oracle)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RDS Read Replicas for read scalability&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Up to 15 Read Replicas&lt;/li&gt;
+&lt;li&gt;Within AZ, Cross AZ or Corss Region&lt;/li&gt;
+&lt;li&gt;Replication is ASYNC, so reads are eventually consistent&lt;/li&gt;
+&lt;li&gt;Replicas can be Promoted to their own DB&lt;/li&gt;
+&lt;li&gt;Applications must update the connection string to leverage read replicas&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RDS Read Replicas&lt;/h2&gt;
+&lt;h3&gt;Use Cases&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;You have a production database that is taking on normal load&lt;/li&gt;
+&lt;li&gt;You want to run a reporting application to run some analytics&lt;/li&gt;
+&lt;li&gt;You create a Read Replica to run the new workload there&lt;/li&gt;
+&lt;li&gt;The production application is unaffected&lt;/li&gt;
+&lt;li&gt;Read replicas are used for &lt;code&gt;SELECT&lt;/code&gt;(=read) only kind of statements (not INSERT, UPDATE, DELETE)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Network Cost&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;In AWS there's a network cost when data goes from one AZ to another&lt;/li&gt;
+&lt;li&gt;For RDS Read Replicas within the same region, you don't pay that fee&lt;a href="#rfn_3" id="tt3" title="수수료"&gt;[3]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RDS Muilti AZ (Disaster Recovery)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SYNC replication&lt;/li&gt;
+&lt;li&gt;One DNS name - automatic app failover&lt;a href="#rfn_4" id="tt4" title="시스템 대체 작동 ((주 시스템의 작동이 정지되면 예비 장치가 자동으로 대체 작동함))"&gt;[4]&lt;/a&gt; to standby&lt;/li&gt;
+&lt;li&gt;Failover in case of loss of AZ, loss of network, instance or storage failure&lt;/li&gt;
+&lt;li&gt;No manual intervention&lt;a href="#rfn_5" id="tt5" title="개입"&gt;[5]&lt;/a&gt; in apps&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Not used for scaling&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Note: The Read Replicas be setup as Multi AZ for Disaster Recovery (DR)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;RDS - From Single-AZ to Multi-AZ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Zero downtime operation (no need to stop the DB)&lt;/li&gt;
+&lt;li&gt;Just click on "modify" for the database&lt;/li&gt;
+&lt;li&gt;The following happens internally:&lt;/li&gt;
+&lt;li&gt;A snapshot is taken&lt;/li&gt;
+&lt;li&gt;A new DB is restored from the snapshot in a new AZ&lt;/li&gt;
+&lt;li&gt;Synchronization is established&lt;a href="#rfn_6" id="tt6" title="성립되다"&gt;[6]&lt;/a&gt; between the two databse&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;모르는 단어&lt;/h3&gt;
+&lt;!-- [[2]][tt2]{: #tt2}) --&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#tt1" id="rfn_1"&gt;[1]&lt;/a&gt; 구체적인, 명확한, 분명한 (=precise)&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tt2" id="rfn_2"&gt;[2]&lt;/a&gt; 재난 복구&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tt3" id="rfn_3"&gt;[3]&lt;/a&gt; 수수료&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tt4" id="rfn_4"&gt;[4]&lt;/a&gt; 시스템 대체 작동 ((주 시스템의 작동이 정지되면 예비 장치가 자동으로 대체 작동함))&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tt5" id="rfn_5"&gt;[5]&lt;/a&gt; 개입&lt;/li&gt;
+&lt;li&gt;&lt;a href="#tt6" id="rfn_6"&gt;[6]&lt;/a&gt; 성립되다&lt;/li&gt;
+&lt;/ul&gt;</content><category term="misc"></category><category term="[AWS"></category><category term="SAA"></category><category term="Solution Architect Associate"></category><category term="자기개발]     # TAG names should always be lowercase"></category></entry><entry><title>연습문제정리</title><link href="/yeonseubmunjejeongri.html" rel="alternate"></link><published>2023-11-24T14:52:00+09:00</published><updated>2023-11-24T14:52:00+09:00</updated><author><name>WhatSup7</name></author><id>tag:None,2023-11-24:/yeonseubmunjejeongri.html</id><summary type="html">&lt;h1&gt;pin: true&lt;/h1&gt;
+&lt;h1&gt;math: true&lt;/h1&gt;
+&lt;h1&gt;mermaid: true&lt;/h1&gt;
+&lt;p&gt;image:
+  path: https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg
+  lqip: https://img-b.udemycdn.com/course/240x135/4389576_a7d6_9.jpg # or base64 URI&lt;/p&gt;
+&lt;hr&gt;
+&lt;!-- &lt;script src="/assets/js/wsy/xCommon.js"&gt;&lt;/script&gt; --&gt;
+
+&lt;h1&gt;문제풀이&lt;/h1&gt;
+&lt;h2&gt;섹션7 EC2 인스턴스 스토리지&lt;/h2&gt;
+&lt;h3&gt;문제 2&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;루트 볼 …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1&gt;pin: true&lt;/h1&gt;
+&lt;h1&gt;math: true&lt;/h1&gt;
+&lt;h1&gt;mermaid: true&lt;/h1&gt;
+&lt;p&gt;image:
+  path: https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg
+  lqip: https://img-b.udemycdn.com/course/240x135/4389576_a7d6_9.jpg # or base64 URI&lt;/p&gt;
+&lt;hr&gt;
+&lt;!-- &lt;script src="/assets/js/wsy/xCommon.js"&gt;&lt;/script&gt; --&gt;
+
+&lt;h1&gt;문제풀이&lt;/h1&gt;
+&lt;h2&gt;섹션7 EC2 인스턴스 스토리지&lt;/h2&gt;
+&lt;h3&gt;문제 2&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;루트 볼륨 유형과 데이터 저장을 위한 기타 EBS 볼륨 유형, 두개의 EBS 볼륨으로 EC2 인스턴스를 실행했습니다. EC2 인스턴스는 한 달 후에 종료할 예정입니다. 각 EBS 볼륨에 기본적으로 나타날 행위 특성은 무엇일까요?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ] 루트 볼륨 유형과 EBS 볼륨 유형이 모두 삭제됨&lt;/li&gt;
+&lt;li&gt;[X] 루트 볼륨 유형은 삭제되지만, EBS 볼륨 유형은 삭제되지 않음&lt;/li&gt;
+&lt;li&gt;[ ] 루트 볼륨 유형은 삭제되지 않고, EBS 볼륨 유형은 삭제됨&lt;/li&gt;
+&lt;li&gt;[ ] 루트 볼륨 유형과 EBS 볼륨 유형 모두 삭제 되지않음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p class="prompt-tip"&gt;루트 볼륨의 경우, '종료 시 삭제' 속성이 기본, EBS 볼륨은 기본적으로 비활성&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;문제 3&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;노스버지니아 리전 us-east-1에 AMI를 사용하면 어떤 AWS 리전에 있는 EC2 인스턴스라도 실행 할 수 있습니다.
+- [ ] 예
+- [X] 아니오&lt;/p&gt;
+&lt;p class="prompt-tip"&gt;AMI는 특정 AWS 리전에 국한되며, 각 AWS 리전에는 고유한 AMI가 있습니다. 다른 AWS 리전에서 AMI를 사용해 EC2 인스턴스 실행 불가능, 대상 AWS 리전으로 AMI를 복사해서 EC2 인스턴스를 생성하는 것은 가능.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;문제 4&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;다음 중, EC2 인스턴스를 생성할 때 부팅 볼륨으로 사용할 수 있는 EBS 볼륨 유형은 무엇인가요?
+- [ ] gp2, gp3, st1, sc1
+- [X] gp2, gp3, io1, io2
+- [ ] io1, io2, st1, sc1&lt;/p&gt;
+&lt;p class="prompt-tip"&gt;gp2, gp3, io1, io2 만 가능, SSD&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;문제 5&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;EBS 다중 연결이란 무엇일까요?
+- [ ] 동일한 EBS 볼륨을 다수의 AZ에 있는 다수의 EC2 인스턴스에 연결
+- [ ] 다수의 EBS 볼륨을 동일한 AZ에 있는 동일 EC2 인스턴스에 연결
+- [X] 동일한 EBS 볼륨을 동일한 AZ에 있는 다수의 EC2 인스턴스에 연결
+- [ ] 다수의 EBS 볼륨을 다수의 AZ에 있는 동일 EC2 인스턴스에 연결&lt;/p&gt;
+&lt;p class="prompt-tip"&gt;EBS 다중 연결을 사용하면, 동일한 EBS 볼륨을 동일 AZ 상에 있는 다수의 EC2 인스턴스에 연결할 수 있습니다. 각 EC2 인스턴스는 완전한 읽기/쓰기 권한을 갖게 됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="misc"></category><category term="[AWS"></category><category term="SAA"></category><category term="Solution Architect Associate"></category><category term="자기개발]     # TAG names should always be lowercase"></category></entry></feed>

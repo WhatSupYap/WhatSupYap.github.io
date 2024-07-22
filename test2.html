@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 처리 및 색상 채우기</title>
+    <style>
+        .image-box {
+    width: 800px;
+    height: 100px;
+    background-image: url('https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg'); /* 배경 이미지 설정 */
+    background-size: cover; /* 배경 이미지가 div 전체를 채우도록 설정 */
+    position: relative; /* 블러 효과를 위한 상대적 위치 설정 */
+}
+
+.image-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 10px); /* 오른쪽 10px 제외 */
+    height: 100%;
+    background-image: inherit; /* 배경 이미지 상속 */
+    filter: blur(10px); /* 오른쪽 10px 블러 효과 */
+    pointer-events: none; /* 마우스 이벤트 방지 */
+}
+
+    </style>
+</head>
+<body>
+    <div class="image-box">
+    </div>
+
+    <script>
+        const imageBox = document.querySelector('.image-box');
+const afterElement = imageBox.querySelector('::after');
+
+imageBox.addEventListener('load', () => {
+    const rightColor = getRightColor(afterElement);
+    debugger
+    imageBox.style.backgroundColor = rightColor;
+});
+
+function getRightColor(element) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = element.offsetWidth;
+    canvas.height = element.offsetHeight;
+
+    ctx.drawImage(element, 0, 0);
+
+    const imageData = ctx.getImageData(element.offsetWidth - 10, 0, 1, element.offsetHeight);
+    const data = imageData.data;
+
+    const red = data[0];
+    const green = data[1];
+    const blue = data[2];
+
+    const rightColor = `rgb(${red}, ${green}, ${blue})`;
+    return rightColor;
+}
+    </script>
+</body>
+</html>

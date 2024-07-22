@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="" />
+        <link rel="stylesheet" href="themes/whatsup/static/css/base.css?v=20240718111343" />
+        <link rel="stylesheet" href="themes/whatsup/static/font-awesome/css/font-awesome.css?v=20240718111343" />
+
+<link rel="stylesheet" href="themes/whatsup/static/css/index.css?v=20240718111343" />
+
+        
+    </head>
+    <body>
+        <div class="content">
+            <header>
+                <div class="h_left"><a href="/"><span class="fa-solid fa-seedling"> What Sup Blog</span></a></div>
+                <div class="h_right"></div>
+            </header>
+
+    <a href="/haru-girog-2024719">
+
+        <article class="image-box" data-image="https://postfiles.pstatic.net/20131016_132/mbsnclbn_1381886130583XDCmP_JPEG/%C6%F8%C6%F7.jpg?type=w1" data-bgcolor="#F0AD18" data-icon="">
+            <div class="curtain"></div>
+            <span class="title">하루 기록 2024.7.19</span>
+            <div class="tags">
+                    <a href="/tag/ilsang.html">#일상</a>                    <a href="/tag/sa.html">#사</a>            </div>
+            <span class="date">오늘</span>
+        </article>
+    </a>
+
+<!---->
+<script>
+
+    const imageBoxes = document.querySelectorAll('.image-box');
+
+    imageBoxes.forEach(imageBox => {
+        const imageUrl = imageBox.getAttribute('data-image');
+        //const dataIcon = imageBox.getAttribute('data-icon');
+        const dataIcon = "fa-cloud";
+        const bgcolor = imageBox.getAttribute('data-bgcolor');
+
+        if (imageUrl) 
+        {
+            imageBox.style.backgroundSize = `cover`;
+            imageBox.style.backgroundImage = `url("${imageUrl}")`;
+            imageBox.style.backgroundPosition = `top`;    
+        }
+
+        if (dataIcon)
+        {
+            const icon = document.createElement('i');
+            icon.classList.add('rm-5', 'fa-solid', dataIcon);
+            const title = imageBox.querySelector('.title');
+            //title.classList.add('fa-solid', dataIcon);
+            title.prepend(icon);
+        }
+
+        if (bgcolor)
+        {
+            imageBox.querySelectorAll('.tags a').forEach(tag => {
+                const originalColor = tag.style.color;
+                tag.addEventListener('mouseover', () => {
+                    tag.style.color = bgcolor;
+                });
+                tag.addEventListener('mouseout', () => {
+                    tag.style.color = originalColor;
+                });
+
+            });
+        }
+        
+        
+        //imageBox.style.backgroundImage = `url('${imageUrl}')`;
+
+        // imageBox.style.backgroundColor = bgcolor;
+        // imageBox.style.backgroundSize = `contain`;
+        // imageBox.style.backgroundRepeat = `no-repeat`;
+        // imageBox.style.backgroundPosition = `right`;
+        // imageBox.style.backgroundImage = `linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 0)), url("https://img-b.udemycdn.com/course/750x422/4389576_a7d6_9.jpg")`;
+
+        //if (bgcolor) imageBox.style.backgroundImage = `linear-gradient(to right, black, ${bgcolor}), url('${imageUrl}')`;
+    });
+
+    const imageBox = document.querySelector('.image-box');
+
+    imageBox.addEventListener('mouseover', () => {
+        imageBox.classList.add('hover');
+    });
+
+    imageBox.addEventListener('mouseout', () => {
+        imageBox.classList.remove('hover');
+    });
+</script>
+
+        </div>
+    </body>
+</html>
