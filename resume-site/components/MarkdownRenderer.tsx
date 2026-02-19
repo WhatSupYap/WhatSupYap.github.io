@@ -1,0 +1,14 @@
+import React from 'react';
+
+interface Props {
+    contentHtml: string;
+}
+
+export default function MarkdownRenderer({ contentHtml }: Props) {
+    return (
+        <article
+            className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-blue-600"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+        />
+    );
+}
