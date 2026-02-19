@@ -28,7 +28,7 @@ body {
 
 /* Custom scrollbar that shows only on hover */
 .hover-scrollbar {
-  overflow-y: auto;
+  /* overflow-y: auto; Removed to control via utility classes */
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
   transition: scrollbar-color 0.3s ease;

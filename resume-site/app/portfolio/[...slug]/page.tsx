@@ -1,6 +1,7 @@
 import { getProjectBySlug, getAllPortfolioItems } from '@/lib/markdown';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Navigation from '@/components/Navigation';
+import ImageGallery from '@/components/ImageGallery';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -33,7 +34,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <Navigation />
 
             <main className="max-w-4xl mx-auto px-6 py-12">
-                <header className="mb-12 border-b border-neutral-100 dark:border-neutral-800 pb-8">
+                <header className="mb-2 border-b border-neutral-100 dark:border-neutral-800 pb-4">
                     <h1 className="text-4xl md:text-5xl font-bold mb-4">{data.title || project.name}</h1>
 
                     <div className="flex flex-wrap gap-4 text-neutral-500 dark:text-neutral-400 mb-6">
@@ -42,7 +43,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     </div>
 
                     {data.image && (
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-8">
+                        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-6">
                             <img
                                 src={data.image}
                                 alt={data.title}
@@ -51,17 +52,38 @@ export default async function ProjectDetailPage({ params }: Props) {
                         </div>
                     )}
 
-                    {data.github && (
-                        <a
-                            href={data.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-                        >
-                            View on GitHub &rarr;
-                        </a>
-                    )}
                 </header>
+
+                {data.gallery && Array.isArray(data.gallery) && (
+                    <div className="mb-8 mt-2">
+                        <ImageGallery images={data.gallery} />
+                    </div>
+                )}
+
+                {(data.github || data.youtube) && (
+                    <div className="flex justify-end gap-3 mb-12">
+                        {data.youtube && (
+                            <a
+                                href={data.youtube}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center text-red-600 hover:text-red-700 font-medium bg-red-50 dark:bg-red-900/30 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                Watch on YouTube &rarr;
+                            </a>
+                        )}
+                        {data.github && (
+                            <a
+                                href={data.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium bg-blue-50 dark:bg-blue-900/30 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                View on GitHub &rarr;
+                            </a>
+                        )}
+                    </div>
+                )}
 
                 {contentHtml && (
                     <div className="pb-20">

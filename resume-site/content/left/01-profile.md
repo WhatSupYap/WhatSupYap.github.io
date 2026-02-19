@@ -3,10 +3,11 @@ order: 1
 public: true
 github: "https://github.com/WhatSupYap"
 email: "difox@naver.com"
+image: "/images/이력서_사진.jpg"
+name: "김범섭"
+name_en: "Beomsup Kim"
 ---
 
-# 김범섭
-## Beomsup Kim
 **AI Engineer & Full Stack Developer**
 
 "Start small, think big."  
