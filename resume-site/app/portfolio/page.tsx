@@ -6,7 +6,7 @@ export default async function PortfolioPage() {
     const projects = await getAllPortfolioItems();
 
     return (
-        <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans text-neutral-900 dark:text-neutral-100">
+        <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
             <Navigation />
 
             <main className="max-w-7xl mx-auto px-6 py-12">
