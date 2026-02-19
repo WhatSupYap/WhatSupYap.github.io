@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getProjectBySlug, getAllExperienceItems } from '@/lib/markdown';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Navigation from '@/components/Navigation';
@@ -28,8 +29,10 @@ export default async function ExperienceDetailPage({ params }: Props) {
     const { data, contentHtml } = item;
 
     return (
-        <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans text-neutral-900 dark:text-neutral-100">
+        <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
             <Navigation />
+
+
 
             <main className="max-w-4xl mx-auto px-6 py-12">
                 <header className="mb-12 border-b border-neutral-100 dark:border-neutral-800 pb-8">

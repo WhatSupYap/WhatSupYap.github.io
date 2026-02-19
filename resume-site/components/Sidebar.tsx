@@ -3,14 +3,13 @@ import { MarkdownItem } from '@/lib/markdown';
 import MarkdownRenderer from './MarkdownRenderer';
 import ContactSection from './ContactSection';
 
-import ScrollSpyNav from './ScrollSpyNav';
+
 
 interface Props {
     items: MarkdownItem[];
-    navItems?: { id: string; label: string }[];
 }
 
-export default function Sidebar({ items, navItems }: Props) {
+export default function Sidebar({ items }: Props) {
     return (
         <aside className="w-full md:w-[300px] shrink-0">
             <div className="md:sticky md:top-12 flex flex-col gap-12 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto hover-scrollbar pr-4">
@@ -42,6 +41,8 @@ export default function Sidebar({ items, navItems }: Props) {
                                     </div>
                                 )}
 
+
+
                                 <MarkdownRenderer contentHtml={item.contentHtml} />
                                 {/* Check for contact info in frontmatter */}
                                 {(item.data.github || item.data.email) && (
@@ -58,10 +59,7 @@ export default function Sidebar({ items, navItems }: Props) {
                     </div>
                 ))}
 
-                {/* Scroll Spy Navigation */}
-                {navItems && navItems.length > 0 && (
-                    <ScrollSpyNav navItems={navItems} />
-                )}
+
 
                 <div className="text-xs text-neutral-400 mt-8">
                     © {new Date().getFullYear()} All rights reserved.

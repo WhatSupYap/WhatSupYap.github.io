@@ -38,11 +38,11 @@ export default function ProjectCard({ item }: Props) {
       )}
       <div className="p-5 flex flex-col gap-3">
         <div>
-          <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
             {data.title || item.name}
           </h3>
           {data.period && (
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+            <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mt-2">
               {data.period}
             </p>
           )}

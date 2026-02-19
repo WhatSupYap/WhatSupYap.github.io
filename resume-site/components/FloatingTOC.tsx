@@ -11,7 +11,7 @@ interface Props {
     navItems: NavItem[];
 }
 
-export default function ScrollSpyNav({ navItems }: Props) {
+export default function FloatingTOC({ navItems }: Props) {
     const [activeId, setActiveId] = useState<string>('');
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export default function ScrollSpyNav({ navItems }: Props) {
                 });
             },
             {
-                rootMargin: '-20% 0px -60% 0px', // Adjust trigger point
+                rootMargin: '-20% 0px -60% 0px',
                 threshold: 0
             }
         );
@@ -44,7 +44,7 @@ export default function ScrollSpyNav({ navItems }: Props) {
         const element = document.getElementById(id);
         if (element) {
             window.scrollTo({
-                top: element.offsetTop - 80, // Offset for sticky header if any, or general padding
+                top: element.offsetTop - 80,
                 behavior: 'smooth'
             });
             setActiveId(id);
@@ -54,17 +54,19 @@ export default function ScrollSpyNav({ navItems }: Props) {
     if (navItems.length === 0) return null;
 
     return (
-        <nav className="hidden md:flex flex-col gap-2 border-l border-neutral-200 dark:border-neutral-800 pl-4">
+        <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col items-end gap-2">
             {navItems.map((item) => (
                 <a
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={(e) => handleClick(e, item.id)}
-                    className={`text-sm transition-colors duration-200 border-l-2 -ml-[17px] pl-4 py-1
+                    className={`
+                        transition-all duration-300 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm border
                         ${activeId === item.id
-                            ? 'border-neutral-900 dark:border-white text-neutral-900 dark:text-white font-medium'
-                            : 'border-transparent text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-200'
-                        }`}
+                            ? 'bg-neutral-900/90 text-white border-neutral-900 dark:bg-white/90 dark:text-neutral-900 dark:border-white translate-x-0'
+                            : 'bg-white/80 text-neutral-500 border-neutral-200 dark:bg-neutral-900/80 dark:text-neutral-400 dark:border-neutral-800 hover:bg-white dark:hover:bg-neutral-900 hover:text-neutral-900 dark:hover:text-neutral-200'
+                        }
+                    `}
                 >
                     {item.label}
                 </a>

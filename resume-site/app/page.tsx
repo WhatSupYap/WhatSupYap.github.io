@@ -1,3 +1,4 @@
+import FloatingTOC from '@/components/FloatingTOC';
 import { getSectionData } from '@/lib/markdown';
 import Sidebar from '@/components/Sidebar';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
@@ -15,10 +16,12 @@ export default async function Home() {
   })).filter(item => item.id !== '');
 
   return (
-    <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
+    <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100 relative">
+      <FloatingTOC navItems={navItems} />
+
       <main className="max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row gap-12 lg:gap-24">
         {/* Left Column (Fixed Width) */}
-        <Sidebar items={leftItems} navItems={navItems} />
+        <Sidebar items={leftItems} />
 
         {/* Right Column (Fluid) */}
         <div className="flex-1 min-w-0 space-y-20">

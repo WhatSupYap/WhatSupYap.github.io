@@ -3,6 +3,7 @@ import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Navigation from '@/components/Navigation';
 import ImageGallery from '@/components/ImageGallery';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 interface Props {
     params: Promise<{
@@ -30,8 +31,10 @@ export default async function ProjectDetailPage({ params }: Props) {
     const { data, contentHtml } = project;
 
     return (
-        <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans text-neutral-900 dark:text-neutral-100">
+        <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
             <Navigation />
+
+
 
             <main className="max-w-4xl mx-auto px-6 py-12">
                 <header className="mb-2 border-b border-neutral-100 dark:border-neutral-800 pb-4">
