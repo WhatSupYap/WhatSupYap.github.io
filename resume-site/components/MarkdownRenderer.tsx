@@ -1,10 +1,12 @@
 import React from 'react';
 
 interface Props {
-    contentHtml: string;
+    contentHtml?: string | null;
 }
 
 export default function MarkdownRenderer({ contentHtml }: Props) {
+    if (!contentHtml) return null;
+
     return (
         <article
             className="prose prose-slate max-w-none dark:prose-invert prose-headings:font-bold prose-a:text-blue-600"
