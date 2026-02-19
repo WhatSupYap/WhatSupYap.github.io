@@ -5,6 +5,7 @@ date: "2025-12-16"
 summary: "\"Update Once. Sync Everywhere.\" sLLM과 RAG 기술을 활용하여 흩어진 문서를 자동으로 동기화하고 최신 상태로 유지하는 AI 시스템."
 period: "2025.12.16 ~ 2026.02.11 (8주)"
 slogan: "Update Once. Sync Everywhere."
+badges: ["sLLM", "Knowledge Distillation", "RAG", "Semantic Chunking"]
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-FINAL-3Team"
 image: "/images/projects/ajc/ajc.png"
 gallery:

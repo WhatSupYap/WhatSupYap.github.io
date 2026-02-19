@@ -5,6 +5,8 @@ period: "2024.11"
 summary: "복잡한 공공주택 공고문을 LLM과 RAG로 분석하여, 사용자 조건에 맞는 맞춤형 주거 정보를 대화형으로 제공하는 AI 서비스."
 content_type: "portfolio"
 public: true
+badges: ["LangGraph", "State Management", "Chatbot"]
+slogan: "공공주택 정보의 원스톱 서비스"
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-4th-4Team"
 ---
 

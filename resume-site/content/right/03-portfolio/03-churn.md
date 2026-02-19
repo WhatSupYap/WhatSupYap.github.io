@@ -2,9 +2,10 @@
 order: 3
 title: "넷플릭스 구독 이탈 예측"
 period: "2024.10"
-summary: "사용자의 구독 패턴과 활동 로그를 분석하여 구독 이탈 가능성을 96% 정확도로 예측하는 머신러닝 모델 개발."
+summary: "구독자 행동 데이터를 분석하여 이탈 가능성을 예측, 정밀도(Precision) 96% 달성"
 content_type: "portfolio"
 public: true
+badges: ["Precision 96%", "XGBoost", "Data Analysis"]
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-2nd-3Team"
 ---
 

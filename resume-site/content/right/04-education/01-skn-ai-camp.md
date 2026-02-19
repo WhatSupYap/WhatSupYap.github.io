@@ -14,5 +14,5 @@ public: true
 
 ### 교육 내용
 - **Core**: Python, Machine Learning, Deep Learning, NLP, LLM, RAG
-- **Projects**: 4개 프로젝트 수행 (미니, 2차, 4차, 최종)
+- **Projects**: 4개 프로젝트 수행 (1~4차, 미니, 최종)
 - **Stack**: Django, FastAPI, LangGraph, AWS

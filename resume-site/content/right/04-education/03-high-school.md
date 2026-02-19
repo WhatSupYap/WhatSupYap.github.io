@@ -5,7 +5,7 @@ period: "2002.03 ~ 2005.02"
 description: "인문계"
 summary: "보성고등학교 졸업 (인문계)"
 content_type: "education"
-public: true
+public: false
 ---
 
 # 보성고등학교
