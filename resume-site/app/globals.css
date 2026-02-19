@@ -16,7 +16,7 @@
 
 /* Dark mode variables applied when .dark class is present */
 .dark {
-  --background: #0a0a0a;
+  --background: #1e1e1e;
   --foreground: #ededed;
 }
 
@@ -60,4 +60,57 @@ body {
 .dark .hover-scrollbar:hover::-webkit-scrollbar-thumb {
   background-color: #525252;
   /* neutral-600 */
+}
+
+@media print {
+  @page {
+    margin: 2cm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* Force light mode variables */
+  :root {
+    --background: #ffffff !important;
+    --foreground: #000000 !important;
+  }
+
+  .dark {
+    --background: #ffffff !important;
+    --foreground: #000000 !important;
+  }
+
+  /* Hide non-printable elements */
+  aside,
+  nav,
+  header,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Ensure main content is visible */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Prevent page breaks inside items */
+  section,
+  .project-card,
+  article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Expand right column to full width since sidebar is hidden */
+  .flex-1 {
+    width: 100% !important;
+    flex: none !important;
+  }
 }

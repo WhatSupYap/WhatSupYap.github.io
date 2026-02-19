@@ -265,3 +265,17 @@ export async function getProjectBySlug(slugPlugin: string[]): Promise<MarkdownIt
 
   return null;
 }
+
+export async function getSiteConfig() {
+  const siteConfigPath = path.join(contentDirectory, 'site.md');
+  if (!fs.existsSync(siteConfigPath)) {
+    return {
+      title: 'My Resume',
+      description: 'Built with Next.js',
+    };
+  }
+
+  const fileContents = fs.readFileSync(siteConfigPath, 'utf8');
+  const { data } = matter(fileContents);
+  return data;
+}

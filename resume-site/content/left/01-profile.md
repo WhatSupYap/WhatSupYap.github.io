@@ -3,7 +3,7 @@ order: 1
 public: true
 github: "https://github.com/WhatSupYap"
 email: "difox@naver.com"
-image: "/images/이력서_사진.jpg"
+image: "/images/profile.jpg"
 name: "김범섭"
 name_en: "Beomsup Kim"
 ---

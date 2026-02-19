@@ -14,10 +14,24 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "My Resume",
-  description: "Static Resume Site",
-};
+import { getSiteConfig } from "@/lib/markdown";
+
+// ...
+
+export async function generateMetadata() {
+  const siteConfig = await getSiteConfig();
+  return {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    openGraph: {
+      title: siteConfig.title,
+      description: siteConfig.description,
+      url: siteConfig.url,
+      images: siteConfig.ogImage ? [{ url: siteConfig.ogImage }] : [],
+    },
+    keywords: siteConfig.keywords,
+  };
+}
 
 export default function RootLayout({
   children,
