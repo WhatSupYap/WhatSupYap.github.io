@@ -123,4 +123,9 @@ var {
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  /* Remove link underlines in PDF print */
+  a {
+    text-decoration: none !important;
+  }
 }

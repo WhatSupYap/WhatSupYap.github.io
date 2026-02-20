@@ -6,6 +6,22 @@ export default async function PrintPage() {
     const leftItems = await getSectionData('left');
     const rightItems = await getSectionData('right');
 
+    const isAiOrInfra = (badge: string) => {
+        const aiKeywords = ['python', 'fastapi', 'aws', 'docker', 'langgraph', 'rag', 'llm', 'sllm'];
+        return aiKeywords.some(keyword => badge.toLowerCase().includes(keyword));
+    };
+
+    const isLegacy = (badge: string) => {
+        const legacyKeywords = ['c#', 'asp.net', 'windows'];
+        return legacyKeywords.some(keyword => badge.toLowerCase().includes(keyword));
+    };
+
+    const getPrintBadgeStyle = (badge: string) => {
+        if (isAiOrInfra(badge)) return "bg-indigo-100 text-indigo-800 border border-indigo-200";
+        if (isLegacy(badge)) return "bg-slate-200 text-slate-700 border border-slate-300";
+        return "bg-blue-100 text-blue-800 border border-blue-200";
+    };
+
     const profile = leftItems.find(item => item.slug.includes('profile'));
     const contact = leftItems.find(item => item.slug.includes('contact'));
 
@@ -211,17 +227,19 @@ export default async function PrintPage() {
                             <div className="grid grid-cols-1 gap-3">
                                 {item.items?.slice(0, 3).map((subItem) => ( // Top 3 only
                                     <div key={subItem.slug} className="break-inside-avoid border border-slate-100 p-2 rounded bg-slate-50/50">
-                                        <div className="flex justify-between items-start mb-0.5">
-                                            <div>
-                                                <h4 className="font-bold text-sm text-blue-900 inline-block mr-2">{subItem.data.title || subItem.name}</h4>
+                                        <div className="flex justify-between items-start mb-1 gap-2">
+                                            <div className="flex-1">
+                                                <h4 className="font-bold text-sm text-blue-900 mb-1">{subItem.data.title || subItem.name}</h4>
                                                 {/* Badges */}
-                                                {(subItem.data.badges as string[])?.slice(0, 3).map(badge => (
-                                                    <span key={badge} className="inline-block text-[8px] px-1 py-0.5 mr-1 bg-blue-100 text-blue-800 rounded">{badge}</span>
-                                                ))}
+                                                <div className="flex flex-wrap gap-1">
+                                                    {(subItem.data.badges as string[])?.slice(0, 4).map(badge => (
+                                                        <span key={badge} className={`inline-block text-[8px] px-1.5 py-0.5 rounded ${getPrintBadgeStyle(badge)}`}>{badge}</span>
+                                                    ))}
+                                                </div>
                                             </div>
                                             {/* Period */}
                                             {subItem.data.period && (
-                                                <span className="text-[9px] font-mono text-slate-400 whitespace-nowrap">
+                                                <span className="text-[9px] font-mono text-slate-400 whitespace-nowrap shrink-0 mt-0.5">
                                                     {subItem.data.period}
                                                 </span>
                                             )}

@@ -23,7 +23,7 @@ github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-4th-4Team"
 ## 나의 역할
 - **백엔드 개발**: Django REST API 서버를 구축하고 PostgreSQL 데이터베이스를 설계했습니다.
 - **AI 로직 설계**: **LangGraph**를 사용하여 5가지 사용자 의도(검색, 선택, 상세, 비교, 잡담)를 분류하고 처리하는 상태 머신을 구현했습니다.
-- **최적화**: 상태 기반 분기 처리를 통해 턴당 LLM 호출 횟수를 4~5회에서 1회로 획기적으로 줄였습니다.
+- **최적화**: **LangGraph 상태 관리(State Management)**를 도입하여 기존 4~5회 낭비되던 LLM API 호출을 1회로 압축, API 호출 비용(Cost) 절감 및 응답 지연 시간(Latency) 대폭 최적화
 
 ## 기술 스택
 - **Core**: Python, OpenAI API

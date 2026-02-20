@@ -8,7 +8,6 @@ name: "김범섭"
 name_en: "Beomsup Kim"
 ---
 
-**13년 차 백엔드 경력에 지능형 자동화를 더한 AI 엔지니어**
+**AI Backend Developer & MLOps Engineer**
 
-"Start small, think big."  
-가치 있는 소프트웨어를 만듭니다.
+"13년의 대규모 엔터프라이즈 서버 구축(C#) 노하우를 바탕으로, 병목 없는 Python AI 모델 서빙 아키텍처와 최적화된 데이터 파이프라인을 설계합니다."

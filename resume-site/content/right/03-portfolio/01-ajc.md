@@ -28,7 +28,7 @@ public: true
 4.  **풀스택**: Next.js 프론트엔드 + FastAPI 백엔드 + Python AI 마이크로서비스 구조.
 
 ## 나의 역할
-- **백엔드 & AI 아키텍처**: API 서버(FastAPI)와 AI 연산 서버(Python)를 분리하는 마이크로서비스 아키텍처를 설계했습니다.
+- **백엔드 & AI 아키텍처**: **FastAPI**를 활용해 일반 API 서버와 AI 추론 전용 서버를 완벽히 분리(Decoupling)하여, 무거운 sLLM 추론 부하가 메인 서버에 영향을 주지 않는 안정적인 서빙 환경 구축
 - **데이터 엔지니어링**: GitHub 오픈소스 등에서 123MB의 IT 문서를 수집하고 민감정보를 마스킹한 후, 학습용 문장 쌍 6,000개를 생성했습니다.
 - **모델 최적화 (Fine-tuning)**: **Gemma-2-9B** 모델을 파인튜닝하고, 이를 **2B 모델로 지식 증류(Knowledge Distillation)**하여 운영 비용을 절감했습니다.
 - **RAG 파이프라인**: Semantic Chunking을 적용하여 검색 정확도를 높였습니다.
