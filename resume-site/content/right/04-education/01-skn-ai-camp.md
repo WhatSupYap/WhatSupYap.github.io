@@ -1,6 +1,6 @@
 ---
 order: 1
-title: "SK Networks Family AI Camp 19기"
+title: "SKN Family AI Camp"
 period: "2025"
 description: "AI Backend & Data Engineering (약 1000시간)"
 summary: "Python 기반 AI/ML, 딥러닝, NLP, LLM, RAG 핵심 기술 습득 및 6회 프로젝트 수행"

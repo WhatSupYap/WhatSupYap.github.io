@@ -1,26 +1,20 @@
 ---
 order: 2
 public: true
+summary: "C#, ASP.NET Core, MS-SQL, Python, LLM (RAG, LangGraph), FastAPI, AWS, PostgreSQL"
 ---
 
-## 기술 스택 (Skills)
+## Technical Skills
 
-**Languages**
-- **C#** (13년), **Python**, TypeScript, SQL, ASP.NET
+### Backend & Database
+- **C# / ASP.NET**: Core 8, 4.5, 3.5, Web API, WinForm
+- **SQL**: MS-SQL, Oracle, PostgreSQL
+- **Server/Infra**: Windows Server (2003~2022), AWS, Azure, Docker, Nginx
 
-**AI & ML**
-- **LLM**: OpenAI API, Google Gemma, LangGraph, RAG
-- **ML**: Scikit-learn, LightGBM, XGBoost, PyTorch, TensorFlow
-- **Techniques**: Fine-tuning, Knowledge Distillation, Prompt Engineering
+### AI & Data
+- **LLM/NLP**: RAG, LangGraph, Fine-tuning, Knowledge Distillation, OpenAI API, Gemma
+- **ML/Analysis**: Python, Pandas, Scikit-learn, LightGBM, XGBoost
 
-**Backend**
-- **Frameworks**: ASP.NET Core, FastAPI, Django
-- **Database**: MS-SQL (Expert), PostgreSQL, Oracle
-
-**Cloud & DevOps**
-- **Cloud**: AWS, Azure
-- **Tools**: Docker, Git/GitHub, Visual Studio
-
-**Frontend**
-- Next.js, Streamlit, WinForm
-
+### Web Frameworks & Tools
+- **Web**: FastAPI, Django, Next.js, Streamlit
+- **Development**: Git/GitHub, Visual Studio (2005~2022)

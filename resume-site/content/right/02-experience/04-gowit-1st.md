@@ -1,10 +1,10 @@
 ---
-order: 6
+order: 4
 title: "고우아이티 (GoWit)"
 period: "2011.05 ~ 2014.07 (3년 3개월)"
 date: "2011.05"
 description: "S/W 개발 (사원) - EAI 중심"
-summary: "주요 프로젝트: 대덕전자, GS파워 EAI(Enterprise Application Integration) 시스템 구축"
+summary: "주요 프로젝트: EAI 시스템 구축, ASP.NET 웹 시스템 구축"
 content_type: "experience"
 public: true
 ---
@@ -14,6 +14,8 @@ public: true
 *2011.05 ~ 2014.07*
 
 ### 주요 프로젝트 (EAI 구축)
+- EAI (Enterprise Application Integration)
+
 
 #### 대덕전자 EAI 구축 (2014.05 ~ 2014.07)
 - **Stack**: C#, ASP.NET, Oracle 11g
