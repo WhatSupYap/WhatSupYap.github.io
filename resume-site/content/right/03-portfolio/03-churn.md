@@ -1,7 +1,7 @@
 ---
 order: 3
 title: "넷플릭스 구독 이탈 예측"
-period: "2024.10"
+period: "2025.10.01 ~ 2025.10.15 (2주)"
 description: "구독자 행동 데이터를 분석하여 이탈 가능성을 예측, 정밀도(Precision) 96% 달성"
 content_type: "portfolio"
 public: true
