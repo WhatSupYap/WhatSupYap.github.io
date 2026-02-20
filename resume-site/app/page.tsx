@@ -53,18 +53,20 @@ export default async function Home() {
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 gap-2">
+                    {/* Render Items (Cards) */}
+                    <div className="flex flex-col gap-6">
                       {item.items?.map((subItem) => (
                         <ProjectCard key={subItem.slug} item={subItem} />
                       ))}
                     </div>
                   </div>
-                )}
+                )
+                }
               </section>
             );
           })}
         </div>
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }

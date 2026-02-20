@@ -80,19 +80,17 @@ export default async function PrintPage() {
                         {/* Add Address or other contact info here if available */}
                     </div>
 
-                    {/* Education (Moved to Left) */}
+                    {/* Education (From Left) */}
                     <div>
                         <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Education</h3>
                         <div className="flex flex-col gap-3">
-                            {rightItems.filter(item => item.slug.includes('education') && item.type !== 'folder').map((item) => (
+                            {/* Check both file items and folder items in leftItems */}
+                            {leftItems.find(item => item.slug.includes('education') && item.type === 'folder')?.items?.map((item) => (
                                 <div key={item.slug} className="text-sm">
                                     <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
-                                </div>
-                            ))}
-                            {/* Handle nested items if Education is a folder */}
-                            {rightItems.find(item => item.slug.includes('education') && item.type === 'folder')?.items?.map((item) => (
-                                <div key={item.slug} className="text-sm">
-                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
+                                    {item.data.description && (
+                                        <div className="text-[10px] text-slate-500 mt-0.5">{item.data.description}</div>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -101,7 +99,7 @@ export default async function PrintPage() {
                     {/* Skills (from Left) */}
                     <div>
                         <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Skills</h3>
-                        {leftItems.filter(item => !item.slug.includes('profile') && !item.slug.includes('contact')).map((item) => (
+                        {leftItems.filter(item => item.slug.includes('skills')).map((item) => (
                             <div key={item.slug} className="mb-4 last:mb-0">
                                 <div className="text-xs leading-normal text-slate-300 whitespace-pre-line">
                                     {item.data.description}
@@ -110,19 +108,16 @@ export default async function PrintPage() {
                         ))}
                     </div>
 
-                    {/* Certificate (Left Sidebar - After Skills) */}
+                    {/* Certificate (From Left - After Skills) */}
                     <div>
                         <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Certificate</h3>
                         <div className="flex flex-col gap-3">
-                            {rightItems.filter(item => item.slug.includes('certificate') && item.type !== 'folder').map((item) => (
+                            {leftItems.find(item => item.slug.includes('certificate') && item.type === 'folder')?.items?.map((item) => (
                                 <div key={item.slug} className="text-sm">
                                     <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
-                                </div>
-                            ))}
-                            {/* Handle nested items if Certificate is a folder */}
-                            {rightItems.find(item => item.slug.includes('certificate') && item.type === 'folder')?.items?.map((item) => (
-                                <div key={item.slug} className="text-sm">
-                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
+                                    {item.data.description && (
+                                        <div className="text-[10px] text-slate-500 mt-0.5">{item.data.description}</div>
+                                    )}
                                 </div>
                             ))}
                         </div>

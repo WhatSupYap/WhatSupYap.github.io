@@ -203,7 +203,7 @@ export async function getAllExperienceItems(): Promise<MarkdownItem[]> {
 }
 
 export async function getAllEducationItems(): Promise<MarkdownItem[]> {
-  const rightItems = await getSectionData('right');
+  const leftItems = await getSectionData('left');
   const educationItems: MarkdownItem[] = [];
 
   function traverse(items: MarkdownItem[]) {
@@ -217,12 +217,12 @@ export async function getAllEducationItems(): Promise<MarkdownItem[]> {
     }
   }
 
-  traverse(rightItems);
+  traverse(leftItems);
   return educationItems;
 }
 
 export async function getAllCertificateItems(): Promise<MarkdownItem[]> {
-  const rightItems = await getSectionData('right');
+  const leftItems = await getSectionData('left');
   const certificateItems: MarkdownItem[] = [];
 
   function traverse(items: MarkdownItem[]) {
@@ -236,7 +236,7 @@ export async function getAllCertificateItems(): Promise<MarkdownItem[]> {
     }
   }
 
-  traverse(rightItems);
+  traverse(leftItems);
   return certificateItems;
 }
 
