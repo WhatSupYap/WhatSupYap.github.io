@@ -54,7 +54,7 @@ export default async function Home() {
                     </div>
 
                     {/* Render Items (Cards) */}
-                    <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-2">
                       {item.items?.map((subItem) => (
                         <ProjectCard key={subItem.slug} item={subItem} />
                       ))}
