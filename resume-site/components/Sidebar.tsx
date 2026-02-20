@@ -12,7 +12,7 @@ interface Props {
 export default function Sidebar({ items }: Props) {
     return (
         <aside className="w-full md:w-[300px] shrink-0">
-            <div className="md:sticky md:top-12 flex flex-col gap-12 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto hover-scrollbar pr-4">
+            <div className="md:sticky md:top-12 flex flex-col gap-6 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto hover-scrollbar pr-4">
                 {items.map((item) => (
                     <div key={item.slug} className="flex flex-col gap-4">
                         {/* Profile & Contact Handling (Files) */}
@@ -54,7 +54,7 @@ export default function Sidebar({ items }: Props) {
 
                         {/* Skills Section (File) - Show Description Only */}
                         {item.type === 'file' && item.slug.includes('skills') && (
-                            <div className="mt-8">
+                            <div className="mt-2">
                                 <h3 className="text-lg font-bold border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-4 text-neutral-900 dark:text-neutral-100">
                                     Skills
                                 </h3>
@@ -66,7 +66,7 @@ export default function Sidebar({ items }: Props) {
 
                         {/* Education Section (Folder) */}
                         {item.type === 'folder' && item.slug.includes('education') && (
-                            <div className="mt-8">
+                            <div className="mt-2">
                                 <h3 className="text-lg font-bold border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-4 text-neutral-900 dark:text-neutral-100">
                                     Education
                                 </h3>
@@ -85,7 +85,7 @@ export default function Sidebar({ items }: Props) {
 
                         {/* Certificate Section (Folder) */}
                         {item.type === 'folder' && item.slug.includes('certificate') && (
-                            <div className="mt-8">
+                            <div className="mt-2">
                                 <h3 className="text-lg font-bold border-b border-neutral-200 dark:border-neutral-800 pb-2 mb-4 text-neutral-900 dark:text-neutral-100">
                                     Certificate
                                 </h3>
