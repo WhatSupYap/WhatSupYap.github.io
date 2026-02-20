@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { getProjectBySlug, getAllCertificateItems } from '@/lib/markdown';
+import { getProjectBySlug, getAllCertificateItems, getSectionData } from '@/lib/markdown';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Navigation from '@/components/Navigation';
+import FloatingTOC from '@/components/FloatingTOC';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
     }>;
 }
 
-// Generate static params for all certificate items
+// Generate static params for all items
 export async function generateStaticParams() {
     const items = await getAllCertificateItems();
     return items.map((item) => ({
@@ -22,6 +23,9 @@ export default async function CertificateDetailPage({ params }: Props) {
     const { slug } = await params;
     const item = await getProjectBySlug(slug);
 
+    // Single 'Top' navigation item
+    const navItems = [{ id: 'top', label: 'Top' }];
+
     if (!item) {
         notFound();
     }
@@ -29,20 +33,13 @@ export default async function CertificateDetailPage({ params }: Props) {
     const { data, contentHtml } = item;
 
     return (
-        <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 font-sans">
+        <div id="top" className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
             <Navigation />
+            <FloatingTOC navItems={navItems} />
 
-            <main className="max-w-4xl mx-auto px-6 py-12 md:py-20">
-                <Link
-                    href="/"
-                    className="inline-flex items-center text-sm text-neutral-500 hover:text-blue-600 mb-8 transition-colors group"
-                >
-                    <span className="mr-1 group-hover:-translate-x-1 transition-transform">&larr;</span>
-                    Back to Resume
-                </Link>
-
+            <main className="max-w-4xl mx-auto px-6 py-12">
                 <article>
-                    <header className="mb-10 border-b border-neutral-200 dark:border-neutral-800 pb-8">
+                    <header className="mb-12 border-b border-neutral-100 dark:border-neutral-800 pb-8">
                         {data.image && (
                             <div className="w-full h-64 md:h-96 rounded-2xl overflow-hidden mb-8 bg-neutral-100 dark:bg-neutral-900">
                                 <img

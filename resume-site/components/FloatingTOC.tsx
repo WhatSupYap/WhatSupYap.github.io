@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface NavItem {
     id: string;
@@ -9,12 +10,18 @@ interface NavItem {
 
 interface Props {
     navItems: NavItem[];
+    basePath?: string; // e.g. "/" for home page links
 }
 
-export default function FloatingTOC({ navItems }: Props) {
+export default function FloatingTOC({ navItems, basePath = '' }: Props) {
     const [activeId, setActiveId] = useState<string>('');
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
 
     useEffect(() => {
+        // Only run intersection observer on home page where elements exist
+        if (!isHomePage) return;
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -37,18 +44,22 @@ export default function FloatingTOC({ navItems }: Props) {
         });
 
         return () => observer.disconnect();
-    }, [navItems]);
+    }, [navItems, isHomePage]);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        e.preventDefault();
-        const element = document.getElementById(id);
-        if (element) {
-            window.scrollTo({
-                top: element.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            setActiveId(id);
+        // If we are on the home page and element exists, smooth scroll
+        if (isHomePage) {
+            const element = document.getElementById(id);
+            if (element) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: element.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                setActiveId(id);
+            }
         }
+        // Otherwise, let default navigation happen (to /#id)
     };
 
     if (navItems.length === 0) return null;
@@ -58,7 +69,7 @@ export default function FloatingTOC({ navItems }: Props) {
             {navItems.map((item) => (
                 <a
                     key={item.id}
-                    href={`#${item.id}`}
+                    href={`${basePath}#${item.id}`}
                     onClick={(e) => handleClick(e, item.id)}
                     className={`
                         transition-all duration-300 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm border

@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { getProjectBySlug, getAllEducationItems } from '@/lib/markdown';
+import { getProjectBySlug, getAllEducationItems, getSectionData } from '@/lib/markdown';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import Navigation from '@/components/Navigation';
+import FloatingTOC from '@/components/FloatingTOC';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
     }>;
 }
 
-// Generate static params for all education items
+// Generate static params for all items
 export async function generateStaticParams() {
     const items = await getAllEducationItems();
     return items.map((item) => ({
@@ -22,6 +23,9 @@ export default async function EducationDetailPage({ params }: Props) {
     const { slug } = await params;
     const item = await getProjectBySlug(slug);
 
+    // Single 'Top' navigation item
+    const navItems = [{ id: 'top', label: 'Top' }];
+
     if (!item) {
         notFound();
     }
@@ -29,10 +33,9 @@ export default async function EducationDetailPage({ params }: Props) {
     const { data, contentHtml } = item;
 
     return (
-        <div className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
+        <div id="top" className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
             <Navigation />
-
-
+            <FloatingTOC navItems={navItems} />
 
             <main className="max-w-4xl mx-auto px-6 py-12">
                 <header className="mb-12 border-b border-neutral-100 dark:border-neutral-800 pb-8">
