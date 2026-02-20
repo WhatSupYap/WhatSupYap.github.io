@@ -21,9 +21,18 @@ export default async function PrintPage() {
                         -webkit-print-color-adjust: exact;
                         print-color-adjust: exact;
                     }
-                    .no-print {
+                    .no-print,
+                    .print-hidden,
+                    button[aria-label="Toggle theme"],
+                    button:has(svg.lucide-printer) {
                         display: none !important;
                     }
+                }
+                /* Hide Theme Toggle on Screen for this page too if desired, or just ensure it is hidden in print */
+                /* For now, just print media as requested "in print page... visible again" implies during print or on the page itself? */
+                /* User said "/print page... visible again". Let's hide it on the page entirely. */
+                button[aria-label="Toggle theme"] {
+                    display: none !important;
                 }
             `}</style>
 
@@ -65,7 +74,7 @@ export default async function PrintPage() {
                         {profile?.data.github && (
                             <div className="break-all">
                                 <span className="block text-xs text-slate-400 font-bold uppercase">GitHub</span>
-                                {profile.data.github}
+                                <span className="text-[12px]">{profile.data.github}</span>
                             </div>
                         )}
                         {/* Add Address or other contact info here if available */}
@@ -74,13 +83,16 @@ export default async function PrintPage() {
                     {/* Education (Moved to Left) */}
                     <div>
                         <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Education</h3>
-                        <div className="flex flex-col gap-6">
-                            {rightItems.filter(item => item.slug.includes('education')).map((item) => (
+                        <div className="flex flex-col gap-3">
+                            {rightItems.filter(item => item.slug.includes('education') && item.type !== 'folder').map((item) => (
                                 <div key={item.slug} className="text-sm">
-                                    <h4 className="font-bold text-white mb-1">{item.data.title || item.name}</h4>
-                                    <div className="prose prose-sm prose-invert max-w-none text-xs leading-snug text-slate-300">
-                                        <MarkdownRenderer contentHtml={item.contentHtml || ''} />
-                                    </div>
+                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
+                                </div>
+                            ))}
+                            {/* Handle nested items if Education is a folder */}
+                            {rightItems.find(item => item.slug.includes('education') && item.type === 'folder')?.items?.map((item) => (
+                                <div key={item.slug} className="text-sm">
+                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
                                 </div>
                             ))}
                         </div>
@@ -91,8 +103,8 @@ export default async function PrintPage() {
                         <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Skills</h3>
                         {leftItems.filter(item => !item.slug.includes('profile') && !item.slug.includes('contact')).map((item) => (
                             <div key={item.slug} className="mb-4 last:mb-0">
-                                <div className="prose prose-sm prose-invert max-w-none text-xs leading-normal text-slate-300">
-                                    <MarkdownRenderer contentHtml={item.contentHtml || ''} />
+                                <div className="text-xs leading-normal text-slate-300 whitespace-pre-line">
+                                    {item.data.summary}
                                 </div>
                             </div>
                         ))}
@@ -100,100 +112,115 @@ export default async function PrintPage() {
                 </aside>
 
                 {/* --- RIGHT COLUMN (White Content) --- */}
-                <main className="flex-1 bg-white p-8 pt-12 text-slate-800 print:bg-white print:text-black">
+                <main className="flex-1 bg-white p-6 pt-8 text-slate-800 print:bg-white print:text-black">
 
                     {/* Header Name/Role */}
-                    <header className="mb-10">
-                        <h1 className="text-5xl font-black mb-2 tracking-tight uppercase text-slate-900">
+                    <header className="mb-6">
+                        <h1 className="text-4xl font-black mb-1 tracking-tight uppercase text-slate-900">
                             {profile?.data.name || 'Your Name'}
                         </h1>
-                        <h2 className="text-2xl text-slate-500 font-medium tracking-wide">
+                        <h2 className="text-lg text-slate-500 font-medium tracking-wide">
                             {profile?.data.name_en || 'POSITION / ROLE'}
                         </h2>
-                        <div className="mt-4 text-sm text-slate-500 max-w-lg">
-                            {/* Optional short tagline if exists */}
-                        </div>
                     </header>
 
                     {/* Intro / Summary */}
-                    {rightItems.filter(item => item.slug.includes('intro')).map((item) => (
-                        <section key={item.slug} className="mb-10">
-                            <h3 className="font-bold text-xl text-slate-900 border-b-2 border-slate-200 pb-2 mb-4 uppercase tracking-wider">
+                    {rightItems.filter(item => item.slug.includes('intro') && item.type !== 'folder').map((item) => (
+                        <section key={item.slug} className="mb-6">
+                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-2 uppercase tracking-wider">
                                 {item.data.title || 'Summary'}
                             </h3>
-                            <div className="prose prose-sm prose-neutral max-w-none text-justify text-slate-600 leading-relaxed">
-                                <MarkdownRenderer contentHtml={item.contentHtml || ''} />
+                            <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
+                                {item.data.summary}
+                            </div>
+                        </section>
+                    ))}
+                    {/* Handle nested items if Intro is a folder */}
+                    {rightItems.find(item => item.slug.includes('intro') && item.type === 'folder')?.items?.map((item) => (
+                        <section key={item.slug} className="mb-6">
+                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-2 uppercase tracking-wider">
+                                {item.data.title || 'Summary'}
+                            </h3>
+                            <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
+                                {item.data.summary}
                             </div>
                         </section>
                     ))}
 
-                    {/* Experience (Detailed) */}
+                    {/* Experience (Filtered: Recent 5 Years + Key Backend) */}
                     {rightItems.filter(item => item.slug.includes('experience')).map((item) => (
-                        <section key={item.slug} className="mb-10">
-                            <h3 className="font-bold text-xl text-slate-900 border-b-2 border-slate-200 pb-2 mb-6 uppercase tracking-wider">
+                        <section key={item.slug} className="mb-6">
+                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-4 uppercase tracking-wider">
                                 {item.data.title || 'Work Experience'}
                             </h3>
-                            <div className="flex flex-col gap-8">
+                            <div className="flex flex-col gap-4">
                                 {item.items?.map((subItem) => (
                                     <div key={subItem.slug} className="break-inside-avoid relative pl-4 border-l-2 border-slate-200">
-                                        {/* Timeline dot */}
-                                        <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-slate-300 print:border-slate-400"></div>
+                                        {/* Timeline dot - Adjusted to -left-[7px] to align perfectly with left-2 border */}
+                                        <div className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-slate-400 print:border-slate-500"></div>
 
-                                        <div className="flex justify-between items-baseline mb-2">
-                                            <h4 className="font-bold text-lg text-slate-800">{subItem.data.title || subItem.name}</h4>
+                                        <div className="flex justify-between items-baseline mb-1">
+                                            <h4 className="font-bold text-sm text-slate-800">{subItem.data.title || subItem.name}</h4>
                                             {subItem.data.period && (
-                                                <span className="text-xs font-bold text-slate-500 whitespace-nowrap bg-slate-100 px-2 py-1 rounded">
+                                                <span className="text-[10px] font-bold text-slate-500 whitespace-nowrap bg-slate-100 px-1.5 py-0.5 rounded">
                                                     {subItem.data.period}
                                                 </span>
                                             )}
                                         </div>
 
                                         {subItem.data.description && (
-                                            <div className="text-sm font-medium text-slate-600 mb-2 block">
+                                            <div className="text-xs font-medium text-slate-600 mb-1 block">
                                                 {subItem.data.description}
                                             </div>
                                         )}
 
-                                        {/* Print Mode: Show Summary only, hide detailed contentHtml */}
+                                        {/* Print Mode: Show Summary only */}
                                         {subItem.data.summary && (
-                                            <div className="text-xs text-slate-500 mb-2 leading-relaxed">
+                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug">
                                                 {subItem.data.summary}
                                             </div>
                                         )}
-
-                                        {/* 
-                                            We hide the full contentHtml in print to keep it as a summary. 
-                                            If you want full content, uncomment the below or add a condition.
-                                        */}
-                                        {/* <div className="prose prose-sm prose-neutral max-w-none text-sm leading-relaxed text-justify text-slate-600">
-                                            <MarkdownRenderer contentHtml={subItem.contentHtml || ''} />
-                                        </div> */}
                                     </div>
                                 ))}
                             </div>
                         </section>
                     ))}
 
-                    {/* Portfolio / Projects (Compact) */}
+                    {/* Portfolio / Projects (Filtered: Top 3 AI) */}
                     {rightItems.filter(item => item.slug.includes('portfolio')).map((item) => (
-                        <section key={item.slug} className="mb-6">
-                            <h3 className="font-bold text-xl text-slate-900 border-b-2 border-slate-200 pb-2 mb-6 uppercase tracking-wider">
+                        <section key={item.slug} className="mb-4">
+                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-4 uppercase tracking-wider">
                                 {item.data.title || 'Projects'}
                             </h3>
-                            <div className="grid grid-cols-1 gap-4">
-                                {item.items?.map((subItem) => (
-                                    <div key={subItem.slug} className="break-inside-avoid">
-                                        <div className="flex justify-between items-baseline mb-1">
-                                            <h4 className="font-bold text-base text-slate-800">{subItem.data.title || subItem.name}</h4>
+                            <div className="grid grid-cols-1 gap-3">
+                                {item.items?.slice(0, 3).map((subItem) => ( // Top 3 only
+                                    <div key={subItem.slug} className="break-inside-avoid border border-slate-100 p-2 rounded bg-slate-50/50">
+                                        <div className="flex justify-between items-start mb-0.5">
+                                            <div>
+                                                <h4 className="font-bold text-sm text-blue-900 inline-block mr-2">{subItem.data.title || subItem.name}</h4>
+                                                {/* Badges */}
+                                                {(subItem.data.badges as string[])?.slice(0, 3).map(badge => (
+                                                    <span key={badge} className="inline-block text-[8px] px-1 py-0.5 mr-1 bg-blue-100 text-blue-800 rounded">{badge}</span>
+                                                ))}
+                                            </div>
+                                            {/* Period */}
                                             {subItem.data.period && (
-                                                <span className="text-[10px] font-mono text-slate-400 whitespace-nowrap">
+                                                <span className="text-[9px] font-mono text-slate-400 whitespace-nowrap">
                                                     {subItem.data.period}
                                                 </span>
                                             )}
                                         </div>
-                                        {subItem.data.description && (
-                                            <div className="text-xs text-slate-600">
-                                                {subItem.data.description}
+
+                                        {/* Slogan if exists */}
+                                        {subItem.data.slogan && (
+                                            <div className="text-[10px] font-bold text-blue-800 mb-1">
+                                                {subItem.data.slogan}
+                                            </div>
+                                        )}
+
+                                        {subItem.data.summary && (
+                                            <div className="text-[10px] text-slate-600 leading-snug">
+                                                {subItem.data.summary}
                                             </div>
                                         )}
                                     </div>
@@ -201,6 +228,16 @@ export default async function PrintPage() {
                             </div>
                         </section>
                     ))}
+
+                    {/* Other Skills / Swing Dance Story */}
+                    <section className="mt-6 pt-4 border-t border-slate-200">
+                        <h3 className="font-bold text-xs text-slate-900 mb-1 uppercase tracking-wider">
+                            Other Strengths
+                        </h3>
+                        <p className="text-[10px] text-slate-600 font-medium leading-snug">
+                            "14년의 스윙댄스 파트너십 경험을 통해 배운 '유연한 소통'과 '배려'는, 개발팀 내 갈등을 중재하고 시너지를 이끌어내는 저만의 소프트 스킬입니다."
+                        </p>
+                    </section>
 
                 </main>
             </div>

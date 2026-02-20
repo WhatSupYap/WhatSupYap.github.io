@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import GlobalPrintButton from "@/components/GlobalPrintButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,7 +52,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <ThemeToggle />
+          <div className="flex gap-2">
+            <GlobalPrintButton />
+            <ThemeToggle />
+          </div>
         </ThemeProvider>
       </body>
     </html>

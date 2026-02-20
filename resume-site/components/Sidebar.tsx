@@ -60,7 +60,6 @@ export default function Sidebar({ items }: Props) {
                 ))}
 
 
-
                 <div className="text-xs text-neutral-400 mt-8">
                     © {new Date().getFullYear()} All rights reserved.
                 </div>
