@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 interface Props {
   item: MarkdownItem;
+  verticalLayout?: boolean;
 }
 
-export default function ProjectCard({ item }: Props) {
+export default function ProjectCard({ item, verticalLayout = false }: Props) {
   const { data } = item;
   const isPortfolio = data.content_type === 'portfolio';
   const isExperience = data.content_type === 'experience';
@@ -40,23 +41,47 @@ export default function ProjectCard({ item }: Props) {
         </div>
       )}
       <div className="p-5 flex flex-col h-full">
-        <div className="flex justify-between items-start gap-4 mb-2">
-          <div className="flex-1">
-            <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {data.title || item.name}
-            </h3>
-            {data.company && (
-              <div className="text-md font-medium text-neutral-700 dark:text-neutral-300 mt-1">
-                {data.company}
+        {verticalLayout ? (
+          // Vertical Layout: Period top-right, then Title
+          <>
+            {data.period && (
+              <div className="flex justify-end mb-2">
+                <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap">
+                  {data.period}
+                </span>
               </div>
             )}
+            <div className="mb-2">
+              <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {data.title || item.name}
+              </h3>
+              {data.company && (
+                <div className="text-md font-medium text-neutral-700 dark:text-neutral-300 mt-1">
+                  {data.company}
+                </div>
+              )}
+            </div>
+          </>
+        ) : (
+          // Original Horizontal Layout: Title left, Period right
+          <div className="flex justify-between items-start gap-4 mb-2">
+            <div className="flex-1">
+              <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {data.title || item.name}
+              </h3>
+              {data.company && (
+                <div className="text-md font-medium text-neutral-700 dark:text-neutral-300 mt-1">
+                  {data.company}
+                </div>
+              )}
+            </div>
+            {data.period && (
+              <span className="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap mt-1">
+                {data.period}
+              </span>
+            )}
           </div>
-          {data.period && (
-            <span className="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap mt-1">
-              {data.period}
-            </span>
-          )}
-        </div>
+        )}
 
         {/* Prioritize description for the card view */}
         {(data.description) && (

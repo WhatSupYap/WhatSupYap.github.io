@@ -52,7 +52,7 @@ export default async function PortfolioDetailPage({ params }: Props) {
 
     return (
         <div id="top" className="min-h-screen font-sans text-neutral-900 dark:text-neutral-100">
-            <Navigation />
+            <Navigation viewAllHref="/portfolio" />
             <FloatingTOC navItems={navItems} />
 
 
