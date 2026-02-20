@@ -1,10 +1,11 @@
 ---
 order: 3
-title: "이베이스넷 외 2"
+title: "시스템 백엔드 개발자 (System Backend Developer)"
+company: "이베이스넷 외 2개사"
 period: "2014.12 ~ 2016.06 (1년 7개월)"
 date: "2016.02"
-description: "S/W 유지보수 및 개발 (대리)"
-summary: "주요 프로젝트: 소켓 기반 파일 전송 시스템, MSDS 시스템 구축"
+description: "주요 프로젝트: 소켓 기반 파일 전송 시스템, MSDS 시스템 구축"
+
 content_type: "experience"
 public: true
 ---

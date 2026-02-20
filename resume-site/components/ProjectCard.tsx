@@ -11,8 +11,9 @@ export default function ProjectCard({ item }: Props) {
   const isPortfolio = data.content_type === 'portfolio';
   const isExperience = data.content_type === 'experience';
   const isEducation = data.content_type === 'education';
+  const isCertificate = data.content_type === 'certificate';
   const isIntro = data.content_type === 'intro';
-  const isLinkable = isPortfolio || isExperience || isEducation || isIntro;
+  const isLinkable = isPortfolio || isExperience || isEducation || isCertificate || isIntro;
 
   let href = '';
   if (isPortfolio) {
@@ -21,6 +22,8 @@ export default function ProjectCard({ item }: Props) {
     href = `/experience/${item.slug}`;
   } else if (isEducation) {
     href = `/education/${item.slug}`;
+  } else if (isCertificate) {
+    href = `/certificate/${item.slug}`;
   } else if (isIntro) {
     href = `/intro/${item.slug}`;
   }
@@ -36,22 +39,29 @@ export default function ProjectCard({ item }: Props) {
           />
         </div>
       )}
-      <div className="p-5 flex flex-col gap-3">
-        <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            {data.title || item.name}
-          </h3>
+      <div className="p-5 flex flex-col h-full">
+        <div className="flex justify-between items-start gap-4 mb-2">
+          <div className="flex-1">
+            <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {data.title || item.name}
+            </h3>
+            {data.company && (
+              <div className="text-md font-medium text-neutral-700 dark:text-neutral-300 mt-1">
+                {data.company}
+              </div>
+            )}
+          </div>
           {data.period && (
-            <p className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mt-2">
+            <span className="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap mt-1">
               {data.period}
-            </p>
+            </span>
           )}
         </div>
 
-        {/* Prioritize summary for the card view */}
-        {(data.summary || data.description) && (
-          <p className="text-neutral-600 dark:text-neutral-300 text-sm line-clamp-3 leading-relaxed">
-            {data.summary || data.description}
+        {/* Prioritize description for the card view */}
+        {(data.description) && (
+          <p className="text-neutral-600 dark:text-neutral-300 text-sm line-clamp-3 leading-relaxed mt-1">
+            {data.description}
           </p>
         )}
 

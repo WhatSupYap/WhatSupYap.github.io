@@ -104,10 +104,28 @@ export default async function PrintPage() {
                         {leftItems.filter(item => !item.slug.includes('profile') && !item.slug.includes('contact')).map((item) => (
                             <div key={item.slug} className="mb-4 last:mb-0">
                                 <div className="text-xs leading-normal text-slate-300 whitespace-pre-line">
-                                    {item.data.summary}
+                                    {item.data.description}
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    {/* Certificate (Left Sidebar - After Skills) */}
+                    <div>
+                        <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Certificate</h3>
+                        <div className="flex flex-col gap-3">
+                            {rightItems.filter(item => item.slug.includes('certificate') && item.type !== 'folder').map((item) => (
+                                <div key={item.slug} className="text-sm">
+                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
+                                </div>
+                            ))}
+                            {/* Handle nested items if Certificate is a folder */}
+                            {rightItems.find(item => item.slug.includes('certificate') && item.type === 'folder')?.items?.map((item) => (
+                                <div key={item.slug} className="text-sm">
+                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </aside>
 
@@ -131,7 +149,7 @@ export default async function PrintPage() {
                                 {item.data.title || 'Summary'}
                             </h3>
                             <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
-                                {item.data.summary}
+                                {item.data.description}
                             </div>
                         </section>
                     ))}
@@ -142,7 +160,7 @@ export default async function PrintPage() {
                                 {item.data.title || 'Summary'}
                             </h3>
                             <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
-                                {item.data.summary}
+                                {item.data.description}
                             </div>
                         </section>
                     ))}
@@ -159,25 +177,28 @@ export default async function PrintPage() {
                                         {/* Timeline dot - Adjusted to -left-[7px] to align perfectly with left-2 border */}
                                         <div className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-slate-400 print:border-slate-500"></div>
 
-                                        <div className="flex justify-between items-baseline mb-1">
-                                            <h4 className="font-bold text-sm text-slate-800">{subItem.data.title || subItem.name}</h4>
+                                        <div className="flex justify-between items-start mb-1">
+                                            <div>
+                                                <h3 className="text-sm font-bold text-slate-900 leading-tight">
+                                                    {subItem.data.title || subItem.name}
+                                                </h3>
+                                                {subItem.data.company && (
+                                                    <div className="text-xs font-semibold text-slate-700 mt-0.5">
+                                                        {subItem.data.company}
+                                                    </div>
+                                                )}
+                                            </div>
                                             {subItem.data.period && (
-                                                <span className="text-[10px] font-bold text-slate-500 whitespace-nowrap bg-slate-100 px-1.5 py-0.5 rounded">
+                                                <span className="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 whitespace-nowrap ml-4">
                                                     {subItem.data.period}
                                                 </span>
                                             )}
                                         </div>
 
+                                        {/* Print Mode: Show Description only */}
                                         {subItem.data.description && (
-                                            <div className="text-xs font-medium text-slate-600 mb-1 block">
+                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug mt-1">
                                                 {subItem.data.description}
-                                            </div>
-                                        )}
-
-                                        {/* Print Mode: Show Summary only */}
-                                        {subItem.data.summary && (
-                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug">
-                                                {subItem.data.summary}
                                             </div>
                                         )}
                                     </div>
@@ -218,9 +239,9 @@ export default async function PrintPage() {
                                             </div>
                                         )}
 
-                                        {subItem.data.summary && (
+                                        {subItem.data.description && (
                                             <div className="text-[10px] text-slate-600 leading-snug">
-                                                {subItem.data.summary}
+                                                {subItem.data.description}
                                             </div>
                                         )}
                                     </div>

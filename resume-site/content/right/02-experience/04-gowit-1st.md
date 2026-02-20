@@ -1,10 +1,11 @@
 ---
 order: 4
-title: "고우아이티 (GoWit)"
+title: "백엔드 개발자 (Backend Developer)"
+company: "고우아이티 (GowIT)"
 period: "2011.05 ~ 2014.07 (3년 3개월)"
 date: "2011.05"
-description: "S/W 개발 (사원) - EAI 중심"
-summary: "주요 프로젝트: EAI 시스템 구축, ASP.NET 웹 시스템 구축"
+description: "주요 프로젝트: EAI 시스템 구축, ASP.NET 웹 시스템 구축"
+
 content_type: "experience"
 public: true
 ---

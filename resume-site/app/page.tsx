@@ -53,7 +53,7 @@ export default async function Home() {
                       )}
                     </div>
 
-                    <div className="grid grid-cols-1 gap-8">
+                    <div className="grid grid-cols-1 gap-2">
                       {item.items?.map((subItem) => (
                         <ProjectCard key={subItem.slug} item={subItem} />
                       ))}

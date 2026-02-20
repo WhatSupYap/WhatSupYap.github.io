@@ -26,6 +26,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Disable italics globally */
+em,
+i,
+blockquote,
+address,
+cite,
+dfn,
+var {
+  font-style: normal !important;
+}
+
+/* Disable italics specifically for Tailwind Typography prose */
+.prose em,
+.prose i,
+.prose blockquote,
+.prose address,
+.prose cite,
+.prose dfn,
+.prose var {
+  font-style: normal !important;
+}
+
 /* Custom scrollbar that shows only on hover */
 .hover-scrollbar {
   /* overflow-y: auto; Removed to control via utility classes */

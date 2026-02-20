@@ -14,8 +14,8 @@ export interface MarkdownItem {
   order: number;
   data: {
     title?: string;
-    description?: string;
-    summary?: string; // Short summary for list view
+    company?: string;
+    description?: string; // Short summary/description for list view
     content_type?: string; // 'project', 'experience', etc.
     period?: string;
     date?: string;
@@ -43,16 +43,16 @@ async function processFile(filePath: string, relativePath: string): Promise<Mark
     return null;
   }
 
-  // Generate summary if not present and content_type is portfolio or experience
+  // Generate description if not present and content_type is portfolio or experience
   // Or just always generate it for potential use
-  let summary = data.summary;
-  if (!summary) {
-    // Strip markdown syntax roughly to get plain text for summary
+  let description = data.description;
+  if (!description) {
+    // Strip markdown syntax roughly to get plain text for description
     const plainText = content.replace(/[#*`\[\]()]/g, '').replace(/\n+/g, ' ').trim();
-    summary = plainText.length > 150 ? plainText.slice(0, 150) + '...' : plainText;
+    description = plainText.length > 150 ? plainText.slice(0, 150) + '...' : plainText;
   }
-  // Inject summary into data so components can use it
-  data.summary = summary;
+  // Inject description into data so components can use it
+  data.description = description;
 
   // Convert markdown to HTML
   const processedContent = await remark()
@@ -219,6 +219,25 @@ export async function getAllEducationItems(): Promise<MarkdownItem[]> {
 
   traverse(rightItems);
   return educationItems;
+}
+
+export async function getAllCertificateItems(): Promise<MarkdownItem[]> {
+  const rightItems = await getSectionData('right');
+  const certificateItems: MarkdownItem[] = [];
+
+  function traverse(items: MarkdownItem[]) {
+    for (const item of items) {
+      if (item.data.content_type === 'certificate') {
+        certificateItems.push(item);
+      }
+      if (item.items) {
+        traverse(item.items);
+      }
+    }
+  }
+
+  traverse(rightItems);
+  return certificateItems;
 }
 
 export async function getAllIntroItems(): Promise<MarkdownItem[]> {

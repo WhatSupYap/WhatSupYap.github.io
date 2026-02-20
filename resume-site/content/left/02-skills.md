@@ -1,7 +1,7 @@
 ---
 order: 2
 public: true
-summary: "C#, ASP.NET Core, MS-SQL, Python, LLM (RAG, LangGraph), FastAPI, AWS, PostgreSQL"
+description: "C#, ASP.NET Core, MS-SQL, Python, LLM (RAG, LangGraph), FastAPI, AWS, PostgreSQL"
 ---
 
 ## Technical Skills

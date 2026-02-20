@@ -1,10 +1,11 @@
 ---
 order: 1
-title: "고우아이티 (GowIT)"
+title: "시니어 클라우드 백엔드 (Senior Cloud Backend)"
+company: "고우아이티 (GowIT)"
 period: "2023.04 ~ 2025.05 (2년 2개월)"
 date: "2023.04"
-description: "S/W 개발 및 유지보수 (과장)"
-summary: "주요 프로젝트: 예실관리(BPMS) 구축, ERP 모니터링 시스템, 포스코 건설 PI 3기 구축"
+description: "주요 프로젝트: 예실관리(BPMS) 구축, ERP 모니터링 시스템, 포스코 건설 PI 3기 구축"
+
 content_type: "experience"
 public: true
 ---
