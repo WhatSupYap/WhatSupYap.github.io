@@ -1,7 +1,23 @@
+"use client";
+
 import Link from 'next/link';
 import { Printer } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function GlobalPrintButton() {
+    const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Don't render on print page or until mounted
+    if (!mounted || pathname === '/print') {
+        return null;
+    }
+
     return (
         <Link
             href="/print"
