@@ -95,8 +95,16 @@ export default function ProjectCard({ item, verticalLayout = false }: Props) {
             )}
           </>
         ) : (
-          // Original Horizontal Layout: Title left, Period right
-          <div className="flex justify-between items-start gap-4 mb-2">
+          // Horizontal Layout: Title left, Period right (Responsive: Period top on mobile)
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-1 md:gap-4 mb-2">
+            {/* Period is first in DOM for mobile top placement, moved to right on desktop via order-last */}
+            {data.period && (
+              <div className="md:order-last shrink-0 mb-2 md:mb-0">
+                <span className="inline-block text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap md:mt-1">
+                  {data.period}
+                </span>
+              </div>
+            )}
             <div className="flex-1">
               <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 {data.title || item.name}
@@ -107,11 +115,6 @@ export default function ProjectCard({ item, verticalLayout = false }: Props) {
                 </div>
               )}
             </div>
-            {data.period && (
-              <span className="shrink-0 text-xs font-medium px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 whitespace-nowrap mt-1">
-                {data.period}
-              </span>
-            )}
           </div>
         )}
 

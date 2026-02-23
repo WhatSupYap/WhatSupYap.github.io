@@ -66,11 +66,11 @@ export default async function PortfolioDetailPage({ params }: Props) {
                     </div>
 
                     {data.image && (
-                        <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-6">
+                        <div className="relative w-full rounded-xl overflow-hidden bg-neutral-100 dark:bg-neutral-800 mb-6">
                             <img
                                 src={data.image}
                                 alt={data.title}
-                                className="w-full h-full object-cover"
+                                className="w-full h-auto block"
                             />
                         </div>
                     )}

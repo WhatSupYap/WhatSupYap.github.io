@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from 'react';
+import React from 'react';
 import { MarkdownItem } from '@/lib/markdown';
 import MarkdownRenderer from './MarkdownRenderer';
 import ContactSection from './ContactSection';
@@ -11,19 +10,9 @@ interface Props {
 }
 
 export default function Sidebar({ items }: Props) {
-    const [isExpanded, setIsExpanded] = useState(false);
-
     return (
         <aside className="w-full md:w-[300px] shrink-0">
-            <div className="md:hidden mb-4">
-                <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="w-full py-2 bg-neutral-100 dark:bg-neutral-800 rounded-lg text-sm font-semibold text-neutral-700 dark:text-neutral-300 flex justify-center items-center gap-2"
-                >
-                    {isExpanded ? '프로필 접기 ▲' : '프로필 더 보기 ▼'}
-                </button>
-            </div>
-            <div className={`md:sticky md:top-12 flex-col gap-6 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto hover-scrollbar md:pr-4 ${isExpanded ? 'flex' : 'hidden md:flex'}`}>
+            <div className="md:sticky md:top-12 flex flex-col gap-6 md:max-h-[calc(100vh-6rem)] md:overflow-y-auto hover-scrollbar pr-4">
                 {items.map((item) => (
                     <div key={item.slug} className="flex flex-col gap-4">
                         {/* Profile & Contact Handling (Files) */}
