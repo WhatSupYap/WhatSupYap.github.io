@@ -8,6 +8,11 @@ public: true
 badges: ["LangGraph", "State Management", "Chatbot"]
 slogan: "공공주택 정보의 원스톱 서비스"
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-4th-4Team"
+image: "/images/projects/zipfit/zipfit.png"
+gallery:
+  - "/images/projects/zipfit/zipfit_1.jpg"
+  - "/images/projects/zipfit/zipfit_2.jpg"
+  - "/images/projects/zipfit/zipfit_3.png"
 ---
 
 # ZIPFIT(집핏) - 나에게 딱 맞는 공공주택 찾기
