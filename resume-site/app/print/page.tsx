@@ -1,280 +1,117 @@
+import Link from 'next/link';
+import { FileText, PenLine, Briefcase, LayoutGrid } from 'lucide-react';
 import { getSectionData } from '@/lib/markdown';
-import MarkdownRenderer from '@/components/MarkdownRenderer';
-import PrintButton from './PrintButton';
 
-export default async function PrintPage() {
+const PRINT_DOCS = [
+    {
+        href: '/print/resume',
+        Icon: FileText,
+        title: '기본 이력서',
+        description: '인적사항, 기술 스택, 경력 요약, 프로젝트 목록을 A4 1장으로 압축한 표준 이력서입니다.',
+        borderColor: 'border-slate-200 hover:border-slate-400',
+        iconColor: 'text-slate-600',
+    },
+    {
+        href: '/print/cover-letter',
+        Icon: PenLine,
+        title: '자기소개서',
+        description: '지원동기, 직무역량, 입사 후 포부 등 항목별로 서술하는 자기소개서입니다.',
+        borderColor: 'border-slate-200 hover:border-slate-400',
+        iconColor: 'text-slate-600',
+    },
+    {
+        href: '/print/career',
+        Icon: Briefcase,
+        title: '경력기술서',
+        description: '재직 회사와 담당 프로젝트를 회사별·시간순으로 정리한 상세 경력기술서입니다.',
+        borderColor: 'border-slate-200 hover:border-slate-400',
+        iconColor: 'text-slate-600',
+    },
+    {
+        href: '/print/portfolio',
+        Icon: LayoutGrid,
+        title: '포트폴리오',
+        description: '주요 프로젝트의 역할, 기술 스택, 핵심 성과를 상세히 기술한 포트폴리오입니다.',
+        borderColor: 'border-slate-200 hover:border-slate-400',
+        iconColor: 'text-slate-600',
+    },
+];
+
+export default async function PrintHubPage() {
     const leftItems = await getSectionData('left');
-    const rightItems = await getSectionData('right');
-
-    const isAiOrInfra = (badge: string) => {
-        const aiKeywords = ['python', 'fastapi', 'aws', 'docker', 'langgraph', 'rag', 'llm', 'sllm'];
-        return aiKeywords.some(keyword => badge.toLowerCase().includes(keyword));
-    };
-
-    const isLegacy = (badge: string) => {
-        const legacyKeywords = ['c#', 'asp.net', 'windows'];
-        return legacyKeywords.some(keyword => badge.toLowerCase().includes(keyword));
-    };
-
-    const getPrintBadgeStyle = (badge: string) => {
-        if (isAiOrInfra(badge)) return "bg-indigo-100 text-indigo-800 border border-indigo-200";
-        if (isLegacy(badge)) return "bg-slate-200 text-slate-700 border border-slate-300";
-        return "bg-blue-100 text-blue-800 border border-blue-200";
-    };
-
     const profile = leftItems.find(item => item.slug.includes('profile'));
-    const contact = leftItems.find(item => item.slug.includes('contact'));
 
     return (
-        <div className="min-h-screen bg-white text-black font-sans box-border">
-            <style>{`
-                @page {
-                    size: A4;
-                    margin: 0;
-                }
-                @media print {
-                    body {
-                        -webkit-print-color-adjust: exact;
-                        print-color-adjust: exact;
-                    }
-                    .no-print,
-                    .print-hidden,
-                    button[aria-label="Toggle theme"],
-                    button:has(svg.lucide-printer) {
-                        display: none !important;
-                    }
-                }
-                /* Hide Theme Toggle on Screen for this page too if desired, or just ensure it is hidden in print */
-                /* For now, just print media as requested "in print page... visible again" implies during print or on the page itself? */
-                /* User said "/print page... visible again". Let's hide it on the page entirely. */
-                button[aria-label="Toggle theme"] {
-                    display: none !important;
-                }
-            `}</style>
+        <div className="min-h-screen bg-slate-50 font-sans">
+            {/* 상단 헤더 */}
+            <header className="bg-slate-900 text-white py-10 px-6 text-center">
+                <p className="text-slate-400 text-sm mb-1 uppercase tracking-widest font-mono">Print / Export</p>
+                <h1 className="text-3xl font-black tracking-tight">
+                    {profile?.data.name || '이름'} 님의 제출 서류
+                </h1>
+                <p className="mt-2 text-slate-400 text-sm">
+                    각 문서를 클릭 → 페이지 상단 <strong className="text-white">인쇄하기 버튼</strong> 또는{' '}
+                    <kbd className="bg-slate-700 text-slate-200 px-1.5 py-0.5 rounded text-xs font-mono">Ctrl+P</kbd>{' '}
+                    → <strong className="text-white">PDF로 저장</strong>
+                </p>
+                <div className="mt-4">
+                    <Link
+                        href="/"
+                        className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm transition-colors"
+                    >
+                        ← 이력서 사이트로 돌아가기
+                    </Link>
+                </div>
+            </header>
 
-            <PrintButton />
-
-            {/* A4 Page Container: Flex row for 2 columns */}
-            <div className="w-[210mm] min-h-[297mm] mx-auto flex bg-white shadow-xl print:shadow-none print:w-full">
-
-                {/* --- LEFT COLUMN (Dark Sidebar) --- */}
-                <aside className="w-[30%] bg-slate-900 text-slate-100 p-6 flex flex-col gap-8 print:bg-slate-900 print:text-slate-100">
-
-                    {/* Profile Image */}
-                    {profile?.data.image && (
-                        <div className="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-slate-700">
-                            <img
-                                src={profile.data.image}
-                                alt="Profile"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    )}
-
-                    {/* Contact Info */}
-                    <div className="flex flex-col gap-4 text-sm">
-                        <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-2 text-white">Contact</h3>
-
-                        {profile?.data.phone && (
-                            <div className="break-all">
-                                <span className="block text-xs text-slate-400 font-bold uppercase">Phone</span>
-                                {profile.data.phone}
-                            </div>
-                        )}
-                        {profile?.data.email && (
-                            <div className="break-all">
-                                <span className="block text-xs text-slate-400 font-bold uppercase">Email</span>
-                                {profile.data.email}
-                            </div>
-                        )}
-                        {profile?.data.github && (
-                            <div className="break-all">
-                                <span className="block text-xs text-slate-400 font-bold uppercase">GitHub</span>
-                                <span className="text-[12px]">{profile.data.github}</span>
-                            </div>
-                        )}
-                        {/* Add Address or other contact info here if available */}
-                    </div>
-
-                    {/* Education (From Left) */}
-                    <div>
-                        <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Education</h3>
-                        <div className="flex flex-col gap-3">
-                            {/* Check both file items and folder items in leftItems */}
-                            {leftItems.find(item => item.slug.includes('education') && item.type === 'folder')?.items?.map((item) => (
-                                <div key={item.slug} className="text-sm">
-                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
-                                    {item.data.description && (
-                                        <div className="text-[10px] text-slate-500 mt-0.5">{item.data.description}</div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Skills (from Left) */}
-                    <div>
-                        <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Skills</h3>
-                        {leftItems.filter(item => item.slug.includes('skills')).map((item) => (
-                            <div key={item.slug} className="mb-4 last:mb-0">
-                                <div className="text-xs leading-normal text-slate-300 whitespace-pre-line">
-                                    {item.data.description}
+            {/* 문서 카드 그리드 */}
+            <main className="max-w-4xl mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    {PRINT_DOCS.map(({ href, Icon, title, description, borderColor, iconColor }) => (
+                        <Link
+                            key={href}
+                            href={href}
+                            className={`group flex flex-col bg-white rounded-xl border ${borderColor} p-6 shadow-sm hover:shadow-md transition-all duration-200`}
+                        >
+                            {/* 상단: 아이콘 */}
+                            <div className="mb-5">
+                                <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
+                                    <Icon className={`w-5 h-5 ${iconColor}`} strokeWidth={1.5} />
                                 </div>
                             </div>
-                        ))}
-                    </div>
 
-                    {/* Certificate (From Left - After Skills) */}
-                    <div>
-                        <h3 className="text-lg font-bold border-b border-slate-700 pb-2 mb-4 text-white">Certificate</h3>
-                        <div className="flex flex-col gap-3">
-                            {leftItems.find(item => item.slug.includes('certificate') && item.type === 'folder')?.items?.map((item) => (
-                                <div key={item.slug} className="text-sm">
-                                    <h4 className="block text-xs text-slate-400 font-bold uppercase">{item.data.title || item.name}</h4>
-                                    {item.data.description && (
-                                        <div className="text-[10px] text-slate-500 mt-0.5">{item.data.description}</div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </aside>
+                            {/* 제목 & 설명 */}
+                            <h2 className="text-base font-bold text-slate-900 mb-1.5">
+                                {title}
+                            </h2>
+                            <p className="text-sm text-slate-500 leading-relaxed flex-1">
+                                {description}
+                            </p>
 
-                {/* --- RIGHT COLUMN (White Content) --- */}
-                <main className="flex-1 bg-white p-6 pt-8 text-slate-800 print:bg-white print:text-black">
-
-                    {/* Header Name/Role */}
-                    <header className="mb-6">
-                        <h1 className="text-4xl font-black mb-1 tracking-tight uppercase text-slate-900">
-                            {profile?.data.name || 'Your Name'}
-                        </h1>
-                        <h2 className="text-lg text-slate-500 font-medium tracking-wide">
-                            {profile?.data.name_en || 'POSITION / ROLE'}
-                        </h2>
-                    </header>
-
-                    {/* Intro / Summary */}
-                    {rightItems.filter(item => item.slug.includes('intro') && item.type !== 'folder').map((item) => (
-                        <section key={item.slug} className="mb-6">
-                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-2 uppercase tracking-wider">
-                                {item.data.title || 'Summary'}
-                            </h3>
-                            <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
-                                {item.data.description}
+                            {/* 하단: 바로가기 */}
+                            <div className="mt-5 flex items-center gap-1 text-sm font-medium text-slate-600 group-hover:text-slate-900 transition-colors">
+                                <span>열기</span>
+                                <span className="transition-transform group-hover:translate-x-0.5">→</span>
                             </div>
-                        </section>
+                        </Link>
                     ))}
-                    {/* Handle nested items if Intro is a folder */}
-                    {rightItems.find(item => item.slug.includes('intro') && item.type === 'folder')?.items?.map((item) => (
-                        <section key={item.slug} className="mb-6">
-                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-2 uppercase tracking-wider">
-                                {item.data.title || 'Summary'}
-                            </h3>
-                            <div className="text-justify text-slate-600 leading-normal text-xs whitespace-pre-line">
-                                {item.data.description}
-                            </div>
-                        </section>
-                    ))}
+                </div>
 
-                    {/* Experience (Filtered: Recent 5 Years + Key Backend) */}
-                    {rightItems.filter(item => item.slug.includes('experience')).map((item) => (
-                        <section key={item.slug} className="mb-6">
-                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-4 uppercase tracking-wider">
-                                {item.data.title || 'Work Experience'}
-                            </h3>
-                            <div className="flex flex-col gap-4">
-                                {item.items?.map((subItem) => (
-                                    <div key={subItem.slug} className="break-inside-avoid relative pl-4 border-l-2 border-slate-200">
-                                        {/* Timeline dot - Adjusted to -left-[7px] to align perfectly with left-2 border */}
-                                        <div className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-white border-2 border-slate-400 print:border-slate-500"></div>
+                {/* 제출 안내 */}
+                <div className="mt-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+                    <h3 className="font-semibold text-slate-700 mb-3 text-sm">ZIP 제출 방법</h3>
+                    <ol className="list-decimal list-inside text-sm text-slate-500 space-y-1.5">
+                        <li>각 문서 페이지에서 <strong className="text-slate-700">PDF로 저장</strong> (배경 그래픽 ✅ 체크)</li>
+                        <li>저장된 PDF 4개 파일을 선택 → <strong className="text-slate-700">우클릭 → 압축</strong></li>
+                        <li>ZIP 파일을 지원 프로그램에 제출</li>
+                    </ol>
+                </div>
+            </main>
 
-                                        <div className="flex justify-between items-start mb-1">
-                                            <div>
-                                                <h3 className="text-sm font-bold text-slate-900 leading-tight">
-                                                    {subItem.data.title || subItem.name}
-                                                </h3>
-                                                {subItem.data.company && (
-                                                    <div className="text-xs font-semibold text-slate-700 mt-0.5">
-                                                        {subItem.data.company}
-                                                    </div>
-                                                )}
-                                            </div>
-                                            {subItem.data.period && (
-                                                <span className="shrink-0 text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 whitespace-nowrap ml-4">
-                                                    {subItem.data.period}
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        {/* Print Mode: Show Description only */}
-                                        {subItem.data.description && (
-                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug mt-1">
-                                                {subItem.data.description}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
-
-                    {/* Portfolio / Projects (Filtered: Top 3 AI) */}
-                    {rightItems.filter(item => item.slug.includes('portfolio')).map((item) => (
-                        <section key={item.slug} className="mb-4">
-                            <h3 className="font-bold text-base text-slate-900 border-b-2 border-slate-200 pb-1 mb-4 uppercase tracking-wider">
-                                {item.data.title || 'Projects'}
-                            </h3>
-                            <div className="grid grid-cols-1 gap-3">
-                                {item.items?.slice(0, 3).map((subItem) => ( // Top 3 only
-                                    <div key={subItem.slug} className="break-inside-avoid border border-slate-100 p-2 rounded bg-slate-50/50">
-                                        <div className="flex justify-between items-start mb-1 gap-2">
-                                            <div className="flex-1">
-                                                <h4 className="font-bold text-sm text-blue-900 mb-1">{subItem.data.title || subItem.name}</h4>
-                                                {/* Badges */}
-                                                <div className="flex flex-wrap gap-1">
-                                                    {(subItem.data.badges as string[])?.slice(0, 4).map(badge => (
-                                                        <span key={badge} className={`inline-block text-[8px] px-1.5 py-0.5 rounded ${getPrintBadgeStyle(badge)}`}>{badge}</span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                            {/* Period */}
-                                            {subItem.data.period && (
-                                                <span className="text-[9px] font-mono text-slate-400 whitespace-nowrap shrink-0 mt-0.5">
-                                                    {subItem.data.period}
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        {/* Slogan if exists */}
-                                        {subItem.data.slogan && (
-                                            <div className="text-[10px] font-bold text-blue-800 mb-1">
-                                                {subItem.data.slogan}
-                                            </div>
-                                        )}
-
-                                        {subItem.data.description && (
-                                            <div className="text-[10px] text-slate-600 leading-snug">
-                                                {subItem.data.description}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                    ))}
-
-                    {/* Other Skills / Swing Dance Story */}
-                    <section className="mt-6 pt-4 border-t border-slate-200">
-                        <h3 className="font-bold text-xs text-slate-900 mb-1 uppercase tracking-wider">
-                            Other Strengths
-                        </h3>
-                        <p className="text-[10px] text-slate-600 font-medium leading-snug">
-                            "14년의 스윙댄스 파트너십 경험을 통해 배운 '유연한 소통'과 '배려'는, 개발팀 내 갈등을 중재하고 시너지를 이끌어내는 저만의 소프트 스킬입니다."
-                        </p>
-                    </section>
-
-                </main>
-            </div>
+            {/* 하단 */}
+            <footer className="text-center text-xs text-slate-400 pb-8">
+                {profile?.data.name} · {profile?.data.email} · {profile?.data.github}
+            </footer>
         </div>
     );
 }

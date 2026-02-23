@@ -14,7 +14,7 @@ export default function GlobalPrintButton() {
     }, []);
 
     // Don't render on print page or until mounted
-    if (!mounted || pathname === '/print') {
+    if (!mounted || pathname.startsWith('/print')) {
         return null;
     }
 
