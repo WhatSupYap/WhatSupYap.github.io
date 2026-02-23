@@ -44,12 +44,14 @@ export default async function CareerPrintPage() {
 
                     {/* 경력 요약: experience/index.md 에서 읽기 */}
                     {(experienceMeta.summary_years || experienceMeta.summary_projects) && (
-                        <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-500 bg-slate-50 p-2 rounded">
-                            {experienceMeta.summary_years && <span>📅 총 경력: {experienceMeta.summary_years}</span>}
-                            {experienceMeta.summary_companies && <span>🏢 {experienceMeta.summary_companies}</span>}
-                            {experienceMeta.summary_projects && <span>📋 {experienceMeta.summary_projects}</span>}
-                            {experienceMeta.summary_skills && <span>💻 주요기술: {experienceMeta.summary_skills}</span>}
-                        </div>
+                        <p className="mt-3 text-[10px] text-slate-500 bg-slate-50 px-3 py-1.5 rounded leading-5">
+                            {[
+                                experienceMeta.summary_years && `총 경력 ${experienceMeta.summary_years}`,
+                                experienceMeta.summary_companies,
+                                experienceMeta.summary_projects,
+                                experienceMeta.summary_skills && `주요기술: ${experienceMeta.summary_skills}`,
+                            ].filter(Boolean).join('  ·  ')}
+                        </p>
                     )}
                 </header>
 
@@ -63,7 +65,7 @@ export default async function CareerPrintPage() {
                                         {item.data.company || item.data.title}
                                     </h2>
                                     {item.data.company && (
-                                        <p className="text-sm text-slate-600">{item.data.title}</p>
+                                        <p className="text-sm print:text-xs text-slate-600">{item.data.title}</p>
                                     )}
                                 </div>
                                 {item.data.period && (
