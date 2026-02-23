@@ -20,6 +20,7 @@ export interface MarkdownItem {
     period?: string;
     date?: string;
     image?: string;
+    thumbnail?: string;
     gallery?: string[];
     github?: string;
     public?: boolean;

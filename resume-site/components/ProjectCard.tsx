@@ -53,10 +53,10 @@ export default function ProjectCard({ item, verticalLayout = false }: Props) {
 
   const CardContent = (
     <>
-      {data.image && (
-        <div className="relative w-full h-48 bg-neutral-100 dark:bg-neutral-800">
+      {(data.thumbnail || data.image) && (
+        <div className="relative w-full h-48 bg-neutral-100 dark:bg-neutral-800 flex shrink-0 border-b border-neutral-200 dark:border-neutral-800">
           <img
-            src={data.image}
+            src={data.thumbnail || data.image}
             alt={data.title || item.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

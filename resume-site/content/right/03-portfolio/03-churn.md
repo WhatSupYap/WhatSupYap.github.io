@@ -7,6 +7,12 @@ content_type: "portfolio"
 public: true
 badges: ["Precision 96%", "XGBoost", "Data Analysis"]
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-2nd-3Team"
+image: "/images/projects/netflix_churn/main.png"
+thumbnail: "/images/projects/netflix_churn/thumbnail.png"
+gallery:
+  - "/images/projects/netflix_churn/1.png"
+  - "/images/projects/netflix_churn/2.png"
+  - "/images/projects/netflix_churn/3.png"
 ---
 
 # 넷플릭스 구독 이탈 예측 프로젝트
