@@ -129,11 +129,12 @@ export default function ProjectCard({ item, verticalLayout = false }: Props) {
           </div>
         )}
 
-        {/* Prioritize description for the card view */}
         {(data.description) && (
-          <p className="text-neutral-600 dark:text-neutral-300 text-sm line-clamp-3 leading-relaxed mt-1">
-            {data.description}
-          </p>
+          <div className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed mt-1 space-y-0.5">
+            {String(data.description).split('\n').filter(Boolean).map((line, i) => (
+              <p key={i} className="line-clamp-2">{line}</p>
+            ))}
+          </div>
         )}
 
         {/* If valid GitHub link AND NOT a linkable card (since card click goes to detail), show it. */}

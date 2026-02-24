@@ -4,7 +4,10 @@ title: "백엔드 개발자 (Backend Developer)"
 company: "고우아이티 (GowIT)"
 period: "2011.05 ~ 2014.07 (3년 3개월)"
 date: "2011.05"
-description: "주요 프로젝트: EAI 구축 10건 이상 (대덕전자, GS파워, 롯데LLC, SK C&C 등), ASP.NET 웹 시스템 구축"
+description: |
+  - EAI(BizTalk) 기반 기업 간 이기종 시스템 연동 구축 10건 이상 (대덕전자, GS파워, 롯데LLC, SK C&C 등)
+  - ASP.NET 기반 사내 업무 포털 및 웹 시스템 신규 개발
+  - MS-SQL, Oracle 다중 DB 환경에서의 데이터 연동 및 최적화
 
 content_type: "experience"
 public: true

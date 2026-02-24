@@ -208,8 +208,10 @@ export default async function PrintPage() {
 
                                         {/* Print Mode: Show Description only */}
                                         {subItem.data.description && (
-                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug mt-1">
-                                                {subItem.data.description}
+                                            <div className="text-[10px] text-slate-500 mb-1 leading-snug mt-1 space-y-0.5">
+                                                {String(subItem.data.description).split('\n').filter(Boolean).map((line, i) => (
+                                                    <p key={i}>{line}</p>
+                                                ))}
                                             </div>
                                         )}
                                     </div>
@@ -262,17 +264,6 @@ export default async function PrintPage() {
                             </div>
                         </section>
                     ))}
-
-                    {/* Other Skills / Swing Dance Story */}
-                    <section className="mt-6 pt-4 border-t border-slate-200">
-                        <h3 className="font-bold text-xs text-slate-900 mb-1 uppercase tracking-wider">
-                            Other Strengths
-                        </h3>
-                        <p className="text-[10px] text-slate-600 font-medium leading-snug">
-                            "14년의 스윙댄스 파트너십 경험을 통해 배운 '유연한 소통'과 '배려'는, 개발팀 내 갈등을 중재하고 시너지를 이끌어내는 저만의 소프트 스킬입니다."
-                        </p>
-                    </section>
-
                 </main>
             </div>
         </div>

@@ -76,10 +76,20 @@ export default async function CoverLetterPrintPage() {
                 {/* 본문: cover-letter/01-cover-letter.md 에서 읽기 */}
                 <div
                     className="text-[13px] leading-relaxed text-slate-700
+                        [&_h1]:text-xl [&_h1]:font-black [&_h1]:text-slate-900 [&_h1]:mb-6 [&_h1]:pb-3 [&_h1]:border-b-2 [&_h1]:border-slate-800
                         [&_h2]:text-base [&_h2]:font-bold [&_h2]:text-slate-900
                         [&_h2]:border-l-4 [&_h2]:border-slate-800 [&_h2]:pl-3
                         [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:first:mt-0
+                        [&_h3]:text-[10px] [&_h3]:font-semibold [&_h3]:text-slate-400
+                        [&_h3]:uppercase [&_h3]:tracking-widest
+                        [&_h3]:mt-5 [&_h3]:mb-2
+                        [&_h4]:text-[12px] [&_h4]:font-semibold [&_h4]:text-slate-700
+                        [&_h4]:mt-3 [&_h4]:mb-1
                         [&_p]:leading-7 [&_p]:mb-3
+                        [&_ul]:list-none [&_ul]:ml-0 [&_ul]:mb-3 [&_ul]:space-y-3
+                        [&_ol]:list-decimal [&_ol]:ml-5 [&_ol]:mb-3 [&_ol]:space-y-2
+                        [&_li]:leading-relaxed [&_li]:pl-3 [&_li]:border-l-2 [&_li]:border-slate-200
+                        [&_li>strong:first-child]:block [&_li>strong:first-child]:text-slate-900 [&_li>strong:first-child]:mb-0.5
                         [&_hr]:border-slate-200 [&_hr]:my-5
                         [&_strong]:text-slate-900 [&_strong]:font-semibold"
                     dangerouslySetInnerHTML={{ __html: cl.contentHtml }}

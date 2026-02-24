@@ -15,7 +15,7 @@ export default async function PortfolioPrintPage() {
         <div className="min-h-screen bg-white text-black font-sans">
             <style>{`
                 @page {
-                    size: A4 landscape;
+                    size: 297mm 210mm;
                     margin: 14mm 18mm;
                 }
                 @media print {

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FileText, PenLine, Briefcase, LayoutGrid } from 'lucide-react';
+import { FileText, PenLine, Briefcase, ClipboardList, LayoutGrid } from 'lucide-react';
 import { getSectionData } from '@/lib/markdown';
 
 const PRINT_DOCS = [
@@ -20,9 +20,17 @@ const PRINT_DOCS = [
         iconColor: 'text-slate-600',
     },
     {
+        href: '/print/career-summary',
+        Icon: ClipboardList,
+        title: '경력기술서 (요약)',
+        description: '재직 회사·직책·기간·주요 업무를 1페이지 테이블로 압축한 요약형 경력기술서입니다.',
+        borderColor: 'border-slate-200 hover:border-slate-400',
+        iconColor: 'text-slate-600',
+    },
+    {
         href: '/print/career',
         Icon: Briefcase,
-        title: '경력기술서',
+        title: '경력기술서 (상세)',
         description: '재직 회사와 담당 프로젝트를 회사별·시간순으로 정리한 상세 경력기술서입니다.',
         borderColor: 'border-slate-200 hover:border-slate-400',
         iconColor: 'text-slate-600',

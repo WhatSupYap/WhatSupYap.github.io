@@ -4,7 +4,10 @@ title: "시니어 클라우드 백엔드 (Senior Cloud Backend)"
 company: "고우아이티 (GowIT)"
 period: "2023.04 ~ 2025.05 (2년 2개월)"
 date: "2023.04"
-description: "주요 프로젝트: 예실관리(BPMS) 구축, ERP 모니터링 시스템, 포스코 건설 PI 3기 구축"
+description: |
+  - .NET 및 .NET Core 기반의 엔터프라이즈 사이트 개발 및 운영
+  - EAI(BizTalk)를 활용한 기업 내 이기종 시스템 간 통합 및 데이터 연동 최적화
+  - 프론트엔드부터 백엔드까지 아우르는 풀스택 개발로 서비스 비즈니스 로직 구현
 
 content_type: "experience"
 public: true

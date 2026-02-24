@@ -53,11 +53,18 @@ export default async function Home() {
                       )}
                     </div>
 
-                    {/* Render Items (Cards) */}
+                    {/* Render Items (Cards or full content for intro type) */}
                     <div className="flex flex-col gap-2">
-                      {item.items?.map((subItem) => (
-                        <ProjectCard key={subItem.slug} item={subItem} />
-                      ))}
+                      {item.items?.map((subItem) =>
+                        subItem.data.content_type === 'intro' ? (
+                          <div key={subItem.slug}>
+                            <MarkdownRenderer contentHtml={subItem.contentHtml ?? ''} />
+                          </div>
+                        ) : (
+                          <ProjectCard key={subItem.slug} item={subItem} />
+                        )
+                      )}
+
                     </div>
                   </div>
                 )

@@ -62,9 +62,11 @@ export default async function ExperienceDetailPage({ params }: Props) {
                     </div>
 
                     {data.description && (
-                        <p className="text-xl text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
-                            {data.description}
-                        </p>
+                        <div className="text-xl text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed space-y-1">
+                            {String(data.description).split('\n').filter(Boolean).map((line, i) => (
+                                <p key={i}>{line}</p>
+                            ))}
+                        </div>
                     )}
                 </header>
 

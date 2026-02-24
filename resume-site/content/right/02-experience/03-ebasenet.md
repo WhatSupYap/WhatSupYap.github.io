@@ -4,7 +4,10 @@ title: "시스템 백엔드 개발자 (System Backend Developer)"
 company: "프리엠컨설팅 / 보우테크 / 이베이스넷"
 period: "2014.12 ~ 2016.06 (1년 7개월)"
 date: "2016.02"
-description: "주요 프로젝트: 롯데시네마 발권시스템, 동우화인켐 MSDS 구축, 전자결재 시스템 유지보수"
+description: |
+  - 롯데시네마 발권 시스템 유지보수 및 기능 개선
+  - 동우화인켐 MSDS(물질안전보건자료) 관리 시스템 신규 구축
+  - 전자결재 시스템 유지보수 및 ASP.NET 기반 백엔드 운영
 
 content_type: "experience"
 public: true
