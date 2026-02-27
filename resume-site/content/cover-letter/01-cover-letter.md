@@ -34,7 +34,7 @@ position: "AI Backend Developer & MLOps Engineer"
 * **운영 중심의 아키텍처 설계**
   27개 이상의 프로젝트를 거치며 배포 이후의 확장성과 유지보수 편의성을 고려한 설계 능력을 검증받았습니다.
 
----
+<div style="page-break-before: always; padding-top: 2rem;"></div>
 
 ## 3. 입사 후 포부
 **지속 가능한 시스템을 지향하는 엔지니어**

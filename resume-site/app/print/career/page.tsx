@@ -13,16 +13,7 @@ export default async function CareerPrintPage() {
     const experienceItems = await getAllExperienceItems();
 
     return (
-        <div className="min-h-screen bg-white text-black font-sans">
-            <style>{`
-                @page { size: A4; margin: 12mm 18mm; }
-                @media print {
-                    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                    .no-print { display: none !important; }
-                    button[aria-label="Toggle theme"] { display: none !important; }
-                }
-                button[aria-label="Toggle theme"] { display: none !important; }
-            `}</style>
+        <div className="font-sans">
 
             <PrintButton />
 

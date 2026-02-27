@@ -18,7 +18,7 @@ async function getCoverLetterContent() {
     return Promise.all(files.map(async (file) => {
         const raw = fs.readFileSync(path.join(dirPath, file), 'utf-8');
         const { data, content } = matter(raw);
-        const processed = await remark().use(remarkGfm).use(html).process(content);
+        const processed = await remark().use(remarkGfm).use(html, { sanitize: false }).process(content);
         return { data, contentHtml: processed.toString() };
     }));
 }
@@ -44,16 +44,7 @@ export default async function CoverLetterPrintPage() {
     if (!cl) return <div>자기소개서 내용이 없습니다.</div>;
 
     return (
-        <div className="min-h-screen bg-white text-black font-sans">
-            <style>{`
-                @page { size: A4; margin: 15mm 20mm; }
-                @media print {
-                    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                    .no-print { display: none !important; }
-                    button[aria-label="Toggle theme"] { display: none !important; }
-                }
-                button[aria-label="Toggle theme"] { display: none !important; }
-            `}</style>
+        <div className="font-sans">
 
             <PrintButton />
 

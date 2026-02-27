@@ -39,7 +39,7 @@ const PRINT_DOCS = [
         href: '/print/portfolio',
         Icon: LayoutGrid,
         title: '포트폴리오',
-        description: '주요 프로젝트의 역할, 기술 스택, 핵심 성과를 상세히 기술한 포트폴리오입니다.',
+        description: '각 프로젝트를 개별 다수 페이지 PDF로 출력할 수 있습니다. 포트폴리오를 선택 후 상세 출력 페이지에서 PDF로 저장하세요.',
         borderColor: 'border-slate-200 hover:border-slate-400',
         iconColor: 'text-slate-600',
     },

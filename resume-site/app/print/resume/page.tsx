@@ -26,31 +26,7 @@ export default async function PrintPage() {
     const contact = leftItems.find(item => item.slug.includes('contact'));
 
     return (
-        <div className="min-h-screen bg-white text-black font-sans box-border">
-            <style>{`
-                @page {
-                    size: A4;
-                    margin: 0;
-                }
-                @media print {
-                    body {
-                        -webkit-print-color-adjust: exact;
-                        print-color-adjust: exact;
-                    }
-                    .no-print,
-                    .print-hidden,
-                    button[aria-label="Toggle theme"],
-                    button:has(svg.lucide-printer) {
-                        display: none !important;
-                    }
-                }
-                /* Hide Theme Toggle on Screen for this page too if desired, or just ensure it is hidden in print */
-                /* For now, just print media as requested "in print page... visible again" implies during print or on the page itself? */
-                /* User said "/print page... visible again". Let's hide it on the page entirely. */
-                button[aria-label="Toggle theme"] {
-                    display: none !important;
-                }
-            `}</style>
+        <div className="font-sans box-border">
 
             <PrintButton />
 

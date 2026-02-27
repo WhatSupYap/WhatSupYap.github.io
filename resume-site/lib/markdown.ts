@@ -58,7 +58,7 @@ async function processFile(filePath: string, relativePath: string): Promise<Mark
   // Convert markdown to HTML
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(html)
+    .use(html, { sanitize: false })
     .process(content);
   const contentHtml = processedContent.toString();
 
