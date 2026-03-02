@@ -68,20 +68,36 @@ export default async function PortfolioPrintDetailPage({ params }: Props) {
                         )}
 
                         {/* 기간 + 배지 */}
-                        <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <div className="flex flex-wrap items-center gap-1.5 mb-3">
                             {data.period && (
-                                <span className="text-[11px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
+                                <span
+                                    className="text-xs font-medium px-2.5 py-1 rounded-full !bg-slate-100 text-slate-600 whitespace-nowrap"
+                                    style={{ printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }}
+                                >
                                     {data.period}
                                 </span>
                             )}
-                            {(data.badges as string[] | undefined)?.map((badge: string) => (
-                                <span
-                                    key={badge}
-                                    className="text-[10px] bg-slate-800 text-slate-100 px-2 py-0.5 rounded"
-                                >
-                                    {badge}
-                                </span>
-                            ))}
+                            {(data.badges as string[] | undefined)?.map((badge: string) => {
+                                const isAiOrInfra = ['python', 'fastapi', 'aws', 'docker', 'langgraph', 'rag', 'llm', 'sllm'].some(keyword => badge.toLowerCase().includes(keyword));
+                                const isLegacy = ['c#', 'asp.net', 'windows'].some(keyword => badge.toLowerCase().includes(keyword));
+
+                                let badgeStyle = "!bg-slate-100 text-slate-600 border-slate-200";
+                                if (isAiOrInfra) {
+                                    badgeStyle = "!bg-indigo-600 !text-white border-indigo-700";
+                                } else if (isLegacy) {
+                                    badgeStyle = "!bg-slate-500 !text-white border-slate-600";
+                                }
+
+                                return (
+                                    <span
+                                        key={badge}
+                                        className={`text-[10px] font-medium px-2 py-0.5 rounded border ${badgeStyle}`}
+                                        style={{ printColorAdjust: 'exact', WebkitPrintColorAdjust: 'exact' }}
+                                    >
+                                        {badge}
+                                    </span>
+                                );
+                            })}
                         </div>
 
                         {/* GitHub */}
@@ -93,7 +109,7 @@ export default async function PortfolioPrintDetailPage({ params }: Props) {
                     </div>
 
                     {/* 구분선 */}
-                    <hr className="border-slate-200 mb-6" />
+                    {/* <hr className="border-slate-200 mb-6" /> */}
 
                     {/* 마크다운 본문 */}
                     <div
@@ -113,21 +129,19 @@ export default async function PortfolioPrintDetailPage({ params }: Props) {
                             [&_li]:text-[11px] [&_li]:text-slate-600 [&_li]:leading-snug [&_li]:break-words
                             [&_p]:text-[11px] [&_p]:text-slate-600 [&_p]:mb-1.5 [&_p]:break-words
                             [&_strong]:text-slate-900 [&_strong]:font-bold
-                            [&_blockquote]:hidden
+                            [&_blockquote]:border-l-4 [&_blockquote]:border-slate-300 [&_blockquote]:bg-slate-50 [&_blockquote]:px-3 [&_blockquote]:!py-0 [&_blockquote]:my-4 [&_blockquote]:text-slate-600 [&_blockquote]:italic
+                            [&_blockquote_p]:whitespace-pre-line [&_blockquote_p]:mb-1
+                            [&_code]:!bg-slate-200 [&_code]:text-[10px] [&_code]:font-mono [&_code]:px-1.5 [&_code]:py-0 [&_code]:rounded [&_code]:text-slate-800 [&_code]:font-medium
+                            [&_code::before]:content-none [&_code::after]:content-none
                             [&_h1]:hidden
                             [&_table]:w-full [&_table]:max-w-full [&_table]:table-fixed
                             [&_table]:border-collapse [&_table]:text-[10.5px] [&_table]:my-3
                             [&_th]:bg-slate-100 [&_th]:text-slate-700 [&_th]:font-semibold
-                            [&_th]:px-2 [&_th]:py-1.5 [&_th]:border [&_th]:border-slate-200 [&_th]:text-left
+                            [&_th]:px-2 [&_th]:py-1.5 [&_th]:border [&_th]:border-slate-200 [&_th]:text-center
                             [&_th]:break-words [&_th]:align-middle
-                            [&_th:nth-child(1)]:w-[28%]
-                            [&_th:nth-child(2)]:w-[18%]
-                            [&_th:nth-child(3)]:w-[14%]
-                            [&_th:nth-child(4)]:w-[40%]
                             [&_td]:px-2 [&_td]:py-1.5 [&_td]:border [&_td]:border-slate-200 [&_td]:text-slate-600
-                            [&_td]:break-words [&_td]:align-middle
-                            [&_td:nth-child(2)]:text-center
-                            [&_td:nth-child(3)]:text-center
+                            [&_td]:break-words [&_td]:align-middle [&_td]:text-center
+                            [&_table_img]:max-w-[calc(100%-8px)] [&_table_img]:mx-auto [&_table_img]:block
                         "
                         dangerouslySetInnerHTML={{ __html: contentHtml || '' }}
                     />

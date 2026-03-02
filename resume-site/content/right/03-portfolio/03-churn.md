@@ -4,7 +4,7 @@ title: "넷플릭스 구독 이탈 예측"
 period: "2025.10.01 ~ 2025.10.15 (2주)"
 description: "ML 모델(LightGBM) 학습을 위한 안정적인 데이터 파이프라인 구축 및 대용량 피처(Feature) 엔지니어링 수행"
 content_type: "portfolio"
-public: true
+public: false
 badges: ["Precision 96%", "XGBoost", "Data Analysis"]
 github: "https://github.com/SKNETWORKS-FAMILY-AICAMP/SKN19-2nd-3Team"
 image: "/images/projects/netflix_churn/main.png"

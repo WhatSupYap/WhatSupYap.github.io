@@ -4,7 +4,7 @@ title: "도쿄 숙소 가격 예측"
 period: "2025.09.15 ~ 2025.09.26 (1주)"
 description: "복잡한 어메니티 데이터를 파싱하여 도쿄 지역 숙소의 적정 가격을 예측하는 회귀 모델 개발."
 content_type: "portfolio"
-public: true
+public: false
 github: "https://github.com/SKNetworks-AI19-250818/SKN19-mini-5Team"
 ---
 
